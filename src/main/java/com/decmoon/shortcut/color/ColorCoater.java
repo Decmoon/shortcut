@@ -2,7 +2,7 @@ package com.decmoon.shortcut.color;
 
 import org.fusesource.jansi.Ansi;
 
-import static com.decmoon.shortcut.string.StringGenerator.newStringBuffer;
+import static com.decmoon.shortcut.string.Strings.newStringBuffer;
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class ColorCoater {
@@ -39,8 +39,53 @@ public class ColorCoater {
         return newStringBuffer(color(Ansi.Color.WHITE, string));
     }
 
+
+    public static StringBuffer black(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.BLACK, stringBuffer));
+    }
+
+    public static StringBuffer red(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.RED, stringBuffer));
+    }
+
+    public static StringBuffer green(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.GREEN, stringBuffer));
+    }
+
+    public static StringBuffer yellow(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.YELLOW, stringBuffer));
+    }
+
+    public static StringBuffer blue(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.BLUE, stringBuffer));
+    }
+
+    public static StringBuffer magenta(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.MAGENTA, stringBuffer));
+    }
+
+    public static StringBuffer cyan(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.CYAN, stringBuffer));
+    }
+
+    public static StringBuffer white(StringBuffer stringBuffer) {
+        return newStringBuffer(color(Ansi.Color.WHITE, stringBuffer));
+    }
+
+
+
+
+
+
+
+
+
+
     private final static String color(Ansi.Color color, String string) {
         return ansi().eraseScreen().fg(color).a(string).toString();
     }
 
+    private final static String color(Ansi.Color color, StringBuffer stringBuffer) {
+        return ansi().eraseScreen().fg(color).a(stringBuffer).toString();
+    }
 }

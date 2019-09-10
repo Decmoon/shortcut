@@ -41,4 +41,38 @@ public class StringProcessor {
             return string;
         return string.substring(begin, end);
     }
+
+    /**
+     *
+     * @param maxSize
+     * @param string
+     * @return
+     */
+    public static String headString(int maxSize, String string) {
+        StringBuffer stringBuffer = Strings.newStringBuffer();
+        stringBuffer.append(string);
+
+        int length = string.length();
+        if(length < maxSize){
+            for (int i = 0; i < maxSize; i++)
+                stringBuffer.append(" ");
+            return stringBuffer.substring(0, maxSize);
+        }else return string;
+
+    }
+
+
+    public  final static String tailString(int maxSize,String string) {
+        int length = string.length();
+        if (length <= maxSize) {
+            StringBuffer stringBuffer = Strings.newStringBuffer();
+            for (int i = 0; i < maxSize; i++)
+                stringBuffer.append(" ");
+            stringBuffer.append(string);
+            return  stringBuffer.substring(length);
+        } else
+            return string;
+    }
+
+
 }

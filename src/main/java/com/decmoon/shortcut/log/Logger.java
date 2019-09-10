@@ -1,7 +1,9 @@
 package com.decmoon.shortcut.log;
 
 import com.decmoon.shortcut.date.DateRecorder;
-import com.decmoon.shortcut.string.StringGenerator;
+import com.decmoon.shortcut.print.Print;
+import com.decmoon.shortcut.string.StringProcessor;
+import com.decmoon.shortcut.string.ToString;
 
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
@@ -11,38 +13,24 @@ public class Logger {
 
     public static void log(String message) {
         String time = DateRecorder.now();
-        System.out.println(StringGenerator.toString(content(time), green(message)));
+        Print.print(content(time), green(message));
     }
 
     public static void err(String message) {
         String time = DateRecorder.now();
-        System.out.println(StringGenerator.toString(content(time), red(message)));
+        Print.print(content(time), red(message));
     }
 
 
     private final static StringBuffer content(String time) {
-        return StringGenerator.toStringBuffer(white("["),
+        return ToString.toStringBuffer(white("["),
                 yellow(time),
                 white("]"),
                 white(" ∽ ["),
-                white(formatThreadLog(Thread.currentThread().getName().toUpperCase())),
+                white(StringProcessor.tailString(16, Thread.currentThread().getName().toUpperCase())),
                 white("] ∽ "),
                 cyan(SHORTCUT),
                 white(">>>> :  "));
-    }
-
-
-    private final static String formatThreadLog(String string) {
-        String defaultString = "               ";
-        int size = defaultString.length();
-        int length = string.length();
-        if (length <= size) {
-            StringBuffer stringBuffer = StringGenerator.newStringBuffer(defaultString);
-            stringBuffer.append(string);
-            stringBuffer.substring(size - length);
-            return stringBuffer.toString();
-        } else
-            return string;
     }
 
 

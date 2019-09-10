@@ -9,6 +9,12 @@ import java.io.ObjectOutputStream;
 
 public class SerizlizePerformer {
 
+    /**
+     * Serialization for redis to store objects
+     *
+     * @param object
+     * @return
+     */
     public final static byte[] serialize(Object object) {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
@@ -22,6 +28,12 @@ public class SerizlizePerformer {
         return null;
     }
 
+    /**
+     * Deserialization for redis to read objects
+     *
+     * @param bytes
+     * @return
+     */
     public final static Object unSerialize(byte[] bytes) {
         try (
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);

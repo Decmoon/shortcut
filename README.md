@@ -7,7 +7,7 @@ SHORTCUT
 ```logo
    ______ ___  __________ _______________________  __________
   / ____//  /_/  /  __  |/  ___/__  __/  ___ /  / /  __   __/
- (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.1
+ (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.2
 /_____//__/ /__/|______/__/    /__/  \____/ \______/ /__/       faster AND easier
 ```
 Intro
@@ -19,7 +19,7 @@ Function
 -
 + Nonempty judgment of parameter
 + Custom log
-+ Console multi-color output
++ Complex set traversal
 + More sophisticated handling of Math classes
 + Multithreaded automatic branching
 + .....
@@ -85,6 +85,35 @@ So let's see the amount of code **shortcut** has
 ```
      Object object = branch(() -> "shortcut can greatly simplify your code and increase your development efficiency");
 ```
+
+#### Traverse the collection: 
+
+> Method : **_ListExhibitor.see(List<E> list)_**
+```
+|----------------------------------------------------------|
+| INDEX | VALUE                     | TYPE                 |
+|----------------------------------------------------------|
+| 0     | English                   | java.lang.String     |
+| 1     | 123                       | java.lang.Integer    |
+| 2     | class java.lang.Object    | java.lang.Class      |
+| 3     | java.lang.Object@488232a1 | java.lang.Object     |
+|----------------------------------------------------------|
+
+```
+>  Method: **_MapExhibitor.see(Map<K, V> map)_**
+```
+|------------------------------------------------------------------------------------------------------------------------------|
+| KEY                       | VALUE                          | KEY TYPE                       | VALUE TYPE                     |
+|------------------------------------------------------------------------------------------------------------------------------|
+| A                         | aaaa                           | java.lang.String               | java.lang.String               |
+| 1                         | 11                             | java.lang.Integer              | java.lang.Integer              |
+| java.lang.Object@5290501d | [I@51acc179                    | java.lang.Object               | [I                             |
+| 111111111111111           | 11.1                           | java.lang.Long                 | java.lang.Double               |
+|------------------------------------------------------------------------------------------------------------------------------|
+
+```
+---
+
 This is only a small part of the built-in simplification of **shortcut**
 
 You can find lots of surprises in **shortcut**<br/>

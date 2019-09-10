@@ -49,7 +49,7 @@ public class Arguments {
         return bool;
     }
 
-    public static void parameterIllegalThrow(String message,Object... objects) {
+    public static void parameterIllegalThrow(String message, Object... objects) {
         if (parameterIllegal(objects))
             throw new IllegalArgumentException(message);
     }

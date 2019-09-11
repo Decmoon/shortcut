@@ -1,34 +1,38 @@
-package com.decmoon.shortcut.collection.list;
+package com.decmoon.shortcut.collection;
 
 import com.decmoon.shortcut.bool.BooleanJudge;
-import com.decmoon.shortcut.collection.CollectionRecognizer;
 import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
 import com.decmoon.shortcut.string.Strings;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
-public class ListExhibitor {
+public class CollectionExhibitor {
 
-    public static <E> void see(List<E> list) {
-        if (BooleanJudge.hasTrue(CollectionRecognizer.isNull(list), CollectionRecognizer.isEmpty(list))) {
-            Logger.err("The list must not be empty");
+    public static <E> void see(Collection<E> collection) {
+        if (BooleanJudge.hasTrue(CollectionRecognizer.isNull(collection), CollectionRecognizer.isEmpty(collection))) {
+            Logger.err(CollectionExhibitor.class.getName()+".see() ->  parameter 'collection' illegal");
             return;
         }
-        Logger.log(ListExhibitor.class.getName() + ".see()  printing ...");
-        int keySize=5, valueSize = 20, typeSize = 20;
+        Logger.log(CollectionExhibitor.class.getName() + ".see()  printing ...");
+        ObjectInformation.information(collection);
+        int keySize = 5, valueSize = 20, typeSize = 20;
 
-        keySize = Math.max(keySize, list.size());
-        for (E e : list) {
-            valueSize = Math.max(valueSize,e.toString().length());
-            typeSize = Math.max(typeSize,e.getClass().getName().length());
+        keySize = Math.max(keySize, collection.size());
+        for (E e : collection) {
+            valueSize = Math.max(valueSize, e.toString().length());
+            typeSize = Math.max(typeSize, e.getClass().getName().length());
         }
 
-        Iterator iterator = list.iterator();
+        Iterator iterator = collection.iterator();
         int length = keySize + valueSize + typeSize + 8;
         StringBuffer stringBuffer = Strings.newStringBuffer("|");
         for (int i = 0; i < length; i++)
@@ -61,6 +65,7 @@ public class ListExhibitor {
                     blue(" |"));
         }
         Print.print(blue(stringBuffer));
+        Print.print();
     }
 
 

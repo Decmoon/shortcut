@@ -3,6 +3,7 @@ package com.decmoon.shortcut.collection.map;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.collection.CollectionRecognizer;
 import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
 import com.decmoon.shortcut.string.Strings;
@@ -20,6 +21,7 @@ public class MapExhibitor {
             return;
         }
         Logger.log(MapExhibitor.class.getName() + ".see()  printing ...");
+        ObjectInformation.information(map);
         int keySize = 20, valueSize = 30, keyTypeSize = 30, valueTypeSize = 30;
 
         for (Map.Entry<K, V> entry : map.entrySet()) {

@@ -8,6 +8,9 @@ public class Print {
         System.out.println(ToString.toString(strings));
     }
 
+    public static void print(){
+        System.out.println();
+    }
     public static void print(StringBuffer ... stringBuffers){
         System.out.println(ToString.toString(stringBuffers));
     }

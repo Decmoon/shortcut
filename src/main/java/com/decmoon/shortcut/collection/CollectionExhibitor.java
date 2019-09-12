@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.collection;
 
 import com.decmoon.shortcut.bool.BooleanJudge;
+import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
@@ -9,17 +10,14 @@ import com.decmoon.shortcut.string.Strings;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
 public class CollectionExhibitor {
 
     public static <E> void see(Collection<E> collection) {
-        if (BooleanJudge.hasTrue(CollectionRecognizer.isNull(collection), CollectionRecognizer.isEmpty(collection))) {
-            Logger.err(CollectionExhibitor.class.getName()+".see() ->  parameter 'collection' illegal");
+        if (BooleanJudge.hasTrue(CollectionChecker.isNull(collection), CollectionChecker.isEmpty(collection))) {
+            ExceptionLogger.parameterErr(CollectionExhibitor.class,"see(Collection<E> collection)");
             return;
         }
         Logger.log(CollectionExhibitor.class.getName() + ".see()  printing ...");

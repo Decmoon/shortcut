@@ -1,8 +1,7 @@
 package com.decmoon.shortcut.collection.set;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.collection.list.Lists;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.exception.ExceptionLogger;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -15,7 +14,7 @@ public class Sets {
 
     public final static <E> HashSet<E> newHashSet(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            Logger.err(Sets.class.getName() + ".newHashSet() ->  parameter 'collection' illegal");
+            ExceptionLogger.parameterErr(Sets.class,"newHashSet(Collection<? extends E> collection)");
             return null;
         }
         return new HashSet<>(collection);

@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.object;
 
+import com.decmoon.shortcut.argument.Arguments;
+import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
@@ -12,6 +14,10 @@ import static com.decmoon.shortcut.color.ColorCoater.white;
 public class ObjectInformation {
 
     public static void information(Object object) {
+        if (Arguments.parameterIllegal(object)) {
+            ExceptionLogger.parameterErr(ObjectInformation.class, "information(Object object)");
+            return;
+        }
         Logger.log(ObjectInformation.class.getName() + ".information()  printing ...");
         sharer(object);
     }
@@ -21,7 +27,7 @@ public class ObjectInformation {
             logCollection((Collection) object);
         else if (object instanceof Map)
             logMap((Map) object);
-        else if (StringProcessor.equals(object.getClass().getName(),"[I"))
+        else if (StringProcessor.equals(object.getClass().getName(), "[I"))
             logGeneral(object);
         else
             logGeneral(object);

@@ -1,7 +1,8 @@
 package com.decmoon.shortcut.collection.map;
 
 import com.decmoon.shortcut.bool.BooleanJudge;
-import com.decmoon.shortcut.collection.CollectionRecognizer;
+import com.decmoon.shortcut.collection.CollectionChecker;
+import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
@@ -16,8 +17,8 @@ public class MapExhibitor {
 
 
     public static <K, V> void see(Map<K, V> map) {
-        if (BooleanJudge.hasTrue(CollectionRecognizer.isNull(map), CollectionRecognizer.isEmpty(map))) {
-            Logger.err("The map must not be empty");
+        if (BooleanJudge.hasTrue(CollectionChecker.isNull(map), CollectionChecker.isEmpty(map))) {
+            ExceptionLogger.parameterErr(MapExhibitor.class , "see(Map<K, V> map)");
             return;
         }
         Logger.log(MapExhibitor.class.getName() + ".see()  printing ...");

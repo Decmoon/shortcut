@@ -1,9 +1,12 @@
 package com.decmoon.shortcut.collection.list;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.exception.ExceptionLogger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Lists {
@@ -14,7 +17,7 @@ public class Lists {
 
     public final static <E> ArrayList<E> newArrayList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            Logger.err(Lists.class.getName() + ".newArrayList() ->  parameter 'collection' illegal");
+            ExceptionLogger.parameterErr(Lists.class,"newArrayList(Collection<? extends E> collection)");
             return null;
         }
         return new ArrayList<>(collection);
@@ -26,10 +29,9 @@ public class Lists {
 
     public final static <E> CopyOnWriteArrayList<E> newCopyOnWriteArrayList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            Logger.err(Lists.class.getName() + ".newCopyOnWriteArrayList() ->  parameter 'collection' illegal");
+            ExceptionLogger.parameterErr(Lists.class,"newCopyOnWriteArrayList(Collection<? extends E> collection)");
             return null;
         }
-
         return new CopyOnWriteArrayList<>(collection);
     }
 
@@ -40,7 +42,7 @@ public class Lists {
 
     public final static <E> LinkedList<E> newLinkedList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            Logger.err(Lists.class.getName() + ".newLinkedList() ->  parameter 'collection' illegal");
+            ExceptionLogger.parameterErr(Lists.class,"newLinkedList(Collection<? extends E> collection)");
             return null;
         }
         return new LinkedList<>(collection);
@@ -52,7 +54,7 @@ public class Lists {
 
     public final static <E> Vector<E> newVector(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            Logger.err(Lists.class.getName() + ".newVector() ->  parameter 'collection' illegal");
+            ExceptionLogger.parameterErr(Lists.class,"newVector(Collection<? extends E> collection)");
             return null;
         }
         return new Vector<>(collection);

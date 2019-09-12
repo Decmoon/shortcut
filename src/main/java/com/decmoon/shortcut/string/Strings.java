@@ -14,5 +14,14 @@ public class Strings {
         return new StringBuffer(string);
     }
 
+    public final static StringBuilder newStringBuilder(){
+        return new StringBuilder();
+    }
+
+    public final static StringBuilder newStringBuilder(String string){
+        return new StringBuilder(string);
+    }
+
+
 
 }

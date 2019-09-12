@@ -72,15 +72,6 @@ public class ColorCoater {
         return newStringBuffer(color(Ansi.Color.WHITE, stringBuffer));
     }
 
-
-
-
-
-
-
-
-
-
     private final static String color(Ansi.Color color, String string) {
         return ansi().eraseScreen().fg(color).a(string).toString();
     }

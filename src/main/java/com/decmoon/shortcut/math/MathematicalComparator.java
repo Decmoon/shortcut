@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.math;
 
+import com.decmoon.shortcut.bool.BooleanJudge;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.concurrent.atomic.*;
@@ -90,7 +92,7 @@ public class MathematicalComparator {
     }
 
     public static boolean equalsZero(Number number) {
-        return moreThanZero(number) || lessThanZero(number) ? false : true;
+        return BooleanJudge.hasTrue(moreThanZero(number), lessThanZero(number)) ? false : true;
     }
 
     public static boolean unequalZero(Number number) {

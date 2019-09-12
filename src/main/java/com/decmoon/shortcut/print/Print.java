@@ -7,7 +7,6 @@ public class Print {
     public static void print(String ... strings){
         System.out.println(ToString.toString(strings));
     }
-
     public static void print(){
         System.out.println();
     }

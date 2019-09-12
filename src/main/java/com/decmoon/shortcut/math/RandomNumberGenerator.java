@@ -1,6 +1,5 @@
 package com.decmoon.shortcut.math;
 
-
 import static com.decmoon.shortcut.math.MathematicalComparator.*;
 import static com.decmoon.shortcut.math.MathematicalValueProcessor.absolute;
 

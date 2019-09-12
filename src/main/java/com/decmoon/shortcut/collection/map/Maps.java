@@ -1,8 +1,7 @@
 package com.decmoon.shortcut.collection.map;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.collection.list.Lists;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.exception.ExceptionLogger;
 
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -16,7 +15,7 @@ public class Maps {
 
     public final static <K, V> HashMap<K, V> newHashMap(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            Logger.err(Maps.class.getName() + ".newHashMap() ->  parameter 'map' illegal");
+            ExceptionLogger.parameterErr(Maps.class,"newHashMap(Map<? extends K, ? extends V> map)");
             return null;
         }
         return new HashMap<>(map);
@@ -28,7 +27,7 @@ public class Maps {
     }
     public final static <K, V> Hashtable<K, V> newHashTable(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            Logger.err(Maps.class.getName() + ".newHashTable() ->  parameter 'map' illegal");
+            ExceptionLogger.parameterErr(Maps.class,"newHashTable(Map<? extends K, ? extends V> map)");
             return null;
         }
         return new Hashtable<>(map);

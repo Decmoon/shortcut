@@ -1,11 +1,13 @@
 package com.decmoon.shortcut.collection;
 
+import com.decmoon.shortcut.argument.Arguments;
+import com.decmoon.shortcut.bool.BooleanJudge;
+
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class CollectionRecognizer {
+public class CollectionChecker {
 
     public static boolean isNull(Collection collection) {
         return Objects.isNull(collection);
@@ -37,6 +39,19 @@ public class CollectionRecognizer {
 
     public static boolean nonEmpty(Map map) {
         return !isEmpty(map);
+    }
+
+
+    public static boolean containNULL(Collection collection) {
+        if (BooleanJudge.hasTrue(isNull(collection), isEmpty(collection)))
+            return true;
+        for (Object o : collection)
+            if (Arguments.parameterIllegal(o)) return true;
+        return false;
+    }
+
+    public static boolean nonContainNULL(Collection collection) {
+        return !containNULL(collection);
     }
 
 

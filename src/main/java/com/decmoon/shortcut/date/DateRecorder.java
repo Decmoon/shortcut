@@ -14,9 +14,7 @@ public class DateRecorder {
     public final static String HH_mm_ss = "HH:mm:ss";
 
     public static String now() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(yyyy_MM_dd_HH_mm_ss);
-        String time = dateFormat.format(new Date());
-        return time;
+        return now(yyyy_MM_dd_HH_mm_ss);
     }
 
     public static String now(String format) {

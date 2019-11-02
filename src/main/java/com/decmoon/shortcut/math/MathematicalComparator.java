@@ -6,9 +6,18 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.concurrent.atomic.*;
 
-
+/**
+ * Provides methods for numeric manipulation
+ *
+ * @author decmoon
+ */
 public class MathematicalComparator {
-
+    /**
+     * Calculate if the number is greater than 0
+     *
+     * @param number Number
+     * @return boolean
+     */
     public static boolean moreThanZero(Number number) {
         if (number instanceof Integer ||
                 number instanceof AtomicInteger ||
@@ -36,6 +45,12 @@ public class MathematicalComparator {
         return false;
     }
 
+    /**
+     * Calculate if the number is greater than 0
+     *
+     * @param numbers Numbers
+     * @return boolean
+     */
     public static boolean allMoreThanZero(Number... numbers) {
         for (Number number : numbers)
             if (!moreThanZero(number))
@@ -43,6 +58,12 @@ public class MathematicalComparator {
         return true;
     }
 
+    /**
+     * Calculate if there is a number greater than 0
+     *
+     * @param numbers Numbers
+     * @return boolean
+     */
     public static boolean hasMoreThanZero(Number... numbers) {
         for (Number number : numbers)
             if (moreThanZero(number))
@@ -50,6 +71,12 @@ public class MathematicalComparator {
         return false;
     }
 
+    /**
+     * Calculate if the number is less than 0
+     *
+     * @param number Number
+     * @return boolean
+     */
     public static boolean lessThanZero(Number number) {
         if (number instanceof Integer ||
                 number instanceof AtomicInteger ||
@@ -77,6 +104,12 @@ public class MathematicalComparator {
         return false;
     }
 
+    /**
+     * Calculate if all Numbers are less than 0
+     *
+     * @param numbers Numbers
+     * @return boolean
+     */
     public static boolean allLessThanZero(Number... numbers) {
         for (Number number : numbers)
             if (!lessThanZero(number))
@@ -84,6 +117,12 @@ public class MathematicalComparator {
         return true;
     }
 
+    /**
+     * Calculate if there is a number less than 0
+     *
+     * @param numbers Numbers
+     * @return boolean
+     */
     public static boolean hasLessThanZero(Number... numbers) {
         for (Number number : numbers)
             if (lessThanZero(number))
@@ -91,10 +130,22 @@ public class MathematicalComparator {
         return false;
     }
 
+    /**
+     * Calculate if the number is equal to 0
+     *
+     * @param number Number
+     * @return boolean
+     */
     public static boolean equalsZero(Number number) {
         return BooleanJudge.hasTrue(moreThanZero(number), lessThanZero(number)) ? false : true;
     }
 
+    /**
+     * Calculate if the number isn't equal to 0
+     *
+     * @param number Number
+     * @return boolean
+     */
     public static boolean unequalZero(Number number) {
         return !equalsZero(number);
     }

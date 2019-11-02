@@ -5,6 +5,11 @@ import org.fusesource.jansi.Ansi;
 import static com.decmoon.shortcut.string.Strings.newStringBuffer;
 import static org.fusesource.jansi.Ansi.ansi;
 
+/**
+ * Make your console font has color
+ *
+ * @author decmoon
+ */
 public class ColorCoater {
 
     public static StringBuffer black(String string) {

@@ -2,15 +2,34 @@ package com.decmoon.shortcut.print;
 
 import com.decmoon.shortcut.string.ToString;
 
+/**
+ * Packaging method for printing
+ *
+ * @author decmoon
+ */
 public class Print {
-
-    public static void print(String ... strings){
+    /**
+     * Print multiple strings
+     *
+     * @param strings Strings
+     */
+    public static void print(String... strings) {
         System.out.println(ToString.toString(strings));
     }
-    public static void print(){
+
+    /**
+     * Print space lines
+     */
+    public static void print() {
         System.out.println();
     }
-    public static void print(StringBuffer ... stringBuffers){
+
+    /**
+     * Print multiple StringBuffers
+     *
+     * @param stringBuffers StringBuffers
+     */
+    public static void print(StringBuffer... stringBuffers) {
         System.out.println(ToString.toString(stringBuffers));
     }
 

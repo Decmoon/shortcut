@@ -8,17 +8,30 @@ import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
 import com.decmoon.shortcut.string.Strings;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
+/**
+ * Map exhibitor
+ *
+ * @author decmoon
+ */
 public class MapExhibitor {
 
 
+    /**
+     * Show the map details
+     *
+     * @param map map
+     * @param <K> Supports generics
+     * @param <V>  Supports generics
+     */
     public static <K, V> void see(Map<K, V> map) {
         if (BooleanJudge.hasTrue(CollectionChecker.isNull(map), CollectionChecker.isEmpty(map))) {
-            ExceptionLogger.parameterErr(MapExhibitor.class , "see(Map<K, V> map)");
+            ExceptionLogger.parameterErr(MapExhibitor.class, "see(Map<K, V> map)");
             return;
         }
         Logger.log(MapExhibitor.class.getName() + ".see()  printing ...");
@@ -75,6 +88,7 @@ public class MapExhibitor {
                     blue(" |"));
         }
         Print.print(blue(stringBuffer));
+        Print.print(black(""));
     }
 
 

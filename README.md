@@ -1,3 +1,4 @@
+
 SHORTCUT
 -
 **caption**：Open source toolkit
@@ -7,9 +8,11 @@ SHORTCUT
 ```logo
    ______ ___  __________ _______________________  __________
   / ____//  /_/  /  __  |/  ___/__  __/  ___ /  / /  __   __/
- (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.4
+ (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.5
 /_____//__/ /__/|______/__/    /__/  \____/ \______/ /__/       faster AND easier
 ```
+
+
 Intro
 -
 Open source toolkit based on springboot with built-in static method,
@@ -119,9 +122,31 @@ This is only a small part of the built-in simplification of **shortcut**
 You can find lots of surprises in **shortcut**<br/>
 ......
 
+Log
+-
+Since shortcut's internal methods are all static, 
+there's no way to specify where the log file should go, so make sure the log location is...<br/>
+
+NAME|LOCATION
+:---:|:---
+**INFO**|your project's location/shortcut.log.info.txt
+**ERR**|your project's location/shortcut.log.err.txt
+
+
 JDK
 -
 JDK version 1.8 and above
+
+API
+-
+Shortcut from 0.5 version to join the **API**, 
+you can enter from the base file **api** folder,
+ API version for Chinese version, need to change the browsing character set to **utf-8**
+ 
+<br/>
+
+**API path:** shortcut/api/shortcut.api/index.html
+
 
 Quote 
 -
@@ -140,9 +165,10 @@ You can add a dependency under the pom file in your project to use the toolkit
 <dependency>
     <groupId>com.decmoon</groupId>
     <artifactId>shortcut</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
 </dependency>
 ```
+
 
 Statement
 -

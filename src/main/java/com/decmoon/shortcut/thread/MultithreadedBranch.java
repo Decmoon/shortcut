@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.thread;
 
+import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.function.Execute;
 import com.decmoon.shortcut.function.Mission;
@@ -7,21 +8,59 @@ import com.decmoon.shortcut.function.Mission;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
+/**
+ * Simple multi-line and multi-thread methods
+ *
+ * @author decmoon
+ */
 public class MultithreadedBranch {
-
+    /**
+     * Using multiple threads to perform tasks,
+     * it is recommended to use ramda expressions for writing,
+     * type:Runnable
+     *
+     * @param execute Execute
+     */
     public final static void branch(Execute execute) {
-        new Thread(() -> {
-            execute.execute();
-        }).start();
+        runnableThread(execute, null);
     }
 
+    /**
+     * Using multiple threads to perform tasks,
+     * it is recommended to use ramda expressions for writing,
+     * type:Runnable
+     *
+     * @param execute    Execute
+     * @param threadName Thread name
+     */
     public final static void branch(Execute execute, String threadName) {
-        new Thread(() -> {
-            execute.execute();
-        }, threadName).start();
+        if (Arguments.parameterIllegal(threadName))
+            ExceptionLogger.parameterErr(MultithreadedBranch.class, "branch(Execute execute, String threadName)", "threadName is null");
+        runnableThread(execute, threadName);
     }
 
-    public final static <V> V branch(Mission mission) {
+
+    private final static void runnableThread(Execute execute, String threadName) {
+        if (Arguments.parameterLegal(threadName))
+            new Thread(() -> {
+                execute.execute();
+            }, threadName).start();
+        else
+            new Thread(() -> {
+                execute.execute();
+            }).start();
+    }
+
+    /**
+     * Using multiple threads to perform tasks,
+     * it is recommended to use ramda expressions for writing,
+     * type:Callable
+     *
+     * @param mission Mission
+     * @param <V>     Supports generics
+     * @return Multithreaded return value
+     */
+    public final static <V> V rBranch(Mission mission) {
         Callable callable = () -> mission.execute();
         FutureTask futureTask = new FutureTask(callable);
         new Thread(futureTask).start();
@@ -34,7 +73,17 @@ public class MultithreadedBranch {
         return v;
     }
 
-    public final static <V> V branch(Mission mission, String threadName) {
+    /**
+     * Using multiple threads to perform tasks,
+     * it is recommended to use ramda expressions for writing,
+     * type:Callable
+     *
+     * @param mission    Mission
+     * @param threadName Thread name
+     * @param <V>        Supports generics
+     * @return Multithreaded return value
+     */
+    public final static <V> V rBranch(Mission mission, String threadName) {
         Callable callable = () -> mission.execute();
         FutureTask futureTask = new FutureTask(callable);
         new Thread(futureTask, threadName).start();

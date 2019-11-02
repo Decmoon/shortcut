@@ -13,11 +13,22 @@ import java.util.Iterator;
 
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
+/**
+ * Collection exhibitor
+ *
+ * @author decmoon
+ */
 public class CollectionExhibitor {
 
+    /**
+     * Show the collection details
+     *
+     * @param collection collection
+     * @param <E>        Supports generics
+     */
     public static <E> void see(Collection<E> collection) {
         if (BooleanJudge.hasTrue(CollectionChecker.isNull(collection), CollectionChecker.isEmpty(collection))) {
-            ExceptionLogger.parameterErr(CollectionExhibitor.class,"see(Collection<E> collection)");
+            ExceptionLogger.parameterErr(CollectionExhibitor.class, "see(Collection<E> collection)");
             return;
         }
         Logger.log(CollectionExhibitor.class.getName() + ".see()  printing ...");
@@ -63,7 +74,7 @@ public class CollectionExhibitor {
                     blue(" |"));
         }
         Print.print(blue(stringBuffer));
-        Print.print();
+        Print.print(black(""));
     }
 
 

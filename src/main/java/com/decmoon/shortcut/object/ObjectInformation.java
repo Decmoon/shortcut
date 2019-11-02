@@ -11,8 +11,17 @@ import java.util.Map;
 
 import static com.decmoon.shortcut.color.ColorCoater.white;
 
+/**
+ * Used to query any object information
+ *
+ * @author decmoon
+ */
 public class ObjectInformation {
-
+    /**
+     * Query object information
+     *
+     * @param object Object
+     */
     public static void information(Object object) {
         if (Arguments.parameterIllegal(object)) {
             ExceptionLogger.parameterErr(ObjectInformation.class, "information(Object object)");

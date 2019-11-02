@@ -5,6 +5,11 @@ import com.decmoon.shortcut.exception.ExceptionLogger;
 
 import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 
+/**
+ * Character value manipulation methods
+ *
+ * @author decmoon
+ */
 public class StringProcessor {
 
     /**
@@ -50,7 +55,7 @@ public class StringProcessor {
      *
      * @param string  Initial string
      * @param newSub  new string
-     * @param oldSubs the old substring of initial string （s）
+     * @param oldSubs the old substring of initial strings
      * @return final string
      */
     public final static String replace(String string, String newSub, String... oldSubs) {
@@ -64,11 +69,26 @@ public class StringProcessor {
         return replace;
     }
 
+    /**
+     * Compare strings for equality
+     *
+     * @param string1 String
+     * @param string2 String
+     * @return TRUE if two strings are equal,otherwise
+     */
     public final static boolean equals(String string1, String string2) {
         if (string1 == string2) return true;
         return parameterIllegal(string1) ? string2.equals(string1) : string1.equals(string2);
     }
 
+    /**
+     * String interception
+     *
+     * @param string Raw string
+     * @param begin  Initial position
+     * @param end    End position
+     * @return String
+     */
     public final static String subString(String string, int begin, int end) {
         if (BooleanJudge.hasTrue(
                 parameterIllegal(string),
@@ -94,6 +114,15 @@ public class StringProcessor {
     public static String headString(int maxSize, String string) {
         return headString(maxSize, string, false);
     }
+
+    /**
+     * Add Spaces to the string ，string left alignment
+     *
+     * @param maxSize Output string length
+     * @param string  Specified string
+     * @param haveTo  If True ,when string exceeds maximum range , returns null,otherwise
+     * @return string
+     */
 
     public static String headString(int maxSize, String string, boolean haveTo) {
         StringBuffer stringBuffer = Strings.newStringBuffer();
@@ -125,7 +154,14 @@ public class StringProcessor {
         return tailString(maxSize, string, false);
     }
 
-
+    /**
+     * Add Spaces to the string ，string right alignment
+     *
+     * @param maxSize Output string length
+     * @param string  Specified string
+     * @param haveTo  If True ,when string exceeds maximum range , returns null,otherwise
+     * @return string
+     */
     public final static String tailString(int maxSize, String string, boolean haveTo) {
         int length = string.length();
         if (length <= maxSize) {

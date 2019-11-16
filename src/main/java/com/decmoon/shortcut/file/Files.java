@@ -59,7 +59,7 @@ public class Files {
             return null;
         }
         if (strict) {
-            try (FileInputStream fileInputStream = FileInput.newFileInputStream(file)) {
+            try (FileInputStream fileInputStream = FileInputStreamGenerator.newFileInputStream(file)) {
                 fileInputStream.close();
                 return file;
             } catch (FileNotFoundException e) {
@@ -80,7 +80,7 @@ public class Files {
      * @param file File path
      */
     public static void createFile(File file) {
-        if (file.isDirectory())
+        if (isDirectory(file))
             ExceptionLogger.parameterErr(Files.class, "createFile(File file)", file + " is a directory");
         if (!file.exists()) {
             try {
@@ -98,8 +98,25 @@ public class Files {
      */
     public static void createFile(File... files) {
         for (File file : files)
+            if (file.isDirectory()) {
+                ExceptionLogger.parameterErr(Files.class, "createFile(File file)", file + " is a directory");
+                return;
+            }
+        for (File file : files)
             createFile(file);
     }
 
+
+    public static boolean isDirectory(File file) {
+        return file.isDirectory();
+    }
+
+    public static boolean isDirectories(File... files) {
+        boolean bo = true;
+        for (File file : files)
+            if ((bo = isDirectory(file) == false))
+                return bo;
+        return bo;
+    }
 
 }

@@ -8,7 +8,7 @@ SHORTCUT
 ```logo
    ______ ___  __________ _______________________  __________
   / ____//  /_/  /  __  |/  ___/__  __/  ___ /  / /  __   __/
- (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.5
+ (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.6
 /_____//__/ /__/|______/__/    /__/  \____/ \______/ /__/       faster AND easier
 ```
 
@@ -165,7 +165,7 @@ You can add a dependency under the pom file in your project to use the toolkit
 <dependency>
     <groupId>com.decmoon</groupId>
     <artifactId>shortcut</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.6-SNAPSHOT</version>
 </dependency>
 ```
 

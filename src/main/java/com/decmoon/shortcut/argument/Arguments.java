@@ -1,10 +1,12 @@
 package com.decmoon.shortcut.argument;
 
 import com.decmoon.shortcut.collection.CollectionChecker;
+import com.decmoon.shortcut.collection.map.MapRecognizer;
 import com.decmoon.shortcut.math.MathematicalComparator;
 import com.decmoon.shortcut.string.StringRecognizer;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -61,6 +63,14 @@ public class Arguments {
                 return CollectionChecker.containNULL(collection);
             else
                 return CollectionChecker.isNull(collection) || CollectionChecker.isEmpty(collection);
+        }
+        if (object instanceof Map) {
+            if (strict) {
+                return MapRecognizer.hasNull((Map) object);
+            } else {
+                return CollectionChecker.isNull((Map) object) || CollectionChecker.isEmpty((Map) object);
+            }
+
         }
         if (object instanceof String)
             return !StringRecognizer.hasText((String) object);

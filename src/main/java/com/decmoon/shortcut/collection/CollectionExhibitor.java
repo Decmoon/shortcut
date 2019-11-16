@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.collection;
 
+import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.log.Logger;
@@ -27,7 +28,7 @@ public class CollectionExhibitor {
      * @param <E>        Supports generics
      */
     public static <E> void see(Collection<E> collection) {
-        if (BooleanJudge.hasTrue(CollectionChecker.isNull(collection), CollectionChecker.isEmpty(collection))) {
+        if (Arguments.parameterIllegal(collection)) {
             ExceptionLogger.parameterErr(CollectionExhibitor.class, "see(Collection<E> collection)");
             return;
         }

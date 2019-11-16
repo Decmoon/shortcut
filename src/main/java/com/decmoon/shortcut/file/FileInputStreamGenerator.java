@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
  *
  * @author decmoon
  */
-public class FileInput {
+public class FileInputStreamGenerator {
 
     /**
      * Create a new BufferedWriter object
@@ -22,11 +22,15 @@ public class FileInput {
     public static FileInputStream newFileInputStream(File file) {
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = new FileInputStream(file);
+            fileInputStream = newFileInputStreamWithThrows(file);
         } catch (FileNotFoundException e) {
-            ExceptionLogger.parameterErr(FileInput.class, "newFileInputStream(File file)", e);
+            ExceptionLogger.parameterErr(FileInputStreamGenerator.class, "newFileInputStream(File file)", e);
         }
         return fileInputStream;
+    }
+
+    public static FileInputStream newFileInputStreamWithThrows(File file) throws FileNotFoundException {
+        return new FileInputStream(file);
     }
 
 

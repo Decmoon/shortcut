@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.string;
 
+import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 
 import java.util.Objects;
@@ -23,6 +24,9 @@ public class StringRecognizer {
                     return true;
         return false;
     }
+
+
+
 
 
 }

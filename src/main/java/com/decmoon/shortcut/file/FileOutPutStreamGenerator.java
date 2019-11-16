@@ -11,7 +11,7 @@ import java.io.FileOutputStream;
  *
  * @author decmoon
  */
-public class FileOutPut {
+public class FileOutPutStreamGenerator {
 
     /**
      * Create a new FileOutputStream object
@@ -22,12 +22,16 @@ public class FileOutPut {
     public static FileOutputStream newFileOutPutStream(File file) {
         FileOutputStream fileOutputStream;
         try {
-            fileOutputStream = new FileOutputStream(file);
+            fileOutputStream = newFileOutPutStreamWithThrows(file);
             return fileOutputStream;
         } catch (FileNotFoundException e) {
-            ExceptionLogger.parameterErr(FileOutPut.class, "newFileOutPutStream(File file)", e);
+            ExceptionLogger.parameterErr(FileOutPutStreamGenerator.class, "newFileOutPutStream(File file)", e);
         }
         return null;
+    }
+
+    public static FileOutputStream newFileOutPutStreamWithThrows(File file) throws FileNotFoundException {
+        return new FileOutputStream(file);
     }
 
 }

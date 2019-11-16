@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.string;
 
+import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.exception.ExceptionLogger;
 
@@ -176,6 +177,12 @@ public class StringProcessor {
                 return null;
             } else return string;
         }
+    }
+
+    public static String INITCAP(String string) {
+        if (Arguments.parameterIllegal(string)) return "";
+        String s = string.trim().toLowerCase();
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 
 }

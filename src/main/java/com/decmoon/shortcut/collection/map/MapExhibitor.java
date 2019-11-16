@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.collection.map;
 
+import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.collection.CollectionChecker;
 import com.decmoon.shortcut.exception.ExceptionLogger;
@@ -27,10 +28,10 @@ public class MapExhibitor {
      *
      * @param map map
      * @param <K> Supports generics
-     * @param <V>  Supports generics
+     * @param <V> Supports generics
      */
     public static <K, V> void see(Map<K, V> map) {
-        if (BooleanJudge.hasTrue(CollectionChecker.isNull(map), CollectionChecker.isEmpty(map))) {
+        if (Arguments.parameterIllegal(map)) {
             ExceptionLogger.parameterErr(MapExhibitor.class, "see(Map<K, V> map)");
             return;
         }
@@ -41,6 +42,7 @@ public class MapExhibitor {
         for (Map.Entry<K, V> entry : map.entrySet()) {
             K k = entry.getKey();
             V v = entry.getValue();
+
             int keyLength = k.toString().length();
             int valueLength = v.toString().length();
             keySize = Math.max(keySize, keyLength);

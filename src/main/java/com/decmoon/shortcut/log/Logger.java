@@ -1,8 +1,9 @@
 package com.decmoon.shortcut.log;
 
 import com.decmoon.shortcut.date.DateRecorder;
-import com.decmoon.shortcut.file.BufferWriter;
-import com.decmoon.shortcut.file.FileWrite;
+import com.decmoon.shortcut.file.BufferedWriterGenerator;
+import com.decmoon.shortcut.file.DocumentPrintingFactory;
+import com.decmoon.shortcut.file.FileWriterGenerator;
 import com.decmoon.shortcut.file.Files;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
@@ -40,8 +41,8 @@ public class Logger {
 
         Files.createFile(LOG_INFO_FILE, LOG_ERR_FILE);
 
-        LOG_INFO = FileWrite.newFileWriter(LOG_INFO_FILE);
-        LOG_ERR = FileWrite.newFileWriter(LOG_ERR_FILE);
+        LOG_INFO = FileWriterGenerator.newFileWriter(LOG_INFO_FILE);
+        LOG_ERR = FileWriterGenerator.newFileWriter(LOG_ERR_FILE);
 
 
     }
@@ -55,7 +56,7 @@ public class Logger {
         String string = ToString.toString(content(time), green(message), black(""));
         Print.print(string);
         if (print)
-            BufferWriter.typewriting(BufferWriter.newBufferedWriter(LOG_INFO), time + " " + message + "\n");
+            DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_INFO), time + " " + message + "\n");
     }
 
     public static void err(String message) {
@@ -67,7 +68,7 @@ public class Logger {
         String string = ToString.toString(content(time), red(message), black(""));
         Print.print(string);
         if (print)
-            BufferWriter.typewriting(BufferWriter.newBufferedWriter(LOG_ERR), time + " " + message + "\n");
+            DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_ERR), time + " " + message + "\n");
     }
 
 

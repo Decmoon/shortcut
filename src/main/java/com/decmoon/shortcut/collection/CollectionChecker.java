@@ -12,6 +12,9 @@ import java.util.Objects;
  * @author decmoon
  */
 public class CollectionChecker {
+
+    private CollectionChecker(){}
+
     /**
      * Judgment whether the collection is null
      *
@@ -99,10 +102,14 @@ public class CollectionChecker {
      * @return TRUE if collection contains a null element
      */
     public static boolean containNULL(Collection collection) {
-        if (BooleanJudge.hasTrue(isNull(collection), isEmpty(collection)))
+        if (BooleanJudge.hasTrue(isNull(collection), isEmpty(collection))){
             return true;
-        for (Object o : collection)
-            if (Objects.isNull(o)) return true;
+        }
+        for (Object o : collection){
+            if (Objects.isNull(o)){
+                return true;
+            }
+        }
         return false;
     }
 

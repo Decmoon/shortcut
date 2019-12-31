@@ -14,6 +14,9 @@ import java.io.ObjectOutputStream;
  */
 public class SerializePerformer {
 
+    private SerializePerformer() {
+    }
+
     /**
      * Serialization for redis to store objects
      *

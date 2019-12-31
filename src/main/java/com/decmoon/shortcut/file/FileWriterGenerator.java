@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class FileWriterGenerator {
 
+    private FileWriterGenerator(){}
 
     /**
      * Create a new FileWriter object
@@ -48,8 +49,9 @@ public class FileWriterGenerator {
 
 
     public static FileWriter newFileWriterWithThrows(File file,boolean clearBefore) throws IOException {
-        if(clearBefore)
+        if(clearBefore){
             return new FileWriter(file,false);
+        }
         return new FileWriter(file,true);
     }
 

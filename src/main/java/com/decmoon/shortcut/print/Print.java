@@ -8,6 +8,10 @@ import com.decmoon.shortcut.string.ToString;
  * @author decmoon
  */
 public class Print {
+
+    private Print() {
+    }
+
     /**
      * Print multiple strings
      *

@@ -14,6 +14,10 @@ import java.util.concurrent.FutureTask;
  * @author decmoon
  */
 public class MultithreadedBranch {
+
+    private MultithreadedBranch() {
+    }
+
     /**
      * Using multiple threads to perform tasks,
      * it is recommended to use ramda expressions for writing,
@@ -34,21 +38,23 @@ public class MultithreadedBranch {
      * @param threadName Thread name
      */
     public final static void branch(Execute execute, String threadName) {
-        if (Arguments.parameterIllegal(threadName))
+        if (Arguments.parameterIllegal(threadName)) {
             ExceptionLogger.parameterErr(MultithreadedBranch.class, "branch(Execute execute, String threadName)", "threadName is null");
+        }
         runnableThread(execute, threadName);
     }
 
 
     private final static void runnableThread(Execute execute, String threadName) {
-        if (Arguments.parameterLegal(threadName))
+        if (Arguments.parameterLegal(threadName)) {
             new Thread(() -> {
                 execute.execute();
             }, threadName).start();
-        else
+        } else {
             new Thread(() -> {
                 execute.execute();
             }).start();
+        }
     }
 
     /**

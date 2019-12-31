@@ -9,12 +9,16 @@ import static com.decmoon.shortcut.math.MathematicalValueProcessor.absolute;
  * @author decmoon
  */
 public class RandomNumberGenerator {
+
+    private RandomNumberGenerator() {
+    }
+
     /**
      * Return random number
      *
      * @return Random number
      */
-    public final static double random() {
+    public static final double random() {
         return Math.random();
     }
 
@@ -25,7 +29,7 @@ public class RandomNumberGenerator {
      * @param end   The ending value
      * @return Random number
      */
-    public final static double random(double start, double end) {
+    public static final double random(double start, double end) {
         if (start == end) return start;
         double sta, fin;
         sta = Math.min(start, end);
@@ -44,14 +48,8 @@ public class RandomNumberGenerator {
      * @param end   The ending value
      * @return Random number
      */
-    public final static int random(int start, int end) {
+    public static final int random(int start, int end) {
         return (int) random((double) start, (double) end);
     }
 
-    public static void main(String[] args) {
-        for (int i = 0; i < 100; i++) {
-            System.out.println(random(-3,-5));
-        }
-
-    }
 }

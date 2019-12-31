@@ -9,6 +9,9 @@ import java.util.Properties;
  */
 public class SystemInfo {
 
+    private SystemInfo() {
+    }
+
     /**
      * Returns system details
      *

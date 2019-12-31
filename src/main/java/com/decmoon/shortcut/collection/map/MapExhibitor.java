@@ -1,15 +1,12 @@
 package com.decmoon.shortcut.collection.map;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.bool.BooleanJudge;
-import com.decmoon.shortcut.collection.CollectionChecker;
 import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
 import com.decmoon.shortcut.string.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
@@ -22,6 +19,8 @@ import static com.decmoon.shortcut.color.ColorCoater.*;
  */
 public class MapExhibitor {
 
+    private MapExhibitor() {
+    }
 
     /**
      * Show the map details

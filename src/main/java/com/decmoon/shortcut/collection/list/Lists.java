@@ -5,6 +5,7 @@ import com.decmoon.shortcut.exception.ExceptionLogger;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * Provides the creation of a List collection
  *
@@ -12,13 +13,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class Lists {
 
+    private Lists() {
+    }
+
     /**
      * Create a new ArrayList object
      *
      * @param <E> Supports generics
      * @return ArrayList object
      */
-    public final static <E> ArrayList<E> newArrayList() {
+    public static final <E> ArrayList<E> newArrayList() {
         return new ArrayList<>();
     }
 
@@ -29,7 +33,7 @@ public class Lists {
      * @param <E>        Supports generics
      * @return ArrayList object
      */
-    public final static <E> ArrayList<E> newArrayList(Collection<? extends E> collection) {
+    public static final <E> ArrayList<E> newArrayList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
             ExceptionLogger.parameterErr(Lists.class, "newArrayList(Collection<? extends E> collection)");
             return null;
@@ -43,7 +47,7 @@ public class Lists {
      * @param <E> Supports generics
      * @return CopyOnWriteArrayList object
      */
-    public final static <E> CopyOnWriteArrayList<E> newCopyOnWriteArrayList() {
+    public static final <E> CopyOnWriteArrayList<E> newCopyOnWriteArrayList() {
         return new CopyOnWriteArrayList<>();
     }
 
@@ -54,7 +58,7 @@ public class Lists {
      * @param <E>        Supports generics
      * @return CopyOnWriteArrayList object
      */
-    public final static <E> CopyOnWriteArrayList<E> newCopyOnWriteArrayList(Collection<? extends E> collection) {
+    public static final <E> CopyOnWriteArrayList<E> newCopyOnWriteArrayList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
             ExceptionLogger.parameterErr(Lists.class, "newCopyOnWriteArrayList(Collection<? extends E> collection)");
             return null;
@@ -68,7 +72,7 @@ public class Lists {
      * @param <E> Supports generics
      * @return LinkedList object
      */
-    public final static <E> LinkedList<E> newLinkedList() {
+    public static final <E> LinkedList<E> newLinkedList() {
         return new LinkedList<>();
     }
 
@@ -79,7 +83,7 @@ public class Lists {
      * @param <E>        Supports generics
      * @return LinkedList object
      */
-    public final static <E> LinkedList<E> newLinkedList(Collection<? extends E> collection) {
+    public static final <E> LinkedList<E> newLinkedList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
             ExceptionLogger.parameterErr(Lists.class, "newLinkedList(Collection<? extends E> collection)");
             return null;
@@ -93,8 +97,8 @@ public class Lists {
      * @param <E> Supports generics
      * @return Vector object
      */
-    public final static <E> Vector<E> newVector() {
-        return new Vector<E>();
+    public static final <E> Vector<E> newVector() {
+        return new Vector<>();
     }
 
 
@@ -105,7 +109,7 @@ public class Lists {
      * @param <E>        Supports generics
      * @return Vector object
      */
-    public final static <E> Vector<E> newVector(Collection<? extends E> collection) {
+    public static final <E> Vector<E> newVector(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
             ExceptionLogger.parameterErr(Lists.class, "newVector(Collection<? extends E> collection)");
             return null;
@@ -121,7 +125,7 @@ public class Lists {
      * @param <T>        Supports generics
      * @return Collection
      */
-    public final static <T> Collection<T> newUnmodifiableCollection(Collection<? extends T> collection) {
+    public static final <T> Collection<T> newUnmodifiableCollection(Collection<? extends T> collection) {
         if (Arguments.parameterIllegal(collection)) {
             ExceptionLogger.parameterErr(Lists.class, "newUnmodifiableCollection(Collection<? extends T> collection)");
             return null;
@@ -136,7 +140,7 @@ public class Lists {
      * @param <T>  Supports generics
      * @return List
      */
-    public final static <T> List<T> newUnmodifiableList(List<? extends T> list) {
+    public static final <T> List<T> newUnmodifiableList(List<? extends T> list) {
         return Collections.unmodifiableList(list);
     }
 

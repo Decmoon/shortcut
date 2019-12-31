@@ -7,5 +7,9 @@ package com.decmoon.shortcut.function;
  */
 @FunctionalInterface
 public interface Mission<V> {
+
+    /**
+     * Allows users to customize the execution content
+     */
     V execute();
 }

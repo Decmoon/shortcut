@@ -1,11 +1,7 @@
 package com.decmoon.shortcut.file;
 
-import com.decmoon.shortcut.exception.ExceptionLogger;
-import com.decmoon.shortcut.string.ToString;
-
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 /**
  * File stream processing
@@ -14,6 +10,7 @@ import java.io.IOException;
  */
 public class BufferedOutputStreamGenerator {
 
+    private BufferedOutputStreamGenerator(){}
     /**
      * Create a new BufferedOutputStream object
      *

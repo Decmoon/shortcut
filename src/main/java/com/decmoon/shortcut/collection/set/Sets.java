@@ -13,6 +13,9 @@ import java.util.HashSet;
  */
 public class Sets {
 
+    private Sets() {
+    }
+
     /**
      * Create a new HashSet object
      *

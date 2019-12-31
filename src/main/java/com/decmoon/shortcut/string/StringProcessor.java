@@ -13,6 +13,9 @@ import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
  */
 public class StringProcessor {
 
+    private StringProcessor() {
+    }
+
     /**
      * Determines whether a string contains substrings
      *
@@ -65,8 +68,9 @@ public class StringProcessor {
             return null;
         }
         String replace = string;
-        for (String oldSub : oldSubs)
+        for (String oldSub : oldSubs) {
             replace = replace(replace, newSub, oldSub);
+        }
         return replace;
     }
 
@@ -78,7 +82,9 @@ public class StringProcessor {
      * @return TRUE if two strings are equal,otherwise
      */
     public final static boolean equals(String string1, String string2) {
-        if (string1 == string2) return true;
+        if (string1 == string2) {
+            return true;
+        }
         return parameterIllegal(string1) ? string2.equals(string1) : string1.equals(string2);
     }
 
@@ -131,14 +137,17 @@ public class StringProcessor {
 
         int length = string.length();
         if (length < maxSize) {
-            for (int i = 0; i < maxSize; i++)
+            for (int i = 0; i < maxSize; i++) {
                 stringBuffer.append(" ");
+            }
             return stringBuffer.substring(0, maxSize);
         } else {
             if (haveTo) {
                 ExceptionLogger.parameterErr(StringProcessor.class, "headString(int maxSize, String string,boolean haveTo)");
                 return null;
-            } else return string;
+            } else {
+                return string;
+            }
         }
 
     }

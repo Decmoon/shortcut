@@ -7,13 +7,16 @@ package com.decmoon.shortcut.math;
  */
 public class MathematicalValueProcessor {
 
+    private MathematicalValueProcessor() {
+    }
+
     /**
      * Calculate the absolute value of the value
      *
      * @param dou Number
      * @return Absolute value of the number
      */
-    public final static double absolute(double dou) {
+    public static final double absolute(double dou) {
         return Math.abs(dou);
     }
 
@@ -23,7 +26,7 @@ public class MathematicalValueProcessor {
      * @param number Number
      * @return Absolute value of the number
      */
-    public final static int absolute(int number) {
+    public static final int absolute(int number) {
         return Math.abs(number);
     }
 

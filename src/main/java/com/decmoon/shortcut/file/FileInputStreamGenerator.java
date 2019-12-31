@@ -13,6 +13,9 @@ import java.io.FileNotFoundException;
  */
 public class FileInputStreamGenerator {
 
+    private FileInputStreamGenerator() {
+    }
+
     /**
      * Create a new BufferedWriter object
      *

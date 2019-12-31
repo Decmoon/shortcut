@@ -7,5 +7,9 @@ package com.decmoon.shortcut.function;
  */
 @FunctionalInterface
 public interface Execute {
+
+    /**
+     * Allows users to customize the execution content
+     */
     void execute();
 }

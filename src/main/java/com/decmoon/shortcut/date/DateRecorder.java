@@ -18,6 +18,9 @@ public class DateRecorder {
 
     public final static String HH_mm_ss = "HH:mm:ss";
 
+    private DateRecorder() {
+    }
+
     /**
      * Returns the moment time, formatted as "yyyy_MM_dd_HH_mm_ss"
      *

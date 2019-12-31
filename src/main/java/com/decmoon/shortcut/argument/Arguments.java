@@ -15,6 +15,10 @@ import java.util.Objects;
  * @author decmoon
  */
 public class Arguments {
+
+    private Arguments() {
+    }
+
     /**
      * Determines whether the argument is null
      *
@@ -53,16 +57,19 @@ public class Arguments {
      * @return TRUE if illegal , otherwise
      */
     public static boolean parameterIllegal(boolean strict, Object object) {
-        if (isNull(object)) return true;
-
-        if (object instanceof Number)
+        if (isNull(object)) {
+            return true;
+        }
+        if (object instanceof Number) {
             return MathematicalComparator.equalsZero((Number) object);
+        }
         if (object instanceof Collection) {
             Collection collection = (Collection) object;
-            if (strict)
+            if (strict) {
                 return CollectionChecker.containNULL(collection);
-            else
+            } else {
                 return CollectionChecker.isNull(collection) || CollectionChecker.isEmpty(collection);
+            }
         }
         if (object instanceof Map) {
             if (strict) {
@@ -70,10 +77,10 @@ public class Arguments {
             } else {
                 return CollectionChecker.isNull((Map) object) || CollectionChecker.isEmpty((Map) object);
             }
-
         }
-        if (object instanceof String)
+        if (object instanceof String) {
             return !StringRecognizer.hasText((String) object);
+        }
         return false;
     }
 

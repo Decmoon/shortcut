@@ -10,6 +10,9 @@ import java.io.IOException;
 
 public class DocumentPrintingFactory {
 
+    private DocumentPrintingFactory() {
+    }
+
 //-----------------------------------------
 //By BufferedOutputStream
 //-----------------------------------------

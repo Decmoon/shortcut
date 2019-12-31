@@ -1,10 +1,14 @@
 package com.decmoon.shortcut.bool;
+
 /**
  * Provides concrete actions for boolean
  *
  * @author decmoon
  */
 public class BooleanJudge {
+
+    private BooleanJudge() {
+    }
 
     /**
      * Determines whether all the answers in the custom expression are true
@@ -13,10 +17,11 @@ public class BooleanJudge {
      * @return TRUE if all the values is true
      */
     public static boolean allTrue(boolean... booleans) {
-        for (boolean aBoolean : booleans)
-            if (!aBoolean)
+        for (boolean aBoolean : booleans) {
+            if (!aBoolean) {
                 return false;
-
+            }
+        }
         return true;
     }
 
@@ -27,9 +32,11 @@ public class BooleanJudge {
      * @return TRUE if all the values is false
      */
     public static boolean allFalse(boolean... booleans) {
-        for (boolean aBoolean : booleans)
-            if (aBoolean)
+        for (boolean aBoolean : booleans) {
+            if (aBoolean) {
                 return false;
+            }
+        }
         return true;
     }
 

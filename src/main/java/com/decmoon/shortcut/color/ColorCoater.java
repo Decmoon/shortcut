@@ -12,6 +12,9 @@ import static org.fusesource.jansi.Ansi.ansi;
  */
 public class ColorCoater {
 
+    private ColorCoater() {
+    }
+
     public static StringBuffer black(String string) {
         return newStringBuffer(color(Ansi.Color.BLACK, string));
     }

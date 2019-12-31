@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class FileReaderGenerator {
+    private FileReaderGenerator() {
+    }
 
     public static FileReader newFileReader(File file) {
         try {

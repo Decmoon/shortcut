@@ -17,19 +17,19 @@ import static com.decmoon.shortcut.color.ColorCoater.*;
 
 public class Logger {
 
-    private final static String LOG_NAME_INFO = "shortcut.log.info.txt";
-    private final static String LOG_NAME_ERR = "shortcut.log.err.txt";
+    private static final String LOG_NAME_INFO = "shortcut.log.info.txt";
+    private static final String LOG_NAME_ERR = "shortcut.log.err.txt";
 
-    private final static String LOG_INFO_PATH;
-    private final static String LOG_ERR_PATH;
+    private static final String LOG_INFO_PATH;
+    private static final String LOG_ERR_PATH;
 
-    private final static File LOG_INFO_FILE;
-    private final static File LOG_ERR_FILE;
+    private static final File LOG_INFO_FILE;
+    private static final File LOG_ERR_FILE;
 
-    private final static FileWriter LOG_INFO;
-    private final static FileWriter LOG_ERR;
+    private static final FileWriter LOG_INFO;
+    private static final FileWriter LOG_ERR;
 
-    private final static String SHORTCUT;
+    private static final String SHORTCUT;
 
 
     static {
@@ -43,9 +43,11 @@ public class Logger {
 
         LOG_INFO = FileWriterGenerator.newFileWriter(LOG_INFO_FILE);
         LOG_ERR = FileWriterGenerator.newFileWriter(LOG_ERR_FILE);
-
-
     }
+
+    private Logger() {
+    }
+
 
     public static void log(String message) {
         log(message, true);
@@ -55,8 +57,9 @@ public class Logger {
         String time = DateRecorder.now();
         String string = ToString.toString(content(time), green(message), black(""));
         Print.print(string);
-        if (print)
+        if (print){
             DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_INFO), time + " " + message + "\n");
+        }
     }
 
     public static void err(String message) {
@@ -67,12 +70,13 @@ public class Logger {
         String time = DateRecorder.now();
         String string = ToString.toString(content(time), red(message), black(""));
         Print.print(string);
-        if (print)
+        if (print){
             DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_ERR), time + " " + message + "\n");
+        }
     }
 
 
-    private final static StringBuffer content(String time) {
+    private static final StringBuffer content(String time) {
         return ToString.toStringBuffer(white("["),
                 yellow(time),
                 white("]"),

@@ -11,6 +11,10 @@ import java.util.Objects;
  * @author decmoon
  */
 public class StringRecognizer {
+
+    private StringRecognizer() {
+    }
+
     /**
      * Determines whether the string contains valid characters
      *
@@ -18,10 +22,13 @@ public class StringRecognizer {
      * @return boolean
      */
     public static boolean hasText(String string) {
-        if (BooleanJudge.allFalse(Objects.isNull(string), string.isEmpty()))
-            for (int i = 0; i < string.length(); i++)
-                if (!Character.isWhitespace(string.charAt(i)))
+        if (BooleanJudge.allFalse(Objects.isNull(string), string.isEmpty())) {
+            for (int i = 0; i < string.length(); i++) {
+                if (!Character.isWhitespace(string.charAt(i))) {
                     return true;
+                }
+            }
+        }
         return false;
     }
 

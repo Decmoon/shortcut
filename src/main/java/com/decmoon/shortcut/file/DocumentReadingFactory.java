@@ -8,6 +8,8 @@ import java.io.IOException;
 public class DocumentReadingFactory {
 
 
+    private DocumentReadingFactory() {
+    }
 //-----------------------------------------
 //By BufferedReader
 //-----------------------------------------

@@ -1,11 +1,7 @@
 package com.decmoon.shortcut.file;
 
-import com.decmoon.shortcut.exception.ExceptionLogger;
-import com.decmoon.shortcut.string.ToString;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * File stream processing
@@ -13,6 +9,9 @@ import java.io.IOException;
  * @author decmoon
  */
 public class BufferedWriterGenerator {
+
+    private BufferedWriterGenerator() {
+    }
 
     /**
      * Create a new BufferedWriter object
@@ -24,7 +23,6 @@ public class BufferedWriterGenerator {
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         return bufferedWriter;
     }
-
 
 
 }

@@ -21,6 +21,9 @@ import static com.decmoon.shortcut.color.ColorCoater.*;
  */
 public class CollectionExhibitor {
 
+    private CollectionExhibitor() {
+    }
+
     /**
      * Show the collection details
      *
@@ -45,8 +48,9 @@ public class CollectionExhibitor {
         Iterator iterator = collection.iterator();
         int length = keySize + valueSize + typeSize + 8;
         StringBuffer stringBuffer = Strings.newStringBuffer("|");
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++){
             stringBuffer.append("-");
+        }
         stringBuffer.append("|");
         Print.print(blue(stringBuffer));
         boolean is = true;

@@ -16,6 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Maps {
 
+    private Maps() {
+    }
 
     /**
      * Create a new HashMap object

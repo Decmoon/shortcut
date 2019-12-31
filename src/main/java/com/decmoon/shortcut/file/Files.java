@@ -18,6 +18,10 @@ public class Files {
      */
     public final static String SEPARATOR = File.separator;
 
+
+    private Files() {
+    }
+
     /**
      * Create a File that is only allowed to be a directory File object
      *
@@ -26,8 +30,9 @@ public class Files {
      */
     public final static File newDirectory(String path) {
         File file = new File(path);
-        if (file.isDirectory()) return file;
-        else {
+        if (file.isDirectory()) {
+            return file;
+        } else {
             ExceptionLogger.parameterErr(Files.class, "newDirectory(String path)", file + " not a directory");
             return null;
         }
@@ -80,8 +85,9 @@ public class Files {
      * @param file File path
      */
     public static void createFile(File file) {
-        if (isDirectory(file))
+        if (isDirectory(file)) {
             ExceptionLogger.parameterErr(Files.class, "createFile(File file)", file + " is a directory");
+        }
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -97,13 +103,15 @@ public class Files {
      * @param files File paths
      */
     public static void createFile(File... files) {
-        for (File file : files)
+        for (File file : files) {
             if (file.isDirectory()) {
                 ExceptionLogger.parameterErr(Files.class, "createFile(File file)", file + " is a directory");
                 return;
             }
-        for (File file : files)
+        }
+        for (File file : files){
             createFile(file);
+        }
     }
 
 
@@ -113,9 +121,11 @@ public class Files {
 
     public static boolean isDirectories(File... files) {
         boolean bo = true;
-        for (File file : files)
-            if ((bo = isDirectory(file) == false))
+        for (File file : files){
+            if ((bo = isDirectory(file) == false)){
                 return bo;
+            }
+        }
         return bo;
     }
 

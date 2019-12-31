@@ -17,6 +17,10 @@ import static com.decmoon.shortcut.color.ColorCoater.white;
  * @author decmoon
  */
 public class ObjectInformation {
+
+    private ObjectInformation() {
+    }
+
     /**
      * Query object information
      *
@@ -32,14 +36,15 @@ public class ObjectInformation {
     }
 
     private final static void sharer(Object object) {
-        if (object instanceof Collection)
+        if (object instanceof Collection) {
             logCollection((Collection) object);
-        else if (object instanceof Map)
+        } else if (object instanceof Map) {
             logMap((Map) object);
-        else if (StringProcessor.equals(object.getClass().getName(), "[I"))
+        } else if (StringProcessor.equals(object.getClass().getName(), "[I")) {
             logGeneral(object);
-        else
+        } else {
             logGeneral(object);
+        }
     }
 
 

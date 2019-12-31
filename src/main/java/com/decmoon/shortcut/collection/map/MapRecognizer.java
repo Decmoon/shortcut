@@ -6,13 +6,17 @@ import java.util.Map;
 
 public class MapRecognizer {
 
+    private MapRecognizer() {
+    }
+
     public static <K, V> boolean hasNull(Map<K, V> map) {
 
         for (Map.Entry<K, V> entry : map.entrySet()) {
             K k = entry.getKey();
             V v = entry.getValue();
-            if (BooleanJudge.hasTrue(k == null, v == null))
+            if (BooleanJudge.hasTrue(k == null, v == null)){
                 return true;
+            }
         }
         return false;
     }

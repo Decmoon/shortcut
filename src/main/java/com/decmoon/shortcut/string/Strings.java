@@ -6,6 +6,8 @@ package com.decmoon.shortcut.string;
  * @author decmoon
  */
 public class Strings {
+
+    private Strings(){}
     /**
      * Create a new String object
      *

@@ -9,6 +9,10 @@ import static com.decmoon.shortcut.string.Strings.newStringBuilder;
  * @author decmoon
  */
 public class ToString {
+
+    private ToString() {
+    }
+
     /**
      * Multiple StringBuffer objects are merged into string
      *
@@ -27,8 +31,9 @@ public class ToString {
      */
     public static StringBuffer toStringBuffer(StringBuffer... stringBuffers) {
         StringBuffer stringBuffer = newStringBuffer();
-        for (StringBuffer buffer : stringBuffers)
+        for (StringBuffer buffer : stringBuffers) {
             stringBuffer.append(buffer);
+        }
         return stringBuffer;
     }
 
@@ -50,8 +55,9 @@ public class ToString {
      */
     public static StringBuffer toStringBuffer(String... strings) {
         StringBuffer stringBuffer = newStringBuffer();
-        for (String string : strings)
+        for (String string : strings) {
             stringBuffer.append(string);
+        }
         return stringBuffer;
     }
 
@@ -63,8 +69,9 @@ public class ToString {
      */
     public static StringBuilder toStringBuilder(StringBuilder... stringBuilders) {
         StringBuilder stringBuilder = newStringBuilder();
-        for (StringBuilder string : stringBuilders)
+        for (StringBuilder string : stringBuilders) {
             stringBuilder.append(string);
+        }
         return stringBuilder;
     }
 
@@ -76,8 +83,9 @@ public class ToString {
      */
     public static StringBuilder toStringBuilder(String... strings) {
         StringBuilder stringBuilder = newStringBuilder();
-        for (String string : strings)
+        for (String string : strings) {
             stringBuilder.append(string);
+        }
         return stringBuilder;
     }
 

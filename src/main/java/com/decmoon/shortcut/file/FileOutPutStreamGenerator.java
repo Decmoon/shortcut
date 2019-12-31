@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
  */
 public class FileOutPutStreamGenerator {
 
+    private FileOutPutStreamGenerator(){}
+
     /**
      * Create a new FileOutputStream object
      *

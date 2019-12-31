@@ -8,6 +8,10 @@ import com.decmoon.shortcut.log.Logger;
  * @author decmoon
  */
 public class ExceptionLogger {
+
+    private ExceptionLogger() {
+    }
+
     /**
      * Exception log
      *

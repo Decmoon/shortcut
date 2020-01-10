@@ -1,7 +1,7 @@
 package com.decmoon.shortcut.collection.list;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -35,8 +35,11 @@ public class Lists {
      */
     public static final <E> ArrayList<E> newArrayList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            ExceptionLogger.parameterErr(Lists.class, "newArrayList(Collection<? extends E> collection)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new ArrayList<>(collection);
     }
@@ -60,8 +63,11 @@ public class Lists {
      */
     public static final <E> CopyOnWriteArrayList<E> newCopyOnWriteArrayList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            ExceptionLogger.parameterErr(Lists.class, "newCopyOnWriteArrayList(Collection<? extends E> collection)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new CopyOnWriteArrayList<>(collection);
     }
@@ -85,8 +91,11 @@ public class Lists {
      */
     public static final <E> LinkedList<E> newLinkedList(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            ExceptionLogger.parameterErr(Lists.class, "newLinkedList(Collection<? extends E> collection)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new LinkedList<>(collection);
     }
@@ -111,8 +120,11 @@ public class Lists {
      */
     public static final <E> Vector<E> newVector(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            ExceptionLogger.parameterErr(Lists.class, "newVector(Collection<? extends E> collection)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new Vector<>(collection);
     }
@@ -125,13 +137,14 @@ public class Lists {
      * @param <T>        Supports generics
      * @return Collection
      */
-    public static final <T> Collection<T> newUnmodifiableCollection(Collection<? extends T> collection) {
+    public static final <T> Collection<T> newUnmodifiableCollection(Collection<? extends T> collection) throws ParameterIllegalException {
         if (Arguments.parameterIllegal(collection)) {
-            ExceptionLogger.parameterErr(Lists.class, "newUnmodifiableCollection(Collection<? extends T> collection)");
-            return null;
+            throw new ParameterIllegalException();
         }
         return Collections.unmodifiableCollection(collection);
     }
+
+
 
     /**
      * Create a unmodifiable list

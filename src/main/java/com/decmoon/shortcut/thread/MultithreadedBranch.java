@@ -2,6 +2,7 @@ package com.decmoon.shortcut.thread;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.function.Execute;
 import com.decmoon.shortcut.function.Mission;
 
@@ -39,7 +40,11 @@ public class MultithreadedBranch {
      */
     public final static void branch(Execute execute, String threadName) {
         if (Arguments.parameterIllegal(threadName)) {
-            ExceptionLogger.parameterErr(MultithreadedBranch.class, "branch(Execute execute, String threadName)", "threadName is null");
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         runnableThread(execute, threadName);
     }

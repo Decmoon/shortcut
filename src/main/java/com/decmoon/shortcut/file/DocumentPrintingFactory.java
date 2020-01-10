@@ -2,6 +2,7 @@ package com.decmoon.shortcut.file;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.string.ToString;
 
 import java.io.BufferedOutputStream;
@@ -23,11 +24,7 @@ public class DocumentPrintingFactory {
      * @param bufferedOutputStream BufferedOutputStream
      * @param messages             The information you want to print
      */
-    public static void typewriting(BufferedOutputStream bufferedOutputStream, String... messages) {
-        if (Arguments.parameterIllegal(messages)) {
-            ExceptionLogger.parameterErr(DocumentPrintingFactory.class, "typewriting(BufferedOutputStream bufferedOutputStream, String... messages)", "No illegal elements are allowed");
-            return;
-        }
+    public static void typewriting(BufferedOutputStream bufferedOutputStream, String... messages) throws FileNotConnectException {
         typewriting(bufferedOutputStream, ToString.toString(messages));
     }
 
@@ -37,17 +34,14 @@ public class DocumentPrintingFactory {
      * @param bufferedOutputStream BufferedOutputStream
      * @param message              The information you want to print
      */
-    public static void typewriting(BufferedOutputStream bufferedOutputStream, String message) {
+    public static void typewriting(BufferedOutputStream bufferedOutputStream, String message) throws FileNotConnectException {
         try {
-            typewritingWithThrows(bufferedOutputStream, message);
+            bufferedOutputStream.write(message.getBytes());
+            bufferedOutputStream.flush();
         } catch (IOException e) {
-            ExceptionLogger.parameterErr(DocumentPrintingFactory.class, "typewriting(BufferedOutputStream bufferedOutputStream , String message)", e);
+            throw new FileNotConnectException();
         }
-    }
 
-    public static void typewritingWithThrows(BufferedOutputStream bufferedOutputStream, String message) throws IOException {
-        bufferedOutputStream.write(message.getBytes());
-        bufferedOutputStream.flush();
     }
 
 

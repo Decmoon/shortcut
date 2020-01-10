@@ -1,10 +1,12 @@
 package com.decmoon.shortcut.file;
 
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
+import com.decmoon.shortcut.exception.io.file.FileNotDirectoryTypeException;
+import com.decmoon.shortcut.exception.io.file.FileNotDocumentTypeException;
+import com.decmoon.shortcut.exception.io.file.FileNotFoundException;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -22,77 +24,106 @@ public class Files {
     private Files() {
     }
 
+    public static File newFile(String path) {
+        return new File(path);
+    }
+
     /**
      * Create a File that is only allowed to be a directory File object
      *
      * @param path Directory path
      * @return File object
      */
-    public final static File newDirectory(String path) {
+    public static File newDirectory(String path) throws FileNotDirectoryTypeException {
         File file = new File(path);
         if (file.isDirectory()) {
             return file;
-        } else {
-            ExceptionLogger.parameterErr(Files.class, "newDirectory(String path)", file + " not a directory");
-            return null;
         }
-
+        throw new FileNotDirectoryTypeException();
     }
 
     /**
      * Create a File that is only allowed to be a File object
      *
-     * @param path File path
+     * @param path File path of Document
      * @return File object
+     * @throws FileNotDocumentTypeException
+     * @throws FileNotFoundException
+     * @throws FileNotConnectException
      */
-    public final static File newFile(String path) {
-        return newFile(path, false);
+    public static File newDocument(String path) {
+        return newDocument(path, false);
     }
+
 
     /**
      * Create a File that is only allowed to be a File object
      *
-     * @param path   File path
+     * @param path   File path of Document
      * @param strict if TRUE verifies that the stream of the file is available , otherwise
      * @return File object
+     * @throws FileNotDocumentTypeException
+     * @throws FileNotFoundException
+     * @throws FileNotConnectException
      */
-    public final static File newFile(String path, boolean strict) {
-        File file = new File(path);
-        boolean directory = file.isDirectory();
-        if (directory) {
-            ExceptionLogger.parameterErr(Files.class, "newFile(String path)", file + " not file");
-            return null;
+    public static File newDocument(String path, boolean strict) {
+        File file = newFile(path);
+
+        if (file.isDirectory()) {
+            try {
+                throw new FileNotDocumentTypeException();
+            } catch (FileNotDocumentTypeException e) {
+                e.shutdown();
+            }
         }
         if (strict) {
-            try (FileInputStream fileInputStream = FileInputStreamGenerator.newFileInputStream(file)) {
-                fileInputStream.close();
-                return file;
-            } catch (FileNotFoundException e) {
-                ExceptionLogger.parameterErr(Files.class, "newFile(String path)", e);
-                return null;
-            } catch (IOException e) {
-                ExceptionLogger.parameterErr(Files.class, "newFile(String path)", e);
-                return null;
+
+            if (!file.exists()) {
+                try {
+                    throw new FileNotFoundException();
+                } catch (FileNotFoundException e) {
+                    e.shutdown();
+                }
             }
+
+            try (FileInputStream fileInputStream = FileInputStreamGenerator.newFileInputStream(file)) {
+                fileInputStream.read();
+            } catch (IOException e) {
+                try {
+                    throw new FileNotConnectException();
+                } catch (FileNotConnectException e1) {
+                    e1.shutdown();
+                }
+            }
+            return file;
         } else {
             return file;
         }
     }
+
 
     /**
      * Creates a file if the specified file path does not have it
      *
      * @param file File path
      */
-    public static void createFile(File file) {
+    public static void createDocumentFile(File file) {
         if (isDirectory(file)) {
-            ExceptionLogger.parameterErr(Files.class, "createFile(File file)", file + " is a directory");
+            try {
+                throw new FileNotDocumentTypeException();
+            } catch (FileNotDocumentTypeException e) {
+                e.shutdown();
+            }
         }
         if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                ExceptionLogger.parameterErr(Files.class, "createFile(File file)", e);
+                try {
+                    throw new FileNotConnectException();
+                } catch (FileNotConnectException e1) {
+                    e1.shutdown();
+                }
             }
         }
     }
@@ -102,15 +133,18 @@ public class Files {
      *
      * @param files File paths
      */
-    public static void createFile(File... files) {
-        for (File file : files) {
-            if (file.isDirectory()) {
-                ExceptionLogger.parameterErr(Files.class, "createFile(File file)", file + " is a directory");
-                return;
+    public static void createDocumentFile(File... files) {
+        if (isDirectories(files)) {
+            try {
+                throw new FileNotDocumentTypeException();
+            } catch (FileNotDocumentTypeException e) {
+                e.shutdown();
+
             }
         }
-        for (File file : files){
-            createFile(file);
+
+        for (File file : files) {
+            createDocumentFile(file);
         }
     }
 
@@ -121,8 +155,8 @@ public class Files {
 
     public static boolean isDirectories(File... files) {
         boolean bo = true;
-        for (File file : files){
-            if ((bo = isDirectory(file) == false)){
+        for (File file : files) {
+            if ((bo = isDirectory(file)) == false) {
                 return bo;
             }
         }

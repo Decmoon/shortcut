@@ -1,7 +1,7 @@
 package com.decmoon.shortcut.collection.map;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.math.MathematicalComparator;
 
 import java.util.HashMap;
@@ -40,8 +40,11 @@ public class Maps {
      */
     public final static <K, V> HashMap<K, V> newHashMap(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            ExceptionLogger.parameterErr(Maps.class, "newHashMap(Map<? extends K, ? extends V> map)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new HashMap<>(map);
     }
@@ -67,8 +70,11 @@ public class Maps {
      */
     public final static <K, V> Hashtable<K, V> newHashTable(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            ExceptionLogger.parameterErr(Maps.class, "newHashTable(Map<? extends K, ? extends V> map)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new Hashtable<>(map);
     }
@@ -94,8 +100,11 @@ public class Maps {
      */
     public final static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            ExceptionLogger.parameterErr(Maps.class, "newConcurrentHashMap(Map<? extends K, ? extends V> map)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new ConcurrentHashMap<>(map);
     }
@@ -110,8 +119,11 @@ public class Maps {
      */
     public final static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(int initialCapacity) {
         if (MathematicalComparator.lessThanZero(initialCapacity)) {
-            ExceptionLogger.parameterErr(Maps.class, "newConcurrentHashMap(int initialCapacity)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return new ConcurrentHashMap<>(initialCapacity);
     }

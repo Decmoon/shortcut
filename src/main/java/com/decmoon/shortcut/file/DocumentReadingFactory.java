@@ -1,6 +1,6 @@
 package com.decmoon.shortcut.file;
 
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,12 +14,11 @@ public class DocumentReadingFactory {
 //By BufferedReader
 //-----------------------------------------
 
-    public static String readingLine(BufferedReader bufferedReader) {
+    public static String readingLine(BufferedReader bufferedReader) throws FileNotConnectException {
         try {
             return readingLineWithThrows(bufferedReader);
         } catch (IOException e) {
-            ExceptionLogger.parameterErr(DocumentReadingFactory.class, "readingLine(BufferedReader bufferedReader)", e);
-            return null;
+            throw new FileNotConnectException();
         }
     }
 

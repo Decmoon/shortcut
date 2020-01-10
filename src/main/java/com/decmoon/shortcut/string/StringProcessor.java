@@ -3,6 +3,7 @@ package com.decmoon.shortcut.string;
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 
 import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 
@@ -46,10 +47,13 @@ public class StringProcessor {
      * @param oldSub the old substring of initial string
      * @return final string
      */
-    public final static String replace(String string, String newSub, String oldSub) {
+    public static final String replace(String string, String newSub, String oldSub) {
         if (parameterIllegal(string)) {
-            ExceptionLogger.parameterErr(StringProcessor.class, "replace(String string, String newSub, String oldSub)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return string.replace(oldSub, newSub);
     }
@@ -64,8 +68,11 @@ public class StringProcessor {
      */
     public final static String replace(String string, String newSub, String... oldSubs) {
         if (parameterIllegal(string)) {
-            ExceptionLogger.parameterErr(StringProcessor.class, "replace(String string, String newSub, String... oldSubs)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         String replace = string;
         for (String oldSub : oldSubs) {
@@ -96,7 +103,7 @@ public class StringProcessor {
      * @param end    End position
      * @return String
      */
-    public final static String subString(String string, int begin, int end) {
+    public static final  String subString(String string, int begin, int end) {
         if (BooleanJudge.hasTrue(
                 parameterIllegal(string),
                 begin < 0,

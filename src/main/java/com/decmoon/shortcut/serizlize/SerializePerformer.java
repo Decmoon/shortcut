@@ -1,11 +1,10 @@
 package com.decmoon.shortcut.serizlize;
 
+import com.decmoon.shortcut.exception.io.serialize.SerializeException;
+import com.decmoon.shortcut.exception.io.serialize.UnserializeException;
 import com.decmoon.shortcut.log.Logger;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * Simple formatting and encapsulation
@@ -23,7 +22,7 @@ public class SerializePerformer {
      * @param object Objects
      * @return Formatted byte array
      */
-    public final static byte[] serialize(Object object) {
+    public static byte[] serialize(Object object) throws SerializeException {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         ) {
@@ -31,9 +30,8 @@ public class SerializePerformer {
             byte[] bytes = byteArrayOutputStream.toByteArray();
             return bytes;
         } catch (Exception e) {
-            Logger.err("serialize failure");
+            throw new SerializeException();
         }
-        return null;
     }
 
     /**
@@ -42,15 +40,14 @@ public class SerializePerformer {
      * @param bytes Formatted byte array
      * @return Unformatted object
      */
-    public final static Object unSerialize(byte[] bytes) {
+    public final static Object unSerialize(byte[] bytes) throws UnserializeException {
         try (
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
                 ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
         ) {
             return objectInputStream.readObject();
         } catch (Exception e) {
-            Logger.err("un serialize failure");
+            throw new UnserializeException();
         }
-        return null;
     }
 }

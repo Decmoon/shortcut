@@ -1,7 +1,7 @@
 package com.decmoon.shortcut.collection.map;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
@@ -19,9 +19,13 @@ import static com.decmoon.shortcut.color.ColorCoater.*;
  */
 public class MapExhibitor {
 
+
     private MapExhibitor() {
     }
 
+    public static void main(String[] args) {
+        see(null);
+    }
     /**
      * Show the map details
      *
@@ -31,8 +35,11 @@ public class MapExhibitor {
      */
     public static <K, V> void see(Map<K, V> map) {
         if (Arguments.parameterIllegal(map)) {
-            ExceptionLogger.parameterErr(MapExhibitor.class, "see(Map<K, V> map)");
-            return;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         Logger.log(MapExhibitor.class.getName() + ".see()  printing ...");
         ObjectInformation.information(map);

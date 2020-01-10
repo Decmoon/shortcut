@@ -1,7 +1,5 @@
 package com.decmoon.shortcut.file;
 
-import com.decmoon.shortcut.exception.ExceptionLogger;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,14 +24,18 @@ public class FileInputStreamGenerator {
         FileInputStream fileInputStream = null;
         try {
             fileInputStream = newFileInputStreamWithThrows(file);
-        } catch (FileNotFoundException e) {
-            ExceptionLogger.parameterErr(FileInputStreamGenerator.class, "newFileInputStream(File file)", e);
+        } catch (com.decmoon.shortcut.exception.io.file.FileNotFoundException e) {
+            e.shutdown();
         }
         return fileInputStream;
     }
 
-    public static FileInputStream newFileInputStreamWithThrows(File file) throws FileNotFoundException {
-        return new FileInputStream(file);
+    public static FileInputStream newFileInputStreamWithThrows(File file) throws com.decmoon.shortcut.exception.io.file.FileNotFoundException {
+        try {
+            return new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new com.decmoon.shortcut.exception.io.file.FileNotFoundException();
+        }
     }
 
 

@@ -1,8 +1,7 @@
 package com.decmoon.shortcut.collection;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.bool.BooleanJudge;
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
@@ -32,8 +31,11 @@ public class CollectionExhibitor {
      */
     public static <E> void see(Collection<E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            ExceptionLogger.parameterErr(CollectionExhibitor.class, "see(Collection<E> collection)");
-            return;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         Logger.log(CollectionExhibitor.class.getName() + ".see()  printing ...");
         ObjectInformation.information(collection);
@@ -48,7 +50,7 @@ public class CollectionExhibitor {
         Iterator iterator = collection.iterator();
         int length = keySize + valueSize + typeSize + 8;
         StringBuffer stringBuffer = Strings.newStringBuffer("|");
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             stringBuffer.append("-");
         }
         stringBuffer.append("|");

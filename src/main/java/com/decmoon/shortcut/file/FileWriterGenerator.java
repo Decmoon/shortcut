@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.file;
 
 import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,7 +14,8 @@ import java.io.IOException;
  */
 public class FileWriterGenerator {
 
-    private FileWriterGenerator(){}
+    private FileWriterGenerator() {
+    }
 
     /**
      * Create a new FileWriter object
@@ -27,7 +29,11 @@ public class FileWriterGenerator {
             fileWriter = newFileWriterWithThrows(file);
             return fileWriter;
         } catch (IOException e) {
-            ExceptionLogger.parameterErr(FileWriterGenerator.class, "newFileWriter(File file)", e);
+            try {
+                throw new FileNotConnectException();
+            } catch (FileNotConnectException e1) {
+                e1.shutdown();
+            }
         }
         return null;
     }
@@ -36,25 +42,24 @@ public class FileWriterGenerator {
     public static FileWriter newFileWriterWithThrows(File file) throws IOException {
         return new FileWriter(file);
     }
-    public static FileWriter newFileWriter(File file,boolean clearBefore) {
+
+    public static FileWriter newFileWriter(File file, boolean clearBefore) throws FileNotConnectException {
         FileWriter fileWriter;
         try {
-            fileWriter = newFileWriterWithThrows(file,clearBefore);
+            fileWriter = newFileWriterWithThrows(file, clearBefore);
             return fileWriter;
         } catch (IOException e) {
-            ExceptionLogger.parameterErr(FileWriterGenerator.class, "newFileWriter(File file)", e);
+            throw new FileNotConnectException();
         }
-        return null;
     }
 
 
-    public static FileWriter newFileWriterWithThrows(File file,boolean clearBefore) throws IOException {
-        if(clearBefore){
-            return new FileWriter(file,false);
+    public static FileWriter newFileWriterWithThrows(File file, boolean clearBefore) throws IOException {
+        if (clearBefore) {
+            return new FileWriter(file, false);
         }
-        return new FileWriter(file,true);
+        return new FileWriter(file, true);
     }
-
 
 
 }

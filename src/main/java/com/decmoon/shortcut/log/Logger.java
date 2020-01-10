@@ -1,6 +1,8 @@
 package com.decmoon.shortcut.log;
 
 import com.decmoon.shortcut.date.DateRecorder;
+import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
+import com.decmoon.shortcut.exception.io.file.FileNotDocumentTypeException;
 import com.decmoon.shortcut.file.BufferedWriterGenerator;
 import com.decmoon.shortcut.file.DocumentPrintingFactory;
 import com.decmoon.shortcut.file.FileWriterGenerator;
@@ -27,6 +29,7 @@ public class Logger {
     private static final File LOG_ERR_FILE;
 
     private static final FileWriter LOG_INFO;
+
     private static final FileWriter LOG_ERR;
 
     private static final String SHORTCUT;
@@ -36,11 +39,11 @@ public class Logger {
         LOG_INFO_PATH = SystemInfo.getUserDir() + Files.SEPARATOR + LOG_NAME_INFO;
         LOG_ERR_PATH = SystemInfo.getUserDir() + Files.SEPARATOR + LOG_NAME_ERR;
         SHORTCUT = Logger.class.getName() + " ";
-        LOG_INFO_FILE = Files.newFile(LOG_INFO_PATH);
-        LOG_ERR_FILE = Files.newFile(LOG_ERR_PATH);
 
-        Files.createFile(LOG_INFO_FILE, LOG_ERR_FILE);
+        LOG_INFO_FILE = new File(LOG_INFO_PATH);
+        LOG_ERR_FILE = new File(LOG_ERR_PATH);
 
+        Files.createDocumentFile(LOG_INFO_FILE, LOG_ERR_FILE);
         LOG_INFO = FileWriterGenerator.newFileWriter(LOG_INFO_FILE);
         LOG_ERR = FileWriterGenerator.newFileWriter(LOG_ERR_FILE);
     }
@@ -57,7 +60,7 @@ public class Logger {
         String time = DateRecorder.now();
         String string = ToString.toString(content(time), green(message), black(""));
         Print.print(string);
-        if (print){
+        if (print) {
             DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_INFO), time + " " + message + "\n");
         }
     }
@@ -70,8 +73,8 @@ public class Logger {
         String time = DateRecorder.now();
         String string = ToString.toString(content(time), red(message), black(""));
         Print.print(string);
-        if (print){
-            DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_ERR), time + " " + message + "\n");
+        if (print) {
+            DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_ERR), time + " " + message );
         }
     }
 
@@ -86,6 +89,8 @@ public class Logger {
                 cyan(SHORTCUT),
                 white(">>>> :  "));
     }
+
+
 
 
 }

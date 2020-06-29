@@ -34,12 +34,17 @@ public class Files {
      * @param path Directory path
      * @return File object
      */
-    public static File newDirectory(String path) throws FileNotDirectoryTypeException {
+    public static File newDirectory(String path) {
         File file = new File(path);
         if (file.isDirectory()) {
             return file;
         }
-        throw new FileNotDirectoryTypeException();
+        try {
+            throw new FileNotDirectoryTypeException();
+        } catch (FileNotDirectoryTypeException e) {
+            e.shutdown();
+        }
+        return null;
     }
 
     /**
@@ -98,53 +103,6 @@ public class Files {
             return file;
         } else {
             return file;
-        }
-    }
-
-
-    /**
-     * Creates a file if the specified file path does not have it
-     *
-     * @param file File path
-     */
-    public static void createDocumentFile(File file) {
-        if (isDirectory(file)) {
-            try {
-                throw new FileNotDocumentTypeException();
-            } catch (FileNotDocumentTypeException e) {
-                e.shutdown();
-            }
-        }
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                try {
-                    throw new FileNotConnectException();
-                } catch (FileNotConnectException e1) {
-                    e1.shutdown();
-                }
-            }
-        }
-    }
-
-    /**
-     * Creates files if the specified file path does not have it
-     *
-     * @param files File paths
-     */
-    public static void createDocumentFile(File... files) {
-        if (isDirectories(files)) {
-            try {
-                throw new FileNotDocumentTypeException();
-            } catch (FileNotDocumentTypeException e) {
-                e.shutdown();
-
-            }
-        }
-
-        for (File file : files) {
-            createDocumentFile(file);
         }
     }
 

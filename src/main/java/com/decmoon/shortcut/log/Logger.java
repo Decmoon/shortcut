@@ -3,10 +3,7 @@ package com.decmoon.shortcut.log;
 import com.decmoon.shortcut.date.DateRecorder;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.exception.io.file.FileNotDocumentTypeException;
-import com.decmoon.shortcut.file.BufferedWriterGenerator;
-import com.decmoon.shortcut.file.DocumentPrintingFactory;
-import com.decmoon.shortcut.file.FileWriterGenerator;
-import com.decmoon.shortcut.file.Files;
+import com.decmoon.shortcut.file.*;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
 import com.decmoon.shortcut.string.ToString;
@@ -43,7 +40,7 @@ public class Logger {
         LOG_INFO_FILE = new File(LOG_INFO_PATH);
         LOG_ERR_FILE = new File(LOG_ERR_PATH);
 
-        Files.createDocumentFile(LOG_INFO_FILE, LOG_ERR_FILE);
+        FileMaker.createDocumentFile(LOG_INFO_FILE, LOG_ERR_FILE);
         LOG_INFO = FileWriterGenerator.newFileWriter(LOG_INFO_FILE);
         LOG_ERR = FileWriterGenerator.newFileWriter(LOG_ERR_FILE);
     }
@@ -59,6 +56,19 @@ public class Logger {
     public static void log(String message, boolean print) {
         String time = DateRecorder.now();
         String string = ToString.toString(content(time), green(message), black(""));
+        Print.print(string);
+        if (print) {
+            DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_INFO), time + " " + message + "\n");
+        }
+    }
+
+    public static void warn(String message) {
+        warn(message, true);
+    }
+
+    public static void warn(String message, boolean print) {
+        String time = DateRecorder.now();
+        String string = ToString.toString(content(time), yellow(message), black(""));
         Print.print(string);
         if (print) {
             DocumentPrintingFactory.typewriting(BufferedWriterGenerator.newBufferedWriter(LOG_INFO), time + " " + message + "\n");

@@ -6,7 +6,7 @@ import com.decmoon.shortcut.bool.BooleanJudge;
 import java.util.Objects;
 
 /**
- * String character manipulation methods
+ * String 识别器
  *
  * @author decmoon
  */
@@ -16,7 +16,7 @@ public class StringRecognizer {
     }
 
     /**
-     * Determines whether the string contains valid characters
+     * 确定字符串是否包含有效字符
      *
      * @param string String
      * @return boolean
@@ -31,9 +31,6 @@ public class StringRecognizer {
         }
         return false;
     }
-
-
-
 
 
 }

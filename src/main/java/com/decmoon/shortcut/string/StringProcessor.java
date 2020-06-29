@@ -4,11 +4,12 @@ import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.log.Logger;
 
 import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 
 /**
- * Character value manipulation methods
+ * String 处理器
  *
  * @author decmoon
  */
@@ -40,7 +41,7 @@ public class StringProcessor {
     }
 
     /**
-     * In a string, replace the old string with a new string
+     * 在字符串中，用新字符串替换旧字符串
      *
      * @param string Initial string
      * @param newSub new string
@@ -59,7 +60,7 @@ public class StringProcessor {
     }
 
     /**
-     * In a string, replace the old string with a new string
+     * 在字符串中，用新字符串替换旧字符串
      *
      * @param string  Initial string
      * @param newSub  new string
@@ -82,7 +83,7 @@ public class StringProcessor {
     }
 
     /**
-     * Compare strings for equality
+     * 比较字符串是否相等
      *
      * @param string1 String
      * @param string2 String
@@ -103,17 +104,20 @@ public class StringProcessor {
      * @param end    End position
      * @return String
      */
-    public static final  String subString(String string, int begin, int end) {
+    public static final String subString(String string, int begin, int end) {
         if (BooleanJudge.hasTrue(
                 parameterIllegal(string),
                 begin < 0,
-                end <= 0,
+                end < 0,
                 begin > string.length(),
                 end > string.length(),
-                begin >= end
+                begin > end
         )) {
-            ExceptionLogger.parameterErr(StringProcessor.class, "subString(String string, int begin, int end)");
-            return null;
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
         }
         return string.substring(begin, end);
     }
@@ -161,7 +165,7 @@ public class StringProcessor {
 
 
     /**
-     * Add Spaces to the string ，string right alignment
+     * 向字符串中添加空格，字符串右对齐
      *
      * @param maxSize Output string length
      * @param string  Specified string
@@ -172,7 +176,7 @@ public class StringProcessor {
     }
 
     /**
-     * Add Spaces to the string ，string right alignment
+     * 向字符串中添加空格，字符串右对齐
      *
      * @param maxSize Output string length
      * @param string  Specified string
@@ -191,14 +195,106 @@ public class StringProcessor {
             if (haveTo) {
                 ExceptionLogger.parameterErr(StringProcessor.class, "tailString(int maxSize, String string,boolean haveTo)");
                 return null;
-            } else return string;
+            } else {
+                return string;
+            }
         }
     }
 
+    /**
+     * 首字母大写
+     *
+     * @param string
+     * @return
+     */
     public static String INITCAP(String string) {
-        if (Arguments.parameterIllegal(string)) return "";
+        if (Arguments.parameterIllegal(string)) {
+            return "";
+        }
         String s = string.trim().toLowerCase();
         return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
+
+    /**
+     * 获取 子串 出现在 母串中的 起始位置
+     *
+     * @param string    不可为空
+     * @param subString 不可为空
+     * @return
+     */
+    public static int indexOfSubstring(String string, String subString) {
+        if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
+            int size = subString.length();
+            for (int i = 0; i < string.length() && i + size <= string.length(); i++) {
+                if (string.substring(i, i + size).equals(subString)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取 子串 出现在 母串中的 终点位置
+     *
+     * @param string    不可为空
+     * @param subString 不可为空
+     * @return
+     */
+    public static int lastIndexOfSubstring(String string, String subString) {
+        int i = indexOfSubstring(string, subString);
+        return i == -1 ? -1 : indexOfSubstring(string, subString) + subString.length() - 1;
+    }
+
+    /**
+     * 剪切字符串
+     *
+     * @param string
+     * @param subString
+     * @return 返回字符串 返回区域为 0-子串首 , 若子串不再原串中，返回原串
+     */
+    public static String headSubString(String string, String subString) {
+        if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
+            int index = indexOfSubstring(string, subString);
+            if (index == -1) {
+                Logger.warn("headSubString(String string, String subString) can't find the substring in original string");
+                return string;
+            }
+            return subString(string, 0, index);
+        } else {
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
+        }
+        return "";
+    }
+
+    /**
+     * 剪切字符串
+     *
+     * @param string
+     * @param subString
+     * @return 返回字符串 返回区域为 子串尾-原串尾 , 若子串不再原串中，返回原串
+     */
+    public static String tailSubString(String string, String subString) {
+        if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
+            int index = lastIndexOfSubstring(string, subString);
+            if (index == -1) {
+                Logger.warn("tailSubString(String string, String subString) can't find the substring in original string");
+                return string;
+            }
+            return subString(string, index + 1, string.length());
+        } else {
+            try {
+                throw new ParameterIllegalException();
+            } catch (ParameterIllegalException e) {
+                e.shutdown();
+            }
+        }
+        return "";
     }
 
 }

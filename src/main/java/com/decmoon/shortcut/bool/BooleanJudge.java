@@ -11,10 +11,10 @@ public class BooleanJudge {
     }
 
     /**
-     * Determines whether all the answers in the custom expression are true
+     * 确定自定义表达式中的所有答案是否为 TRUE
      *
-     * @param booleans Boolean values or expressions
-     * @return TRUE if all the values is true
+     * @param booleans
+     * @return 所有为 TRUE 返回 TRUE ，otherwise
      */
     public static boolean allTrue(boolean... booleans) {
         for (boolean aBoolean : booleans) {
@@ -26,10 +26,10 @@ public class BooleanJudge {
     }
 
     /**
-     * Determines whether all the answers in the custom expression are false
+     * 确定自定义表达式中的所有答案是否为 FALSE
      *
-     * @param booleans Boolean values or expressions
-     * @return TRUE if all the values is false
+     * @param booleans
+     * @return 所有为 FALSE 返回 TRUE ，otherwise
      */
     public static boolean allFalse(boolean... booleans) {
         for (boolean aBoolean : booleans) {
@@ -41,20 +41,21 @@ public class BooleanJudge {
     }
 
     /**
-     * Determines whether has an answer in the custom expression is true
+     * 确定自定义表达式中的答案是否存在 TRUE
      *
-     * @param booleans Boolean values or expressions
-     * @return TRUE if have an answer is true
+     * @param booleans
+     * @return 存在 TRUE 则返回 TRUE
      */
     public static boolean hasTrue(boolean... booleans) {
         return !allFalse(booleans);
     }
 
+
     /**
-     * Determines whether has an answer in the custom expression is false
+     * 确定自定义表达式中的答案是否存在 FALSE
      *
-     * @param booleans Boolean values or expressions
-     * @return TRUE if have an answer is false
+     * @param booleans
+     * @return 存在 FALSE 则返回 TRUE
      */
     public static boolean hasFalse(boolean... booleans) {
         return !allTrue(booleans);

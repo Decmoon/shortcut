@@ -4,6 +4,7 @@ import com.decmoon.shortcut.collection.CollectionChecker;
 import com.decmoon.shortcut.collection.map.MapRecognizer;
 import com.decmoon.shortcut.math.MathematicalComparator;
 import com.decmoon.shortcut.string.StringRecognizer;
+import com.decmoon.shortcut.type.TypeAnalyzer;
 
 import java.util.Collection;
 import java.util.Map;

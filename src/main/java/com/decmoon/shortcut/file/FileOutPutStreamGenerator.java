@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 /**
- * File stream processing
+ *  FileOutPutStream 生成器
  *
  * @author decmoon
  */
@@ -15,21 +15,33 @@ public class FileOutPutStreamGenerator {
     }
 
     /**
-     * Create a new FileOutputStream object
+     * 创建 FileOutPutStream 流
      *
      * @param file File
      * @return FileOutputStream object
      */
-    public static FileOutputStream newFileOutPutStream(File file) throws com.decmoon.shortcut.exception.io.file.FileNotFoundException {
+    public static FileOutputStream newFileOutPutStream(File file) {
         FileOutputStream fileOutputStream;
         try {
             fileOutputStream = newFileOutPutStreamWithThrows(file);
             return fileOutputStream;
         } catch (FileNotFoundException e) {
-            throw new com.decmoon.shortcut.exception.io.file.FileNotFoundException();
+            try {
+                throw new com.decmoon.shortcut.exception.io.file.FileNotFoundException();
+            } catch (com.decmoon.shortcut.exception.io.file.FileNotFoundException e1) {
+                e1.shutdown();
+            }
         }
+        return null;
     }
 
+    /**
+     * 创建 FileOutPutStream 流
+     *
+     * @param file
+     * @return
+     * @throws FileNotFoundException
+     */
     public static FileOutputStream newFileOutPutStreamWithThrows(File file) throws FileNotFoundException {
         return new FileOutputStream(file);
     }

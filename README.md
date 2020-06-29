@@ -8,7 +8,7 @@ SHORTCUT
 ```logo
    ______ ___  __________ _______________________  __________
   / ____//  /_/  /  __  |/  ___/__  __/  ___ /  / /  __   __/
- (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.7
+ (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.8
 /_____//__/ /__/|______/__/    /__/  \____/ \______/ /__/       faster AND easier
 ```
 
@@ -20,7 +20,7 @@ You can use it to simplify code and improve development efficiency
 
 Function
 -
-+ Nonempty judgment of parameter
++ Judgment of parameter
 + Custom log
 + Complex set traversal
 + More sophisticated handling of Math classes
@@ -132,21 +132,11 @@ NAME|LOCATION
 **INFO**|your project's location/shortcut.log.info.txt
 **ERR**|your project's location/shortcut.log.err.txt
 
+**I will improve such functions in the future**
 
 JDK
 -
 JDK version 1.8 and above
-
-API
--
-Shortcut from 0.5 version to join the **API**, 
-you can enter from the base file **api** folder,
- API version for Chinese version, need to change the browsing character set to **utf-8**
- 
-<br/>
-
-**API path:** shortcut/api/shortcut.api/index.html
-
 
 Quote 
 -
@@ -165,7 +155,7 @@ You can add a dependency under the pom file in your project to use the toolkit
 <dependency>
     <groupId>com.decmoon</groupId>
     <artifactId>shortcut</artifactId>
-    <version>0.0.7-SNAPSHOT</version>
+    <version>0.0.8-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -174,5 +164,3 @@ Statement
 -
 
 **Copyright © [Decmoon](https://github.com/Decmoon)**<br/>
-**Shortcut** toolkit is readily available to developers<br/>
-**Unauthorized reproduction is prohibited**

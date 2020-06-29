@@ -35,15 +35,17 @@ public class DocumentPrintingFactory {
      * @param message              The information you want to print
      */
     public static void typewriting(BufferedOutputStream bufferedOutputStream, String message) throws FileNotConnectException {
+        typewriting(bufferedOutputStream, message.getBytes());
+    }
+
+    public static void typewriting(BufferedOutputStream bufferedOutputStream, byte[] bytes) throws FileNotConnectException {
         try {
-            bufferedOutputStream.write(message.getBytes());
+            bufferedOutputStream.write(bytes);
             bufferedOutputStream.flush();
         } catch (IOException e) {
             throw new FileNotConnectException();
         }
-
     }
-
 
 //-----------------------------------------
 //By BufferedWriter

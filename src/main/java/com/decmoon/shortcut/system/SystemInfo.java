@@ -13,7 +13,7 @@ public class SystemInfo {
     }
 
     /**
-     * Returns system details
+     * 所有详细信息
      *
      * @return Properties
      */
@@ -22,12 +22,21 @@ public class SystemInfo {
     }
 
     /**
-     * Returns the current workspace system address
+     * 当前项目路径
      *
      * @return String
      */
     public final static String getUserDir() {
-        return System.getProperties().getProperty("user.dir");
+        return getProperty().getProperty("user.dir");
+    }
+
+    /**
+     * 当前系统目录文件路径
+     *
+     * @return String
+     */
+    public final static String getUserHome() {
+        return getProperty().getProperty("user.home");
     }
 
 }

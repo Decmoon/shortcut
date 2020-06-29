@@ -1,13 +1,15 @@
 package com.decmoon.shortcut.serizlize;
 
+import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.io.serialize.SerializeException;
-import com.decmoon.shortcut.exception.io.serialize.UnserializeException;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.file.FileInputStreamGenerator;
+import com.decmoon.shortcut.file.FileOutPutStreamGenerator;
+import com.decmoon.shortcut.file.Files;
 
 import java.io.*;
 
 /**
- * Simple formatting and encapsulation
+ * 序列化
  *
  * @author decmoon
  */
@@ -17,37 +19,43 @@ public class SerializePerformer {
     }
 
     /**
-     * Serialization for redis to store objects
+     * 序列化
      *
      * @param object Objects
-     * @return Formatted byte array
      */
-    public static byte[] serialize(Object object) throws SerializeException {
-        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-        ) {
+    public static void serialize(String path, Object object) {
+        ObjectOutputStream objectOutputStream = ObjectOutputStreamGenerator.newObjectOutputStream(FileOutPutStreamGenerator.newFileOutPutStream(Files.newDocument(path)));
+        try {
             objectOutputStream.writeObject(object);
-            byte[] bytes = byteArrayOutputStream.toByteArray();
-            return bytes;
-        } catch (Exception e) {
-            throw new SerializeException();
+        } catch (IOException e) {
+            try {
+                throw new SerializeException();
+            } catch (SerializeException e1) {
+                e1.shutdown();
+            }
         }
     }
 
     /**
-     * Deserialization for redis to read objects
+     * 反序列化
      *
-     * @param bytes Formatted byte array
      * @return Unformatted object
      */
-    public final static Object unSerialize(byte[] bytes) throws UnserializeException {
-        try (
-                ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-                ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
-        ) {
+    public final static Object unSerialize(String path) {
+        ObjectInputStream objectInputStream = ObjectInputStreamGenerator.newObjectInputStream(FileInputStreamGenerator.newFileInputStream(Files.newDocument(path)));
+        //EOFException 文档空结尾
+        if (Arguments.isNull(objectInputStream)) {
+            return null;
+        }
+        try {
             return objectInputStream.readObject();
         } catch (Exception e) {
-            throw new UnserializeException();
+            try {
+                throw new SerializeException();
+            } catch (SerializeException e1) {
+                e1.shutdown();
+            }
         }
+        return null;
     }
 }

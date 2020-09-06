@@ -9,7 +9,7 @@ import com.decmoon.shortcut.string.Strings;
 /**
  * @author decmoon
  */
-public class ShortCutException extends Exception {
+public class ShortCutException extends RuntimeException {
 
     private String exceptionMessage;
 

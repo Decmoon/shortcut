@@ -1,17 +1,11 @@
 
 SHORTCUT
 -
-**caption**：Open source toolkit
 
-**Author**： Decmoon 
 
-```logo
-   ______ ___  __________ _______________________  __________
-  / ____//  /_/  /  __  |/  ___/__  __/  ___ /  / /  __   __/
- (____ )/  ___  /  /_/  /  /    /  / / (___ /  /_/  / /  /    version 0.0.8
-/_____//__/ /__/|______/__/    /__/  \____/ \______/ /__/       faster AND easier
-```
-
+**AUTHOR:**
+> [<img width="30px" title="Decmoon" src="https://avatars3.githubusercontent.com/u/51840843?s=400&u=d909c885dc61d75a2ca60c6d52c2315714d8bdfe&v=4"/>
+](https://github.com/Decmoon)
 
 Intro
 -

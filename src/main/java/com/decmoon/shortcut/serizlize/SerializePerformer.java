@@ -28,11 +28,7 @@ public class SerializePerformer {
         try {
             objectOutputStream.writeObject(object);
         } catch (IOException e) {
-            try {
-                throw new SerializeException();
-            } catch (SerializeException e1) {
-                e1.shutdown();
-            }
+            throw new SerializeException();
         }
     }
 
@@ -50,12 +46,7 @@ public class SerializePerformer {
         try {
             return objectInputStream.readObject();
         } catch (Exception e) {
-            try {
-                throw new SerializeException();
-            } catch (SerializeException e1) {
-                e1.shutdown();
-            }
+            throw new SerializeException();
         }
-        return null;
     }
 }

@@ -40,11 +40,7 @@ public class MultithreadedBranch {
      */
     public final static void branch(Execute execute, String threadName) {
         if (Arguments.parameterIllegal(threadName)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         runnableThread(execute, threadName);
     }

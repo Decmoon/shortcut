@@ -14,9 +14,9 @@ public class DocumentPrintingFactory {
     private DocumentPrintingFactory() {
     }
 
-//-----------------------------------------
-//By BufferedOutputStream
-//-----------------------------------------
+    //-----------------------------------------
+    //By BufferedOutputStream
+    //-----------------------------------------
 
     /**
      * Output text in a file using BufferedOutputStream

@@ -31,11 +31,7 @@ public class CollectionExhibitor {
      */
     public static <E> void see(Collection<E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         Logger.log(CollectionExhibitor.class.getName() + ".see()  printing ...");
         ObjectInformation.information(collection);

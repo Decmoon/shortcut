@@ -20,13 +20,8 @@ public class ObjectOutputStreamGenerator {
         try {
             return newObjectOutputStreamWithThrow(fileOutputStream);
         } catch (IOException e) {
-            try {
-                throw new FileNotFoundException();
-            } catch (FileNotFoundException e1) {
-                e1.shutdown();
-            }
+            throw new FileNotFoundException();
         }
-        return null;
     }
 
 

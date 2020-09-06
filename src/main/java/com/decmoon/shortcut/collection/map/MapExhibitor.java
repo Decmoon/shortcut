@@ -13,6 +13,8 @@ import java.util.Map;
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
 /**
+ * Map 查看器
+ * <p>
  * Map exhibitor
  *
  * @author decmoon
@@ -23,10 +25,9 @@ public class MapExhibitor {
     private MapExhibitor() {
     }
 
-    public static void main(String[] args) {
-        see(null);
-    }
     /**
+     * 展示Map集合细节
+     * <p>
      * Show the map details
      *
      * @param map map
@@ -35,11 +36,7 @@ public class MapExhibitor {
      */
     public static <K, V> void see(Map<K, V> map) {
         if (Arguments.parameterIllegal(map)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         Logger.log(MapExhibitor.class.getName() + ".see()  printing ...");
         ObjectInformation.information(map);

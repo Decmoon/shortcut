@@ -22,29 +22,17 @@ public class CharResolver {
             char[] chars = getCharArray(string);
             return chars[0];
         } else {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
-        //消除编译异常
-        return '?';
     }
 
     public static char getLastChar(String string) {
         if (Arguments.parameterLegal(string)) {
             char[] chars = getCharArray(string);
-            return chars[chars.length-1];
+            return chars[chars.length - 1];
         } else {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
-        //消除编译异常
-        return '?';
     }
 
     public static boolean charEqual(char c, char c2) {

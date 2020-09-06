@@ -16,21 +16,13 @@ public class FileMaker {
      */
     public static void createDocumentFile(File file) {
         if (Files.isDirectory(file)) {
-            try {
-                throw new FileNotDocumentTypeException();
-            } catch (FileNotDocumentTypeException e) {
-                e.shutdown();
-            }
+            throw new FileNotDocumentTypeException();
         }
         if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                try {
-                    throw new FileNotConnectException();
-                } catch (FileNotConnectException e1) {
-                    e1.shutdown();
-                }
+                throw new FileNotConnectException();
             }
         }
     }
@@ -42,12 +34,7 @@ public class FileMaker {
      */
     public static void createDocumentFile(File... files) {
         if (Files.isDirectories(files)) {
-            try {
-                throw new FileNotDocumentTypeException();
-            } catch (FileNotDocumentTypeException e) {
-                e.shutdown();
-
-            }
+            throw new FileNotDocumentTypeException();
         }
 
         for (File file : files) {

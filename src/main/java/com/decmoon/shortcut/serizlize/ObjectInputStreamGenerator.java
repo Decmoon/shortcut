@@ -31,15 +31,8 @@ public class ObjectInputStreamGenerator {
                 //文档无内容
                 return null;
             }
-
-            try {
-                throw new FileNotFoundException();
-            } catch (FileNotFoundException e1) {
-                e1.shutdown();
-            }
-
+            throw new FileNotFoundException();
         }
-        return null;
     }
 
     public static ObjectInputStream newObjectInputStreamWithThrow(FileInputStream fileOutputStream) throws IOException {

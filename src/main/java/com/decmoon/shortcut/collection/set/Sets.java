@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
+ * 提供创建Set集合
+ * <p>
  * Provides the creation of a Set collection
  *
  * @author decmoon
@@ -17,6 +19,8 @@ public class Sets {
     }
 
     /**
+     * 创建一个新的HashSet对象
+     * <p>
      * Create a new HashSet object
      *
      * @param <E> Supports generics
@@ -28,6 +32,8 @@ public class Sets {
 
 
     /**
+     * 创建一个新的HashSet对象
+     * <p>
      * Create a new HashSet object
      *
      * @param collection collection
@@ -36,11 +42,7 @@ public class Sets {
      */
     public final static <E> HashSet<E> newHashSet(Collection<? extends E> collection) {
         if (Arguments.parameterIllegal(collection)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return new HashSet<>(collection);
     }

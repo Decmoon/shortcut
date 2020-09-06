@@ -10,9 +10,9 @@ public class DocumentReadingFactory {
 
     private DocumentReadingFactory() {
     }
-//-----------------------------------------
-//By BufferedReader
-//-----------------------------------------
+    //-----------------------------------------
+    //By BufferedReader
+    //-----------------------------------------
 
     public static String readingLine(BufferedReader bufferedReader) throws FileNotConnectException {
         try {

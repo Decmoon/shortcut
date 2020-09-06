@@ -23,12 +23,7 @@ public class ResourceBundleGetter {
         try {
             return ResourceBundle.getBundle(path, localel);
         } catch (MissingResourceException e) {
-            try {
-                throw new I18NException();
-            } catch (I18NException e1) {
-                e1.shutdown();
-            }
+            throw new I18NException();
         }
-        return null;
     }
 }

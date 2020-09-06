@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 提供Map集合的创建
+ * <p>
  * Provides the creation of a Map collection
  *
  * @author decmoon
@@ -20,6 +22,8 @@ public class Maps {
     }
 
     /**
+     * 创建一个新的HashMap对象
+     * <p>
      * Create a new HashMap object
      *
      * @param <K> Supports generics
@@ -31,6 +35,8 @@ public class Maps {
     }
 
     /**
+     * 创建一个新的HashMap对象
+     * <p>
      * Create a new HashMap object
      *
      * @param map Map
@@ -40,16 +46,14 @@ public class Maps {
      */
     public final static <K, V> HashMap<K, V> newHashMap(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return new HashMap<>(map);
     }
 
     /**
+     * 创建一个新的Hash table对象
+     * <p>
      * Create a new Hash table object
      *
      * @param <K> Supports generics
@@ -61,6 +65,8 @@ public class Maps {
     }
 
     /**
+     * 创建一个新的Hash table对象
+     * <p>
      * Create a new Hash table object
      *
      * @param map Map
@@ -70,16 +76,14 @@ public class Maps {
      */
     public final static <K, V> Hashtable<K, V> newHashTable(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return new Hashtable<>(map);
     }
 
     /**
+     * 创建一个新的ConcurrentHashMap对象
+     * <p>
      * Create a new ConcurrentHashMap object
      *
      * @param <K> Supports generics
@@ -91,6 +95,8 @@ public class Maps {
     }
 
     /**
+     * 创建一个新的ConcurrentHashMap对象
+     * <p>
      * Create a new ConcurrentHashMap object
      *
      * @param map Map
@@ -100,16 +106,14 @@ public class Maps {
      */
     public final static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(Map<? extends K, ? extends V> map) {
         if (Arguments.parameterIllegal(map)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return new ConcurrentHashMap<>(map);
     }
 
     /**
+     * 创建一个新的ConcurrentHashMap对象
+     * <p>
      * Create a new ConcurrentHashMap object
      *
      * @param initialCapacity ConcurrentHashMap's capacity
@@ -119,11 +123,7 @@ public class Maps {
      */
     public final static <K, V> ConcurrentHashMap<K, V> newConcurrentHashMap(int initialCapacity) {
         if (MathematicalComparator.lessThanZero(initialCapacity)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return new ConcurrentHashMap<>(initialCapacity);
     }

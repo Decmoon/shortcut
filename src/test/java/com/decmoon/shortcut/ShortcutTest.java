@@ -1,7 +1,13 @@
 package com.decmoon.shortcut;
 
-public class ShortcutTest {
+import com.decmoon.shortcut.collection.list.Lists;
+import org.springframework.stereotype.Component;
 
-    public static void main(String[] args) {
+@Component
+public class ShortcutTest {
+    protected void exe() {
+//        Lists.newArrayList(null);
+        System.out.println("Exe");
     }
+
 }

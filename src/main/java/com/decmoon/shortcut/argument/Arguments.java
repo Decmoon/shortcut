@@ -1,16 +1,16 @@
 package com.decmoon.shortcut.argument;
 
 import com.decmoon.shortcut.collection.CollectionChecker;
-import com.decmoon.shortcut.collection.map.MapRecognizer;
 import com.decmoon.shortcut.math.MathematicalComparator;
 import com.decmoon.shortcut.string.StringRecognizer;
-import com.decmoon.shortcut.type.TypeAnalyzer;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
 /**
+ * 为参数提供具体的操作
+ * <p>
  * Provides concrete actions for parameters
  *
  * @author decmoon
@@ -21,6 +21,8 @@ public class Arguments {
     }
 
     /**
+     * 确定参数是否为空
+     * <p>
      * Determines whether the argument is null
      *
      * @param object argument
@@ -31,6 +33,8 @@ public class Arguments {
     }
 
     /**
+     * 确定参数是否非空
+     * <p>
      * Determines whether the argument isn't null
      *
      * @param object argument
@@ -41,7 +45,11 @@ public class Arguments {
     }
 
     /**
-     * Determine whether the parameter is illegal, illegal situation: the parameter is empty, the number is 0, the string is empty value
+     * 判断参数是否非法
+     * 非法情况:参数为空，数字为0，字符串为空值
+     * <p>
+     * Determine whether the parameter is illegal
+     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
      * @param object argument
      * @return TRUE if illegal , otherwise
@@ -51,7 +59,11 @@ public class Arguments {
     }
 
     /**
-     * Determine whether the parameter is illegal, illegal situation: the parameter is empty, the number is 0, the string is empty value
+     * 判断参数是否非法
+     * 非法情况:参数为空，数字为0，字符串为空值
+     * <p>
+     * Determine whether the parameter is illegal
+     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
      * @param strict Severity will determine whether each element in the collection is an illegal element
      * @param object argument
@@ -74,7 +86,7 @@ public class Arguments {
         }
         if (object instanceof Map) {
             if (strict) {
-                return MapRecognizer.hasNull((Map) object);
+                return CollectionChecker.containNULL((Map) object);
             } else {
                 return CollectionChecker.isNull((Map) object) || CollectionChecker.isEmpty((Map) object);
             }
@@ -87,7 +99,11 @@ public class Arguments {
 
 
     /**
-     * Determine whether the parameter is illegal, illegal situation: the parameter is empty, the number is 0, the string is empty value
+     * 确定参数是否非法
+     * 非法情况:参数为空，数字为0，字符串为空
+     * <p>
+     * Determine whether the parameter is illegal
+     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
      * @param strict  Severity will determine whether each element in the collection is an illegal element
      * @param objects arguments
@@ -103,7 +119,11 @@ public class Arguments {
     }
 
     /**
-     * Determine whether the parameter is illegal, illegal situation: the parameter is empty, the number is 0, the string is empty value
+     * 确定参数是否非法
+     * 非法情况:参数为空，数字为0，字符串为空
+     * <p>
+     * Determine whether the parameter is illegal
+     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
      * @param objects arguments
      * @return TRUE if illegal , otherwise
@@ -112,8 +132,13 @@ public class Arguments {
         return parameterIllegal(true, objects);
     }
 
+
     /**
-     * Determine whether the parameter is illegal, illegal situation: the parameter is empty, the number is 0, the string is empty value
+     * 确定参数是否合法
+     * 非法情况:参数为空，数字为0，字符串为空
+     * <p>
+     * Determine whether the parameter is legal
+     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
      * @param strict  Severity will determine whether each element in the collection is an illegal element
      * @param objects arguments
@@ -124,7 +149,11 @@ public class Arguments {
     }
 
     /**
-     * Determine whether the parameter is illegal, illegal situation: the parameter is empty, the number is 0, the string is empty value
+     * 确定参数是否合法
+     * 非法情况:参数为空，数字为0，字符串为空
+     * <p>
+     * Determine whether the parameter is legal
+     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
      * @param objects arguments
      * @return TRUE if legal , otherwise

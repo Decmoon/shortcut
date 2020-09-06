@@ -1,0 +1,5 @@
+spring:
+  shortcut:
+    log:
+      info: "shortcut.log.info.txt"
+      err: "shortcut.log.err.txt"

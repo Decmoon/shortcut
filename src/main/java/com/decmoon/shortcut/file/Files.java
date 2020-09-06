@@ -39,12 +39,7 @@ public class Files {
         if (file.isDirectory()) {
             return file;
         }
-        try {
-            throw new FileNotDirectoryTypeException();
-        } catch (FileNotDirectoryTypeException e) {
-            e.shutdown();
-        }
-        return null;
+        throw new FileNotDirectoryTypeException();
     }
 
     /**
@@ -75,30 +70,18 @@ public class Files {
         File file = newFile(path);
 
         if (file.isDirectory()) {
-            try {
-                throw new FileNotDocumentTypeException();
-            } catch (FileNotDocumentTypeException e) {
-                e.shutdown();
-            }
+            throw new FileNotDocumentTypeException();
         }
         if (strict) {
 
             if (!file.exists()) {
-                try {
-                    throw new FileNotFoundException();
-                } catch (FileNotFoundException e) {
-                    e.shutdown();
-                }
+                throw new FileNotFoundException();
             }
 
             try (FileInputStream fileInputStream = FileInputStreamGenerator.newFileInputStream(file)) {
                 fileInputStream.read();
             } catch (IOException e) {
-                try {
-                    throw new FileNotConnectException();
-                } catch (FileNotConnectException e1) {
-                    e1.shutdown();
-                }
+                throw new FileNotConnectException();
             }
             return file;
         } else {

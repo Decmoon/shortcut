@@ -50,11 +50,7 @@ public class StringProcessor {
      */
     public static final String replace(String string, String newSub, String oldSub) {
         if (parameterIllegal(string)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return string.replace(oldSub, newSub);
     }
@@ -69,11 +65,7 @@ public class StringProcessor {
      */
     public final static String replace(String string, String newSub, String... oldSubs) {
         if (parameterIllegal(string)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         String replace = string;
         for (String oldSub : oldSubs) {
@@ -113,11 +105,7 @@ public class StringProcessor {
                 end > string.length(),
                 begin > end
         )) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         return string.substring(begin, end);
     }
@@ -263,13 +251,8 @@ public class StringProcessor {
             }
             return subString(string, 0, index);
         } else {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
-        return "";
     }
 
     /**
@@ -288,13 +271,8 @@ public class StringProcessor {
             }
             return subString(string, index + 1, string.length());
         } else {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
-        return "";
     }
 
 }

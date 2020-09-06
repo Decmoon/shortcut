@@ -1,6 +1,5 @@
 package com.decmoon.shortcut.file;
 
-import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 
 import java.io.File;
@@ -29,13 +28,8 @@ public class FileWriterGenerator {
             fileWriter = newFileWriterWithThrows(file);
             return fileWriter;
         } catch (IOException e) {
-            try {
-                throw new FileNotConnectException();
-            } catch (FileNotConnectException e1) {
-                e1.shutdown();
-            }
+            throw new FileNotConnectException();
         }
-        return null;
     }
 
 

@@ -28,11 +28,7 @@ public class ObjectInformation {
      */
     public static void information(Object object) {
         if (Arguments.parameterIllegal(object)) {
-            try {
-                throw new ParameterIllegalException();
-            } catch (ParameterIllegalException e) {
-                e.shutdown();
-            }
+            throw new ParameterIllegalException();
         }
         Logger.log(ObjectInformation.class.getName() + ".information()  printing ...");
         sharer(object);

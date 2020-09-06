@@ -7,15 +7,20 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * 一个集合的判断操作
+ * <p>
  * A judgment operation for a collection
  *
  * @author decmoon
  */
 public class CollectionChecker {
 
-    private CollectionChecker(){}
+    private CollectionChecker() {
+    }
 
     /**
+     * 判断集合是否为 null
+     * <p>
      * Judgment whether the collection is null
      *
      * @param collection Collection
@@ -26,6 +31,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断集合是否为 null
+     * <p>
      * Judgment whether the collection is null
      *
      * @param collection Collection
@@ -36,6 +43,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断集合是否为空集合
+     * <p>
      * Judgment whether the collection is empty
      *
      * @param collection Collection
@@ -46,6 +55,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断集合是否为空集合
+     * <p>
      * Judgment whether the collection is empty
      *
      * @param collection Collection
@@ -56,6 +67,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断map集合是否为 null
+     * <p>
      * Judgment whether the map is null
      *
      * @param map Map
@@ -66,6 +79,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断map集合是否为 null
+     * <p>
      * Judgment whether the map is null
      *
      * @param map Map
@@ -76,6 +91,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断map集合是否为空
+     * <p>
      * Judgment whether the map is empty
      *
      * @param map Map
@@ -86,6 +103,8 @@ public class CollectionChecker {
     }
 
     /**
+     * 判断map集合是否为空
+     * <p>
      * Judgment whether the map is empty
      *
      * @param map Map
@@ -96,17 +115,19 @@ public class CollectionChecker {
     }
 
     /**
+     * 确定集合是否包含空元素
+     * <p>
      * Determines whether the collection contains a null element
      *
      * @param collection Collection
      * @return TRUE if collection contains a null element
      */
     public static boolean containNULL(Collection collection) {
-        if (BooleanJudge.hasTrue(isNull(collection), isEmpty(collection))){
+        if (BooleanJudge.hasTrue(isNull(collection), isEmpty(collection))) {
             return true;
         }
-        for (Object o : collection){
-            if (Objects.isNull(o)){
+        for (Object o : collection) {
+            if (Objects.isNull(o)) {
                 return true;
             }
         }
@@ -114,7 +135,31 @@ public class CollectionChecker {
     }
 
     /**
-     * Determines whether the collection contains a null element
+     * 判断Map集合中是否有null元素
+     * <p>
+     * Determines if there are null elements in the Map collection
+     *
+     * @param map collection
+     * @param <K> type
+     * @param <V> type
+     * @return TRUE if has null elements , otherwise
+     */
+    public static <K, V> boolean containNULL(Map<K, V> map) {
+
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            K k = entry.getKey();
+            V v = entry.getValue();
+            if (BooleanJudge.hasTrue(k == null, v == null)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 确定集合是否不包含空元素
+     * <p>
+     * Determines whether the collection not contains a null element
      *
      * @param collection Collection
      * @return TRUE if collection not contains a null element

@@ -6,6 +6,8 @@ import static com.decmoon.shortcut.string.Strings.newStringBuffer;
 import static org.fusesource.jansi.Ansi.ansi;
 
 /**
+ * 使你的控制台字体有颜色
+ * <p>
  * Make your console font has color
  *
  * @author decmoon

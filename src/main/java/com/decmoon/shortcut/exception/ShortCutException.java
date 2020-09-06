@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.exception;
 
 import com.decmoon.shortcut.argument.Arguments;
+import com.decmoon.shortcut.color.ColorCoater;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.log.Logger;
 import com.decmoon.shortcut.string.StringProcessor;
@@ -13,7 +14,7 @@ public class ShortCutException extends RuntimeException {
 
     private String exceptionMessage;
 
-    public ShortCutException(Class clazz, String message) {
+    protected ShortCutException(Class clazz, String message) {
         this.exceptionMessage = clazz.getName() + " -> " + message + "\n\r" + lineInfo();
     }
 
@@ -40,17 +41,7 @@ public class ShortCutException extends RuntimeException {
 
 
     public void shutdown() {
-        printStackTrace();
         System.exit(1);
     }
-
-    public void catchThrow() {
-        try {
-            throw new FileNotConnectException();
-        } catch (FileNotConnectException e1) {
-            e1.shutdown();
-        }
-    }
-
 
 }

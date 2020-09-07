@@ -26,7 +26,7 @@ public class MultithreadedBranch {
      *
      * @param execute Execute
      */
-    public final static void branch(Execute execute) {
+    public final static void rBranch(Execute execute) {
         runnableThread(execute, null);
     }
 
@@ -38,7 +38,7 @@ public class MultithreadedBranch {
      * @param execute    Execute
      * @param threadName Thread name
      */
-    public final static void branch(Execute execute, String threadName) {
+    public final static void rBranch(Execute execute, String threadName) {
         if (Arguments.parameterIllegal(threadName)) {
             throw new ParameterIllegalException();
         }
@@ -64,21 +64,20 @@ public class MultithreadedBranch {
      * type:Callable
      *
      * @param mission Mission
-     * @param <V>     Supports generics
+     * @param <T>     Supports generics
      * @return Multithreaded return value
      */
-    public final static <V> V rBranch(Mission mission) {
-        Callable callable = () -> mission.execute();
-        FutureTask futureTask = new FutureTask(callable);
-        new Thread(futureTask).start();
-        V v = null;
-        try {
-            v = (V) futureTask.get();
-        } catch (Exception e) {
-            ExceptionLogger.parameterErr(MultithreadedBranch.class, "branch(Mission mission)", e);
-        }
-        return v;
+    public final static <T> T cBranch(Mission mission,Class<T> type) {
+        return callableThread(mission, null,type);
     }
+
+    public final static <T> T cBranch(Mission mission, String threadName,Class<T> type) {
+        if (Arguments.parameterIllegal(threadName)) {
+            throw new ParameterIllegalException();
+        }
+        return callableThread(mission, threadName,type);
+    }
+
 
     /**
      * Using multiple threads to perform tasks,
@@ -87,20 +86,24 @@ public class MultithreadedBranch {
      *
      * @param mission    Mission
      * @param threadName Thread name
-     * @param <V>        Supports generics
+     * @param <T>        Supports generics
      * @return Multithreaded return value
      */
-    public final static <V> V rBranch(Mission mission, String threadName) {
+    private final static <T> T callableThread(Mission mission, String threadName,Class<T> type) {
         Callable callable = () -> mission.execute();
         FutureTask futureTask = new FutureTask(callable);
-        new Thread(futureTask, threadName).start();
-        V v = null;
+        if (Arguments.parameterLegal(threadName)) {
+            new Thread(futureTask, threadName).start();
+        } else {
+            new Thread(futureTask).start();
+        }
+
+        T t = null;
         try {
-            v = (V) futureTask.get();
+            t = (T) futureTask.get();
         } catch (Exception e) {
             ExceptionLogger.parameterErr(MultithreadedBranch.class, "branch(Mission mission, String threadName)", e);
         }
-        return v;
+        return t;
     }
-
 }

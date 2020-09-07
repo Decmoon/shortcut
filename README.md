@@ -2,15 +2,17 @@
 SHORTCUT
 -
 
-
 **AUTHOR:**
 > [<img width="30px" title="Decmoon" src="https://avatars3.githubusercontent.com/u/51840843?s=400&u=d909c885dc61d75a2ca60c6d52c2315714d8bdfe&v=4"/>
 ](https://github.com/Decmoon)
 
+
 Intro
 -
-Open source toolkit based on springboot with built-in static method,
+Open source toolkit based on springboot.
 You can use it to simplify code and improve development efficiency
+
+ 
 
 Function
 -
@@ -19,7 +21,9 @@ Function
 + Complex set traversal
 + More sophisticated handling of Math classes
 + Multithreaded automatic branching
-+ .....
++ Better looking console
++ General utility tool 
++ Etc
 
 Example
 -
@@ -30,57 +34,32 @@ you need to write it this way before:
 ```
     double random = Math.random() * (15 - 5) + 5;
 ```
-Alright, **shortcut** gives you a more convenient way, and you just need to use it.
++Alright, **shortcut** gives you a more convenient way, and you just need to use it.
 ```
     double random = RandomNumberGenerator.random(5.0, 15.0);
 ```
-You could even write it like this,**they're both correct ~**
+You could even write it like this, they're both correct
 ```
     double random = RandomNumberGenerator.random(15.0, 5.0);
 ```
-What about random Numbers that are negative?<br/>
-Now let's **generate random Numbers from -5 to 10**
-```
-    double random = (Math.random() * - 5) +(Math.random()*10);
-```
-I bet you're tired of writing difficult sentences,
-So let's see, what if you use **shortcut**
+Negative Numbers are still valid
 ```
     double random = RandomNumberGenerator.random(-5,10);
 ```
-I'm sure it will make your program **simpler** and **faster** to develop~~
 
 #### Thread: 
 
 If you wanted to create a **multithread** and run it, what would you write?
 ```
   new Thread(()->"The traditional threading approach makes the code look more complex").start();
-
 ```
 Now , you have shortcut ,you just need....
 ```
-    MultithreadedBranch.branch(()->"Shortcut greatly simplifies your code");
+    MultithreadedBranch.rBranch(()->"Shortcut greatly simplifies your code");
 ```
-
-Do you find the effect very modest?<br/>
-Don't worry ~ <br/>
-Let's look at the **Callable** interface
+**Callable interface** are still valid
 ```
- Callable<String> callable = () -> "Traditional callable requires a lot of code to write";
- FutureTask<String> futureTask = new FutureTask<>(callable);
- new Thread(futureTask).start();
-     try {
-        String string = futureTask.get();
-     } catch (InterruptedException e) {
-         e.printStackTrace();
-     } catch (ExecutionException e) {
-         e.printStackTrace();
-     }
-```
-Okay ,very complicated <br/> 
-So let's see the amount of code **shortcut** has
-```
-     Object object = branch(() -> "shortcut can greatly simplify your code and increase your development efficiency");
+     Object object = MultithreadedBranch.cBranch(() -> "shortcut can greatly simplify your code and increase your development efficiency");
 ```
 
 #### Traverse the collection: 
@@ -92,32 +71,28 @@ So let's see the amount of code **shortcut** has
 |----------------------------------------------------------|
 | 0     | English                   | java.lang.String     |
 | 1     | 123                       | java.lang.Integer    |
-| 2     | class java.lang.Object    | java.lang.Class      |
-| 3     | java.lang.Object@488232a1 | java.lang.Object     |
 |----------------------------------------------------------|
-
 ```
 >  Method: **_MapExhibitor.see(Map<K, V> map)_**
 ```
 |------------------------------------------------------------------------------------------------------------------------------|
 | KEY                       | VALUE                          | KEY TYPE                       | VALUE TYPE                     |
 |------------------------------------------------------------------------------------------------------------------------------|
-| A                         | aaaa                           | java.lang.String               | java.lang.String               |
-| 1                         | 11                             | java.lang.Integer              | java.lang.Integer              |
 | java.lang.Object@5290501d | [I@51acc179                    | java.lang.Object               | [I                             |
 | 111111111111111           | 11.1                           | java.lang.Long                 | java.lang.Double               |
 |------------------------------------------------------------------------------------------------------------------------------|
 
 ```
----
-
-This is only a small part of the built-in simplification of **shortcut**
-
-You can find lots of surprises in **shortcut**<br/>
-......
+#### Developer tools :
+ Shortcut have collected tools that are commonly used during the development process
+ like
++ Chinese ASCII code conversion for Chinese developer
++ HTML Converter
++ Etc
 
 Log
 -
+
 Since shortcut's internal methods are all static, 
 there's no way to specify where the log file should go, so make sure the log location is...<br/>
 
@@ -126,7 +101,11 @@ NAME|LOCATION
 **INFO**|your project's location/shortcut.log.info.txt
 **ERR**|your project's location/shortcut.log.err.txt
 
-**I will improve such functions in the future**
+**---------------- upgrading ---------------**
+
+
+
+
 
 JDK
 -
@@ -156,5 +135,6 @@ You can add a dependency under the pom file in your project to use the toolkit
 
 Statement
 -
+I'm sure it will make your program **simpler** and **faster** to develop
 
 **Copyright © [Decmoon](https://github.com/Decmoon)**<br/>

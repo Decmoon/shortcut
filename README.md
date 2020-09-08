@@ -16,11 +16,8 @@ You can use it to simplify code and improve development efficiency
 
 Function
 -
-+ Judgment of parameter
++ Static methods that makes your development easier and faster
 + Custom log
-+ Complex set traversal
-+ More sophisticated handling of Math classes
-+ Multithreaded automatic branching
 + Better looking console
 + General utility tool 
 + Etc
@@ -34,7 +31,7 @@ you need to write it this way before:
 ```
     double random = Math.random() * (15 - 5) + 5;
 ```
-+Alright, **shortcut** gives you a more convenient way, and you just need to use it.
+Alright, **shortcut** gives you a more convenient way, and you just need to use it.
 ```
     double random = RandomNumberGenerator.random(5.0, 15.0);
 ```
@@ -90,6 +87,7 @@ Now , you have shortcut ,you just need....
 + HTML Converter
 + Etc
 
+
 Log
 -
 
@@ -103,9 +101,11 @@ NAME|LOCATION
 
 **---------------- upgrading ---------------**
 
-
-
-
+Annotation
+-
+Annotation|description
+:---:|:---
+@EnableShortcutAspect|Turn on aspect of shortcut 
 
 JDK
 -

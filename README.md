@@ -25,7 +25,7 @@ Function
 API
 -
 + [中文](API-zh.md)
-+ [英文](API-en.md)
++ [English](API-en.md)
 
 Log
 -

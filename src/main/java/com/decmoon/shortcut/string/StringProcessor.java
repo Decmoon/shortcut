@@ -4,7 +4,7 @@ import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.core.log.Logger;
 
 import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 
@@ -246,7 +246,6 @@ public class StringProcessor {
         if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
             int index = indexOfSubstring(string, subString);
             if (index == -1) {
-                Logger.warn("headSubString(String string, String subString) can't find the substring in original string");
                 return string;
             }
             return subString(string, 0, index);
@@ -266,7 +265,6 @@ public class StringProcessor {
         if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
             int index = lastIndexOfSubstring(string, subString);
             if (index == -1) {
-                Logger.warn("tailSubString(String string, String subString) can't find the substring in original string");
                 return string;
             }
             return subString(string, index + 1, string.length());

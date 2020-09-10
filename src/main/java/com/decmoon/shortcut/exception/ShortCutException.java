@@ -1,9 +1,8 @@
 package com.decmoon.shortcut.exception;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.color.ColorCoater;
-import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.core.log.Console;
+import com.decmoon.shortcut.core.log.Logger;
 import com.decmoon.shortcut.string.StringProcessor;
 import com.decmoon.shortcut.string.Strings;
 
@@ -36,7 +35,7 @@ public class ShortCutException extends RuntimeException {
 
     @Override
     public void printStackTrace() {
-        Logger.err(exceptionMessage);
+       Console.err(exceptionMessage);
     }
 
 

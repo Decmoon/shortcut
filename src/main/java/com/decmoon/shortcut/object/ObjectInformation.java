@@ -2,7 +2,7 @@ package com.decmoon.shortcut.object;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.core.log.Logger;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
 
@@ -30,7 +30,6 @@ public class ObjectInformation {
         if (Arguments.parameterIllegal(object)) {
             throw new ParameterIllegalException();
         }
-        Logger.log(ObjectInformation.class.getName() + ".information()  printing ...");
         sharer(object);
     }
 

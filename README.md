@@ -22,91 +22,47 @@ Function
 + General utility tool 
 + Etc
 
-Example
+API
 -
-#### Math: 
-Are you tired of the complicated logic of generating random Numbers every time？<br/>
-**_Generate random Numbers between 5 and 15,_**<br/>
-you need to write it this way before:
-```
-    double random = Math.random() * (15 - 5) + 5;
-```
-Alright, **shortcut** gives you a more convenient way, and you just need to use it.
-```
-    double random = RandomNumberGenerator.random(5.0, 15.0);
-```
-You could even write it like this, they're both correct
-```
-    double random = RandomNumberGenerator.random(15.0, 5.0);
-```
-Negative Numbers are still valid
-```
-    double random = RandomNumberGenerator.random(-5,10);
-```
-
-#### Thread: 
-
-If you wanted to create a **multithread** and run it, what would you write?
-```
-  new Thread(()->"The traditional threading approach makes the code look more complex").start();
-```
-Now , you have shortcut ,you just need....
-```
-    MultithreadedBranch.rBranch(()->"Shortcut greatly simplifies your code");
-```
-**Callable interface** are still valid
-```
-     Object object = MultithreadedBranch.cBranch(() -> "shortcut can greatly simplify your code and increase your development efficiency");
-```
-
-#### Traverse the collection: 
-
-> Method : **_ListExhibitor.see(List<E> list)_**
-```
-|----------------------------------------------------------|
-| INDEX | VALUE                     | TYPE                 |
-|----------------------------------------------------------|
-| 0     | English                   | java.lang.String     |
-| 1     | 123                       | java.lang.Integer    |
-|----------------------------------------------------------|
-```
->  Method: **_MapExhibitor.see(Map<K, V> map)_**
-```
-|------------------------------------------------------------------------------------------------------------------------------|
-| KEY                       | VALUE                          | KEY TYPE                       | VALUE TYPE                     |
-|------------------------------------------------------------------------------------------------------------------------------|
-| java.lang.Object@5290501d | [I@51acc179                    | java.lang.Object               | [I                             |
-| 111111111111111           | 11.1                           | java.lang.Long                 | java.lang.Double               |
-|------------------------------------------------------------------------------------------------------------------------------|
-
-```
-#### Developer tools :
- Shortcut have collected tools that are commonly used during the development process
- like
-+ Chinese ASCII code conversion for Chinese developer
-+ HTML Converter
-+ Etc
-
++ [中文](API-zh.md)
++ [英文](API-en.md)
 
 Log
 -
+Customize the log location by configuring the information
+ in the **.properties** or **.yml** file.
+ ````yml
+spring:
+  shortcut:
+    log:
+      info: "Info category output file path"
+      err: "Error category output file path"
+````
+ 
+And **configure the annotations** in the application class
+````java
+@SpringBootApplication
+@EnableShortcutAspect
+@EnableShortcutLogger
+public class ShortcutApplication {
+    @Autowired
+    private Logger logger;
 
-Since shortcut's internal methods are all static, 
-there's no way to specify where the log file should go, so make sure the log location is...<br/>
+    public static void main(String[] args) {
+        logger.info("Enjoying your code");
+        SpringApplication.run(ShortcutApplication.class, args);
+    }
 
-NAME|LOCATION
-:---:|:---
-**INFO**|your project's location/shortcut.log.info.txt
-**ERR**|your project's location/shortcut.log.err.txt
+}
+````
 
-**---------------- upgrading ---------------**
 
 Annotation
 -
-Annotation|description
-:---:|:---
-@EnableShortcutAspect|Turn on aspect of shortcut 
-
+Annotation|Target|description
+:---:|:---:|:---
+@EnableShortcutAspect|Application.java|Turn on aspect of shortcut,make the console look better 
+@EnableShortcutLogger|Application.java|Turn on the logging service
 JDK
 -
 JDK version 1.8 and above
@@ -128,7 +84,7 @@ You can add a dependency under the pom file in your project to use the toolkit
 <dependency>
     <groupId>com.decmoon</groupId>
     <artifactId>shortcut</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.9-dev</version>
 </dependency>
 ```
 

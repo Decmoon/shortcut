@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ShortcutTest {
     protected void exe() {
-//        Lists.newArrayList(null);
-        System.out.println("Exe");
+        Lists.newArrayList(null);
     }
 
 }

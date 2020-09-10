@@ -1,7 +1,8 @@
 package com.decmoon.shortcut.i18n.ascii;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.core.log.Logger;
 
 /**
  * ASCII 码 转换器
@@ -43,8 +44,7 @@ public class ASCIITransformer {
      */
     public static String transform(String message, boolean ignoreEnglish) {
         if (Arguments.parameterIllegal(message)) {
-            Logger.warn("message equals null or ''");
-            return "";
+            throw new ParameterIllegalException();
         }
         StringBuilder stringBuilder = new StringBuilder();
         for (char c : message.toCharArray()) {

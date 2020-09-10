@@ -1,0 +1,5 @@
+spring:
+  shortcut:
+    log:
+      info: "F:/Java/JavaProjects/log/info.txt"
+      err: "F:/Java/JavaProjects/log/err.txt"

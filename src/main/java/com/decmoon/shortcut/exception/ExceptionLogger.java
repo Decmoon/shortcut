@@ -1,6 +1,6 @@
 package com.decmoon.shortcut.exception;
 
-import com.decmoon.shortcut.log.Logger;
+import com.decmoon.shortcut.core.log.Logger;
 
 /**
  * Error for output log
@@ -12,6 +12,8 @@ public class ExceptionLogger {
     private ExceptionLogger() {
     }
 
+    private Logger logger;
+
     /**
      * Exception log
      *
@@ -19,7 +21,7 @@ public class ExceptionLogger {
      * @param method The method in which the exception occurred
      */
     public static void parameterErr(Class clazz, String method) {
-        Logger.err(clazz.getName() + "." + method + "  ->  parameter is illegal");
+//        Logger.err(clazz.getName() + "." + method + "  ->  parameter is illegal");
     }
 
     /**
@@ -30,7 +32,7 @@ public class ExceptionLogger {
      * @param message Log message
      */
     public static void parameterErr(Class clazz, String method, String message) {
-        Logger.err(clazz.getName() + "." + method + "  ->  " + message);
+//        Logger.err(clazz.getName() + "." + method + "  ->  " + message);
     }
 
     /**
@@ -41,7 +43,7 @@ public class ExceptionLogger {
      * @param throwable Exception throwable
      */
     public static void parameterErr(Class clazz, String method, Throwable throwable) {
-        Logger.err(clazz.getName() + "." + method + "  ->  " + throwable.fillInStackTrace());
+//        Logger.err(clazz.getName() + "." + method + "  ->  " + throwable.fillInStackTrace());
     }
 
     /**
@@ -51,7 +53,7 @@ public class ExceptionLogger {
      * @param throwable Exception throwable
      */
     public static void parameterErr(Class clazz, Throwable throwable) {
-        Logger.err(clazz.getName() + "  ->  " + throwable.fillInStackTrace());
+//        Logger.err(clazz.getName() + "  ->  " + throwable.fillInStackTrace());
     }
 
 

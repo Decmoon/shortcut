@@ -45,6 +45,7 @@ And **configure the annotations** in the application class
 @EnableShortcutAspect
 @EnableShortcutLogger
 public class ShortcutApplication {
+    
     @Autowired
     private Logger logger;
 
@@ -63,6 +64,7 @@ Annotation|Target|description
 :---:|:---:|:---
 @EnableShortcutAspect|Application.java|Turn on aspect of shortcut,make the console look better 
 @EnableShortcutLogger|Application.java|Turn on the logging service
+
 JDK
 -
 JDK version 1.8 and above

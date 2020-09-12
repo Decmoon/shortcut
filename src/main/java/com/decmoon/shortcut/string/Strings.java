@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.string;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 /**
  * Provides the creation of a Strings
  *
@@ -7,7 +9,9 @@ package com.decmoon.shortcut.string;
  */
 public class Strings {
 
-    private Strings(){}
+    private Strings(){
+        throw new InstantiateException();
+    }
     /**
      * Create a new String object
      *

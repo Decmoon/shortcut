@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,6 +14,7 @@ import java.io.FileNotFoundException;
 public class FileInputStreamGenerator {
 
     private FileInputStreamGenerator() {
+        throw new InstantiateException();
     }
 
     /**

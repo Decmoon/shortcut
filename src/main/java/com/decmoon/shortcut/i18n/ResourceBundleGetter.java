@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.i18n;
 
-import com.decmoon.shortcut.exception.i18n.I18NException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+import com.decmoon.shortcut.exception.io.file.FileNotFoundException;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -12,7 +13,9 @@ import java.util.ResourceBundle;
  * @author decmoon
  */
 public class ResourceBundleGetter {
+
     private ResourceBundleGetter() {
+        throw new InstantiateException();
     }
 
     public static ResourceBundle getResourceBundle(String path) {
@@ -23,7 +26,7 @@ public class ResourceBundleGetter {
         try {
             return ResourceBundle.getBundle(path, localel);
         } catch (MissingResourceException e) {
-            throw new I18NException();
+            throw new FileNotFoundException();
         }
     }
 }

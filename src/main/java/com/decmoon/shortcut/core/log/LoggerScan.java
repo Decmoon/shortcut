@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class LoggerScan {
+
     @Value("${spring.shortcut.log.info}")
     private String info;
     @Value("${spring.shortcut.log.err}")

@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class FileWriterGenerator {
 
     private FileWriterGenerator() {
+        throw new InstantiateException();
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.collection;
 
 import com.decmoon.shortcut.bool.BooleanJudge;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.util.Collection;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public class CollectionChecker {
 
     private CollectionChecker() {
+        throw new InstantiateException();
     }
 
     /**

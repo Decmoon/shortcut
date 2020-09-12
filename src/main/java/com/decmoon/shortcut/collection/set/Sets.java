@@ -2,6 +2,7 @@ package com.decmoon.shortcut.collection.set;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -16,6 +17,7 @@ import java.util.HashSet;
 public class Sets {
 
     private Sets() {
+        throw new InstantiateException();
     }
 
     /**

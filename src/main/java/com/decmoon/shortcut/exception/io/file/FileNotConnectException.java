@@ -10,4 +10,8 @@ public class FileNotConnectException extends ShortCutException {
     public FileNotConnectException() {
         super(FileNotConnectException.class, "An exception occurred during the file exchange");
     }
+
+    public FileNotConnectException(String message) {
+        super(FileNotConnectException.class, message);
+    }
 }

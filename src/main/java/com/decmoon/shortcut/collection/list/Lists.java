@@ -2,6 +2,7 @@ package com.decmoon.shortcut.collection.list;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -16,6 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Lists {
 
     private Lists() {
+        throw new InstantiateException();
     }
 
     /**

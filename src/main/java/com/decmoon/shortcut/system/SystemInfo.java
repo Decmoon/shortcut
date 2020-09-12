@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.system;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import java.util.Properties;
 
 /**
@@ -10,6 +12,7 @@ import java.util.Properties;
 public class SystemInfo {
 
     private SystemInfo() {
+        throw new InstantiateException();
     }
 
     /**

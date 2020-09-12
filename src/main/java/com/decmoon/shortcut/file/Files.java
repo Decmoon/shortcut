@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.exception.io.file.FileNotDirectoryTypeException;
 import com.decmoon.shortcut.exception.io.file.FileNotDocumentTypeException;
@@ -22,6 +23,7 @@ public class Files {
 
 
     private Files() {
+        throw new InstantiateException();
     }
 
     public static File newFile(String path) {

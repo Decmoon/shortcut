@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.print;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.string.ToString;
 
 /**
@@ -10,6 +11,7 @@ import com.decmoon.shortcut.string.ToString;
 public class Print {
 
     private Print() {
+        throw new InstantiateException();
     }
 
     /**

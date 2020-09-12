@@ -10,4 +10,8 @@ public class ParameterIllegalException extends ShortCutException {
     public ParameterIllegalException() {
         super(ParameterIllegalException.class, "Parameter illegal");
     }
+
+    public ParameterIllegalException(String message) {
+        super(ParameterIllegalException.class, message);
+    }
 }

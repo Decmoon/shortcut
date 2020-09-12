@@ -12,11 +12,15 @@ import java.util.Objects;
 
 public class ShortCutBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
 
+    private boolean init = false;
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-        registerLog(importingClassMetadata, registry);
-        registerAspect(importingClassMetadata, registry);
+        if(!init) {
+            registerLog(importingClassMetadata, registry);
+            registerAspect(importingClassMetadata, registry);
+            init=true;
+        }
     }
 
 

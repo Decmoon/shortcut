@@ -1,12 +1,19 @@
 package com.decmoon.shortcut;
 
-import com.decmoon.shortcut.collection.list.Lists;
-import org.springframework.stereotype.Component;
+import junit.framework.AssertionFailedError;
 
-@Component
+import java.util.LinkedList;
+
 public class ShortcutTest {
-    protected void exe() {
-        Lists.newArrayList(null);
+
+    private final static LinkedList<AssertionFailedError> list = new LinkedList<>();
+
+    public static void add(AssertionFailedError assertionFailedError) {
+        list.add(assertionFailedError);
+    }
+
+    public static void print() {
+        list.forEach(e -> e.printStackTrace());
     }
 
 }

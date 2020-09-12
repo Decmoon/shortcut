@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.string;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import static com.decmoon.shortcut.string.Strings.newStringBuffer;
 import static com.decmoon.shortcut.string.Strings.newStringBuilder;
 
@@ -11,6 +13,7 @@ import static com.decmoon.shortcut.string.Strings.newStringBuilder;
 public class ToString {
 
     private ToString() {
+        throw new InstantiateException();
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.math;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import static com.decmoon.shortcut.math.MathematicalComparator.*;
 import static com.decmoon.shortcut.math.MathematicalValueProcessor.absolute;
 
@@ -11,6 +13,7 @@ import static com.decmoon.shortcut.math.MathematicalValueProcessor.absolute;
 public class RandomNumberGenerator {
 
     private RandomNumberGenerator() {
+        throw new InstantiateException();
     }
 
     /**

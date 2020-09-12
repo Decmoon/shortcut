@@ -24,13 +24,13 @@ Function
 
 API
 -
-+ [中文](API-zh.md)
-+ [English](API-en.md)
++ [中文](api/chinese/API-zh.md)
++ [English](api/english/API-en.md)
 
 Log
 -
 Customize the log location by configuring the information
- in the **.properties** or **.yml** file.
+ in the `.properties` or `.yml` file.
  ````yml
 spring:
   shortcut:
@@ -86,13 +86,11 @@ You can add a dependency under the pom file in your project to use the toolkit
 <dependency>
     <groupId>com.decmoon</groupId>
     <artifactId>shortcut</artifactId>
-    <version>0.0.9-dev</version>
+    <version>0.0.9</version>
 </dependency>
 ```
 
 
 Statement
 -
-I'm sure it will make your program **simpler** and **faster** to develop
-
 **Copyright © [Decmoon](https://github.com/Decmoon)**<br/>

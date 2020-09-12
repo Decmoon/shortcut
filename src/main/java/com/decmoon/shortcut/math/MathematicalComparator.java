@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.math;
 
 import com.decmoon.shortcut.bool.BooleanJudge;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -14,6 +15,7 @@ import java.util.concurrent.atomic.*;
 public class MathematicalComparator {
 
     private MathematicalComparator() {
+        throw new InstantiateException();
     }
 
     /**

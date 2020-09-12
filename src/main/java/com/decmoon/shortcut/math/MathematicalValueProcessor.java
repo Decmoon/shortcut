@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.math;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 /**
  * Provides operation methods for numeric values
  *
@@ -8,6 +10,7 @@ package com.decmoon.shortcut.math;
 public class MathematicalValueProcessor {
 
     private MathematicalValueProcessor() {
+        throw new InstantiateException();
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 
 import java.io.BufferedReader;
@@ -9,6 +10,7 @@ public class DocumentReadingFactory {
 
 
     private DocumentReadingFactory() {
+        throw new InstantiateException();
     }
     //-----------------------------------------
     //By BufferedReader

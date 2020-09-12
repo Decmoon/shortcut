@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.serizlize;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.exception.io.file.FileNotFoundException;
 
 import java.io.EOFException;
@@ -15,6 +16,7 @@ import java.io.ObjectInputStream;
 public class ObjectInputStreamGenerator {
 
     private ObjectInputStreamGenerator() {
+        throw new InstantiateException();
     }
 
     /**
@@ -25,7 +27,7 @@ public class ObjectInputStreamGenerator {
      */
     public static ObjectInputStream newObjectInputStream(FileInputStream fileOutputStream) {
         try {
-            return newObjectInputStreamWithThrow(fileOutputStream);
+            return new ObjectInputStream(fileOutputStream);
         } catch (IOException e) {
             if (e instanceof EOFException) {
                 //文档无内容
@@ -33,9 +35,5 @@ public class ObjectInputStreamGenerator {
             }
             throw new FileNotFoundException();
         }
-    }
-
-    public static ObjectInputStream newObjectInputStreamWithThrow(FileInputStream fileOutputStream) throws IOException {
-        return new ObjectInputStream(fileOutputStream);
     }
 }

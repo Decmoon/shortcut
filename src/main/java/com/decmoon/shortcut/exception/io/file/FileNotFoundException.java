@@ -12,4 +12,7 @@ public class FileNotFoundException extends ShortCutException {
         super(FileNotFoundException.class, "File not found ");
     }
 
+    public FileNotFoundException(String message) {
+        super(FileNotFoundException.class, message);
+    }
 }

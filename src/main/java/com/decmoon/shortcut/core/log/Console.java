@@ -8,7 +8,7 @@ import com.decmoon.shortcut.string.ToString;
 import static com.decmoon.shortcut.color.ColorCoater.*;
 
 /**
- * 控制台阶级输出
+ * Shortcut 控制台阶级输出
  *
  * @author decmoon
  */
@@ -36,12 +36,19 @@ public final class Console {
         Print.print(string);
     }
 
+
+    public static final void fail(String message){
+        String time = DateRecorder.now();
+        String string = ToString.toString(content(time), magenta(message), black(""));
+        Print.print(string);
+    }
+
     private static final StringBuffer content(String time) {
         return ToString.toStringBuffer(white("["),
                 yellow(time),
                 white("]"),
                 white(" ∽ ["),
-                white(StringProcessor.tailString(16, Thread.currentThread().getName().toUpperCase())),
+                white(StringProcessor.tailString(8, Thread.currentThread().getName().toUpperCase())),
                 white("] ∽ "),
                 cyan(SHORTCUT),
                 white(">>>> :  "));

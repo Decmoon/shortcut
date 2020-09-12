@@ -2,6 +2,7 @@ package com.decmoon.shortcut.collection.map;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.math.MathematicalComparator;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Maps {
 
     private Maps() {
+        throw new InstantiateException();
     }
 
     /**

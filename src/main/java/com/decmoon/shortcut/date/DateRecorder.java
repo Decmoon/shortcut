@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.date;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,6 +21,7 @@ public class DateRecorder {
     public final static String HH_mm_ss = "HH:mm:ss";
 
     private DateRecorder() {
+        throw new InstantiateException();
     }
 
     /**

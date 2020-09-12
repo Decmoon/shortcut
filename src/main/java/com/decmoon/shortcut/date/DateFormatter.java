@@ -2,6 +2,7 @@ package com.decmoon.shortcut.date;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -15,6 +16,10 @@ import java.time.LocalDateTime;
  * @author decmoon
  */
 public class DateFormatter {
+
+    private DateFormatter() {
+        throw new InstantiateException();
+    }
 
     public static LocalDateTime toLocalDateTime(Timestamp timestamp) {
         if (Arguments.parameterIllegal(timestamp)) {

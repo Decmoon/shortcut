@@ -2,6 +2,7 @@ package com.decmoon.shortcut.string;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
 public class StringRecognizer {
 
     private StringRecognizer() {
+        throw new InstantiateException();
     }
 
     /**
@@ -31,6 +33,7 @@ public class StringRecognizer {
         }
         return false;
     }
+
 
 
 }

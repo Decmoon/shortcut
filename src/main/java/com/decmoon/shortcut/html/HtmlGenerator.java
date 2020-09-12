@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.html;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.string.StringRecognizer;
 
 /**
@@ -10,6 +11,7 @@ import com.decmoon.shortcut.string.StringRecognizer;
 public class HtmlGenerator {
 
     private HtmlGenerator() {
+        throw new InstantiateException();
     }
 
     /**

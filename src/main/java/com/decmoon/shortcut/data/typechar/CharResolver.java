@@ -2,6 +2,7 @@ package com.decmoon.shortcut.data.typechar;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 /**
  * char 解析器
@@ -11,6 +12,7 @@ import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 public class CharResolver {
 
     private CharResolver() {
+        throw new InstantiateException();
     }
 
     public static char[] getCharArray(String string) {

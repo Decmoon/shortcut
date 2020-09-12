@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.bool;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 /**
  * 为布尔值提供具体的操作
  * <p>
@@ -10,6 +12,7 @@ package com.decmoon.shortcut.bool;
 public class BooleanJudge {
 
     private BooleanJudge() {
+        throw new InstantiateException();
     }
 
     /**

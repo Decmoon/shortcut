@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   shortcut:
     log:
       info: "F:/Java/JavaProjects/log/info.txt"

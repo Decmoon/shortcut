@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.type;
 
 import com.decmoon.shortcut.data.typechar.CharResolver;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 /**
  * 类型分析器
@@ -13,6 +14,7 @@ public class TypeAnalyzer {
     public static final String PREFIX_ARRAY_CHAR = PREFIX_ARRAY + "C";
 
     private TypeAnalyzer() {
+        throw new InstantiateException();
     }
 
     /**

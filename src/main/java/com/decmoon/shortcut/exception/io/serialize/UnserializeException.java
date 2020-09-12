@@ -5,6 +5,7 @@ import com.decmoon.shortcut.exception.ShortCutException;
 /**
  * @author decmoon
  */
+@Deprecated
 public class UnserializeException extends ShortCutException {
 
     public UnserializeException() {

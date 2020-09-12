@@ -1,12 +1,15 @@
 package com.decmoon.shortcut.serizlize;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.exception.io.serialize.SerializeException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.file.FileInputStreamGenerator;
 import com.decmoon.shortcut.file.FileOutPutStreamGenerator;
 import com.decmoon.shortcut.file.Files;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * 序列化
@@ -16,6 +19,7 @@ import java.io.*;
 public class SerializePerformer {
 
     private SerializePerformer() {
+        throw new InstantiateException();
     }
 
     /**
@@ -28,7 +32,7 @@ public class SerializePerformer {
         try {
             objectOutputStream.writeObject(object);
         } catch (IOException e) {
-            throw new SerializeException();
+            throw new FileNotConnectException();
         }
     }
 
@@ -46,7 +50,7 @@ public class SerializePerformer {
         try {
             return objectInputStream.readObject();
         } catch (Exception e) {
-            throw new SerializeException();
+            throw new FileNotConnectException();
         }
     }
 }

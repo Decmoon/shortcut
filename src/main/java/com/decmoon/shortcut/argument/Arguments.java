@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.argument;
 
 import com.decmoon.shortcut.collection.CollectionChecker;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.math.MathematicalComparator;
 import com.decmoon.shortcut.string.StringRecognizer;
 
@@ -18,6 +19,7 @@ import java.util.Objects;
 public class Arguments {
 
     private Arguments() {
+        throw new InstantiateException();
     }
 
     /**
@@ -73,26 +75,28 @@ public class Arguments {
         if (isNull(object)) {
             return true;
         }
-        if (object instanceof Number) {
-            return MathematicalComparator.equalsZero((Number) object);
-        }
+
         if (object instanceof Collection) {
             Collection collection = (Collection) object;
             if (strict) {
                 return CollectionChecker.containNULL(collection);
             } else {
-                return CollectionChecker.isNull(collection) || CollectionChecker.isEmpty(collection);
+                return CollectionChecker.isEmpty(collection);
             }
         }
         if (object instanceof Map) {
             if (strict) {
                 return CollectionChecker.containNULL((Map) object);
             } else {
-                return CollectionChecker.isNull((Map) object) || CollectionChecker.isEmpty((Map) object);
+                return CollectionChecker.isEmpty((Map) object);
             }
         }
         if (object instanceof String) {
-            return !StringRecognizer.hasText((String) object);
+            if (strict) {
+                return !StringRecognizer.hasText((String) object);
+            } else {
+                return MathematicalComparator.equalsZero(((String) object).length());
+            }
         }
         return false;
     }
@@ -113,7 +117,9 @@ public class Arguments {
         boolean bool = false;
         for (Object object : objects) {
             bool = parameterIllegal(strict, object);
-            if (bool) return bool;
+            if (bool) {
+                return bool;
+            }
         }
         return bool;
     }

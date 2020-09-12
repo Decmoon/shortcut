@@ -2,9 +2,8 @@ package com.decmoon.shortcut.string;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.bool.BooleanJudge;
-import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
-import com.decmoon.shortcut.core.log.Logger;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 
@@ -16,6 +15,7 @@ import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 public class StringProcessor {
 
     private StringProcessor() {
+        throw new InstantiateException();
     }
 
     /**
@@ -142,8 +142,7 @@ public class StringProcessor {
             return stringBuffer.substring(0, maxSize);
         } else {
             if (haveTo) {
-                ExceptionLogger.parameterErr(StringProcessor.class, "headString(int maxSize, String string,boolean haveTo)");
-                return null;
+               throw new IllegalArgumentException("The string length exceeds the specified length");
             } else {
                 return string;
             }
@@ -181,8 +180,7 @@ public class StringProcessor {
             return stringBuffer.substring(length);
         } else {
             if (haveTo) {
-                ExceptionLogger.parameterErr(StringProcessor.class, "tailString(int maxSize, String string,boolean haveTo)");
-                return null;
+                throw new IllegalArgumentException("The string length exceeds the specified length");
             } else {
                 return string;
             }

@@ -3,6 +3,7 @@ package com.decmoon.shortcut.collection;
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.core.log.Logger;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
 import com.decmoon.shortcut.string.StringProcessor;
@@ -21,6 +22,7 @@ import static com.decmoon.shortcut.color.ColorCoater.*;
 public class CollectionExhibitor {
 
     private CollectionExhibitor() {
+        throw new InstantiateException();
     }
 
     /**

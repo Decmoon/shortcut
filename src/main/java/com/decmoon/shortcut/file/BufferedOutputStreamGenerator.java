@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 
@@ -10,7 +12,10 @@ import java.io.FileOutputStream;
  */
 public class BufferedOutputStreamGenerator {
 
-    private BufferedOutputStreamGenerator(){}
+    private BufferedOutputStreamGenerator() {
+        throw new InstantiateException();
+    }
+
     /**
      * Create a new BufferedOutputStream object
      *
@@ -22,8 +27,6 @@ public class BufferedOutputStreamGenerator {
         bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
         return bufferedOutputStream;
     }
-
-
 
 
 }

@@ -1,7 +1,8 @@
 package com.decmoon.shortcut.file;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.exception.ExceptionLogger;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.string.ToString;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class DocumentPrintingFactory {
 
     private DocumentPrintingFactory() {
+        throw new InstantiateException();
     }
 
     //-----------------------------------------
@@ -47,29 +49,30 @@ public class DocumentPrintingFactory {
         }
     }
 
-//-----------------------------------------
-//By BufferedWriter
-//-----------------------------------------
+    //-----------------------------------------
+    //By BufferedWriter
+    //-----------------------------------------
 
     public static void typewriting(BufferedWriter bufferedWriter, String... messages) {
         if (Arguments.parameterIllegal(messages)) {
-            ExceptionLogger.parameterErr(DocumentPrintingFactory.class, "typewriting(BufferedWriter bufferedWriter, String... messages)", "No illegal elements are allowed");
-            return;
+            throw new ParameterIllegalException();
         }
         typewriting(bufferedWriter, ToString.toString(messages));
     }
 
     public static void typewriting(BufferedWriter bufferedWriter, String message) {
         try {
-            typewritingWithThrows(bufferedWriter, message);
+            bufferedWriter.write(message);
+            bufferedWriter.flush();
         } catch (IOException e) {
-            ExceptionLogger.parameterErr(DocumentPrintingFactory.class, "typewriting(BufferedWriter bufferedWriter , String message)", e);
+            throw new FileNotConnectException();
+        } finally {
+            try {
+                bufferedWriter.close();
+            } catch (IOException e) {
+                throw new FileNotConnectException();
+            }
         }
-    }
-
-    public static void typewritingWithThrows(BufferedWriter bufferedWriter, String message) throws IOException {
-        bufferedWriter.write(message);
-        bufferedWriter.flush();
     }
 
 }

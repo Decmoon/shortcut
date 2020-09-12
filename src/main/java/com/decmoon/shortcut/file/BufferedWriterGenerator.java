@@ -1,5 +1,7 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
@@ -11,6 +13,7 @@ import java.io.FileWriter;
 public class BufferedWriterGenerator {
 
     private BufferedWriterGenerator() {
+        throw new InstantiateException();
     }
 
     /**
@@ -20,8 +23,7 @@ public class BufferedWriterGenerator {
      * @return BufferedWriter object
      */
     public static BufferedWriter newBufferedWriter(FileWriter fileWriter) {
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        return bufferedWriter;
+        return new BufferedWriter(fileWriter);
     }
 
 

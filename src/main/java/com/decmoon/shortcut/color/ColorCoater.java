@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.color;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import org.fusesource.jansi.Ansi;
 
 import static com.decmoon.shortcut.string.Strings.newStringBuffer;
@@ -15,6 +16,7 @@ import static org.fusesource.jansi.Ansi.ansi;
 public class ColorCoater {
 
     private ColorCoater() {
+        throw new InstantiateException();
     }
 
     public static StringBuffer black(String string) {

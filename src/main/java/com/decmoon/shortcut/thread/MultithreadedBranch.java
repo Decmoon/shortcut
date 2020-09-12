@@ -1,8 +1,9 @@
 package com.decmoon.shortcut.thread;
 
 import com.decmoon.shortcut.argument.Arguments;
-import com.decmoon.shortcut.exception.ExceptionLogger;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
+import com.decmoon.shortcut.exception.thread.ThreadException;
 import com.decmoon.shortcut.function.Execute;
 import com.decmoon.shortcut.function.Mission;
 
@@ -17,6 +18,7 @@ import java.util.concurrent.FutureTask;
 public class MultithreadedBranch {
 
     private MultithreadedBranch() {
+        throw new InstantiateException();
     }
 
     /**
@@ -67,15 +69,15 @@ public class MultithreadedBranch {
      * @param <T>     Supports generics
      * @return Multithreaded return value
      */
-    public final static <T> T cBranch(Mission mission,Class<T> type) {
-        return callableThread(mission, null,type);
+    public final static <T> T cBranch(Mission mission, Class<T> type) {
+        return callableThread(mission, null, type);
     }
 
-    public final static <T> T cBranch(Mission mission, String threadName,Class<T> type) {
+    public final static <T> T cBranch(Mission mission, String threadName, Class<T> type) {
         if (Arguments.parameterIllegal(threadName)) {
             throw new ParameterIllegalException();
         }
-        return callableThread(mission, threadName,type);
+        return callableThread(mission, threadName, type);
     }
 
 
@@ -89,7 +91,7 @@ public class MultithreadedBranch {
      * @param <T>        Supports generics
      * @return Multithreaded return value
      */
-    private final static <T> T callableThread(Mission mission, String threadName,Class<T> type) {
+    private final static <T> T callableThread(Mission mission, String threadName, Class<T> type) {
         Callable callable = () -> mission.execute();
         FutureTask futureTask = new FutureTask(callable);
         if (Arguments.parameterLegal(threadName)) {
@@ -98,12 +100,10 @@ public class MultithreadedBranch {
             new Thread(futureTask).start();
         }
 
-        T t = null;
         try {
-            t = (T) futureTask.get();
+            return (T) futureTask.get();
         } catch (Exception e) {
-            ExceptionLogger.parameterErr(MultithreadedBranch.class, "branch(Mission mission, String threadName)", e);
+            throw new ThreadException();
         }
-        return t;
     }
 }

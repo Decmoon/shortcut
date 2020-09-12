@@ -1,5 +1,7 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   shortcut:
     log:
-      info: "shortcut.log.info.txt"
-      err: "shortcut.log.err.txt"
+      info: "F:/Java/JavaProjects/log/info.txt"
+      err: "F:/Java/JavaProjects/log/err.txt"

@@ -1,5 +1,6 @@
 package com.decmoon.shortcut.file;
 
+import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.exception.io.file.FileNotConnectException;
 import com.decmoon.shortcut.exception.io.file.FileNotDocumentTypeException;
 
@@ -8,6 +9,9 @@ import java.io.IOException;
 
 public class FileMaker {
 
+    private FileMaker() {
+        throw new InstantiateException();
+    }
 
     /**
      * 创建文件 ,若有该文件则不作为

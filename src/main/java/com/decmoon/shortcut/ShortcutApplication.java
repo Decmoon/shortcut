@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableShortcutAspect
-@EnableShortcutLogger
 public class ShortcutApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShortcutApplication.class, args);

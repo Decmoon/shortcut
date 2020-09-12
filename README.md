@@ -2,7 +2,10 @@
 SHORTCUT
 -
 
-**AUTHOR:**
+[![Build Status](https://travis-ci.org/Decmoon/shortcut.svg?branch=master)](https://travis-ci.org/github/Decmoon/shortcut)
+
+**Author**
+
 > [<img width="30px" title="Decmoon" src="https://avatars3.githubusercontent.com/u/51840843?s=400&u=d909c885dc61d75a2ca60c6d52c2315714d8bdfe&v=4"/>
 ](https://github.com/Decmoon)
 

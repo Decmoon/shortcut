@@ -13,12 +13,12 @@ import java.util.*;
  */
 public class ArgumentsTest extends TestCase {
 
-    private void test_for_isNull() {
+    public void test_for_isNull() {
         assertTrue(Arguments.isNull(null));
         assertFalse(Arguments.isNull(""));
     }
 
-    private void test_for_parameterIllegal() {
+    public void test_for_parameterIllegal() {
         List list = new ArrayList<>();
         list.add(null);
         Set set = new HashSet<>();

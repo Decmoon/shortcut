@@ -14,19 +14,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @EnableShortcutAspect
-@EnableShortcutLogger
 public class ShortcutApplicationTests {
-
-
-    @Autowired
-    private Logger logger;
 
     @Test
     public void contextLoads() {
         ArgumentsTest test = new ArgumentsTest();
         test.run();
-
-
         ShortcutTest.print();
     }
 }

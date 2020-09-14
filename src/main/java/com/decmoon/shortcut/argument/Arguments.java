@@ -46,32 +46,101 @@ public class Arguments {
         return !isNull(object);
     }
 
+
     /**
-     * 判断参数是否非法
-     * 非法情况:参数为空，数字为0，字符串为空值
+     * 确定参数是否非法
      * <p>
      * Determine whether the parameter is illegal
-     * illegal situation: the parameter is empty, the number is 0, the string is empty value
      *
-     * @param object argument
+     * @param strict Severity will determine whether each element in the collection is an illegal element
+     * @param object object
      * @return TRUE if illegal , otherwise
      */
-    public static boolean parameterIllegal(Object object) {
-        return parameterIllegal(true, object);
+    public static boolean parameterIllegal(boolean strict, Object object) {
+        return isIllegal(strict, object);
     }
 
     /**
-     * 判断参数是否非法
-     * 非法情况:参数为空，数字为0，字符串为空值
+     * 确定参数是否非法
      * <p>
      * Determine whether the parameter is illegal
-     * illegal situation: the parameter is empty, the number is 0, the string is empty value
+     *
+     * @param strict  Severity will determine whether each element in the collection is an illegal element
+     * @param objects arguments
+     * @return TRUE if illegal , otherwise
+     */
+    public static boolean parameterIllegal(boolean strict, Object... objects) {
+        boolean bool = false;
+        for (Object object : objects) {
+            bool = isIllegal(strict, object);
+            if (bool) {
+                return bool;
+            }
+        }
+        return bool;
+    }
+
+    /**
+     * 确定参数是否非法
+     * <p>
+     * Determine whether the parameter is illegal
+     *
+     * @param objects arguments
+     * @return TRUE if illegal , otherwise
+     */
+    public static boolean parameterIllegal(Object... objects) {
+        return parameterIllegal(true, objects);
+    }
+
+    /**
+     * 确定参数是否合法
+     * <p>
+     * Determine whether the parameter is legal
+     *
+     * @param strict Severity will determine whether each element in the collection is an illegal element
+     * @param object object
+     * @return TRUE if legal , otherwise
+     */
+    public static boolean parameterLegal(boolean strict, Object object) {
+        return !isIllegal(strict, object);
+    }
+
+    /**
+     * 确定参数是否合法
+     * <p>
+     * Determine whether the parameter is legal
+     *
+     * @param strict  Severity will determine whether each element in the collection is an illegal element
+     * @param objects arguments
+     * @return TRUE if legal , otherwise
+     */
+    public static boolean parameterLegal(boolean strict, Object... objects) {
+        return !parameterIllegal(strict, objects);
+    }
+
+    /**
+     * 确定参数是否合法
+     * <p>
+     * Determine whether the parameter is legal
+     *
+     * @param objects arguments
+     * @return TRUE if legal , otherwise
+     */
+    public static boolean parameterLegal(Object... objects) {
+        return parameterLegal(true, objects);
+    }
+
+
+    /**
+     * 判断参数是否非法
+     * <p>
+     * Determine whether the parameter is illegal
      *
      * @param strict Severity will determine whether each element in the collection is an illegal element
      * @param object argument
      * @return TRUE if illegal , otherwise
      */
-    public static boolean parameterIllegal(boolean strict, Object object) {
+    private static boolean isIllegal(boolean strict, Object object) {
         if (isNull(object)) {
             return true;
         }
@@ -98,75 +167,11 @@ public class Arguments {
                 return MathematicalComparator.equalsZero(((String) object).length());
             }
         }
+
+        if (object instanceof StringBuilder || object instanceof StringBuffer) {
+            return isIllegal(strict, object.toString());
+        }
         return false;
     }
-
-
-    /**
-     * 确定参数是否非法
-     * 非法情况:参数为空，数字为0，字符串为空
-     * <p>
-     * Determine whether the parameter is illegal
-     * illegal situation: the parameter is empty, the number is 0, the string is empty value
-     *
-     * @param strict  Severity will determine whether each element in the collection is an illegal element
-     * @param objects arguments
-     * @return TRUE if illegal , otherwise
-     */
-    public static boolean parameterIllegal(boolean strict, Object... objects) {
-        boolean bool = false;
-        for (Object object : objects) {
-            bool = parameterIllegal(strict, object);
-            if (bool) {
-                return bool;
-            }
-        }
-        return bool;
-    }
-
-    /**
-     * 确定参数是否非法
-     * 非法情况:参数为空，数字为0，字符串为空
-     * <p>
-     * Determine whether the parameter is illegal
-     * illegal situation: the parameter is empty, the number is 0, the string is empty value
-     *
-     * @param objects arguments
-     * @return TRUE if illegal , otherwise
-     */
-    public static boolean parameterIllegal(Object... objects) {
-        return parameterIllegal(true, objects);
-    }
-
-
-    /**
-     * 确定参数是否合法
-     * 非法情况:参数为空，数字为0，字符串为空
-     * <p>
-     * Determine whether the parameter is legal
-     * illegal situation: the parameter is empty, the number is 0, the string is empty value
-     *
-     * @param strict  Severity will determine whether each element in the collection is an illegal element
-     * @param objects arguments
-     * @return TRUE if legal , otherwise
-     */
-    public static boolean parameterLegal(boolean strict, Object... objects) {
-        return !parameterIllegal(strict, objects);
-    }
-
-    /**
-     * 确定参数是否合法
-     * 非法情况:参数为空，数字为0，字符串为空
-     * <p>
-     * Determine whether the parameter is legal
-     * illegal situation: the parameter is empty, the number is 0, the string is empty value
-     *
-     * @param objects arguments
-     * @return TRUE if legal , otherwise
-     */
-    public static boolean parameterLegal(Object... objects) {
-        return parameterLegal(true, objects);
-    }
-
 
 }

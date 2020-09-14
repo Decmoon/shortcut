@@ -1,4 +1,4 @@
-package com.decmoon.shortcut.serizlize;
+package com.decmoon.shortcut.serialize;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.illegal.InstantiateException;

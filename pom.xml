@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.decmoon</groupId>
     <artifactId>shortcut</artifactId>
-    <version>0.0.9-dev</version>
+    <version>0.0.9</version>
     <name>shortcut</name>
     <description>A SDK for faster and easier programming</description>
 

@@ -73,14 +73,6 @@ JDK
 -
 JDK version 1.8 and above
 
-Quote 
--
-At present, **shortcut** no upload on the web, so if you wanna use **shortcut** to program development,
-for the moment can by **clone** project to your local computer, 
-packaged into **shortcut jar package**, and then import **shortcut**'s dependencies ,
-I hope you in the use of shortcut programming development, give me some feedback,
-I'm really looking forward to your opinion
-
 Import dependence
 -
 

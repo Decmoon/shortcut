@@ -36,8 +36,8 @@ Functional annotations
 -
 Annotation|Target|API-ZH|API-EN|
 :---:|:---:|:---:|:---
-@EnableShortcutAspect|Application.java|[中文](api/chinese/annotation-EnableShortcutAspect-zh.md)|[English]() 
-@EnableShortcutLogger|Application.java|[中文]()|[English]() 
+@EnableShortcutAspect|Application.java|[中文](api/chinese/annotation-EnableShortcutAspect-zh.md)|English 
+@EnableShortcutLogger|Application.java|[中文](api/chinese/annotation-EnableShortcutLogger-zh.md)|English
 
 JDK
 -

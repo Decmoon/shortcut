@@ -7,9 +7,7 @@ import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CollectionCheckerTest extends TestCase {
 
@@ -20,7 +18,7 @@ public class CollectionCheckerTest extends TestCase {
         list.add(null);
 
 
-        list.add("");
+        list2.add("");
     }
 
     public void test_for_containNULL() {
@@ -39,9 +37,9 @@ public class CollectionCheckerTest extends TestCase {
         try {
             test_for_containNULL();
             test_for_nonContainNULL();
-            Console.warn("Test-BooleanJudge has passed the test");
+            Console.warn("Test-CollectionChecker has passed the test");
         } catch (AssertionFailedError e) {
-            Console.fail("Test-BooleanJudge didn't pass the test");
+            Console.fail("Test-CollectionChecker didn't pass the test");
             ShortcutTest.add(e);
         }
     }

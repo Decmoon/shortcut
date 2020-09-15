@@ -15,6 +15,7 @@
 
 构造方法
 -
+[[异常触发]](exception-InstantiateException-zh.md)
 ````
 private Arguments()
 
@@ -28,7 +29,7 @@ private Arguments()
  public static boolean isNull(Object object)
  
  参数：
-        Object类型对象
+        object - Object类型对象
  返回：
         如果对象为空，返回TRUE,否则返回TRUE
 ````

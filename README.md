@@ -31,43 +31,13 @@ API
 + [中文](api/chinese/API-zh.md)
 + [English](api/english/API-en.md)
 
-Log
+
+Functional annotations
 -
-Customize the log location by configuring the information
- in the `.properties` or `.yml` file.
- ````yml
-spring:
-  shortcut:
-    log:
-      info: "Info category output file path"
-      err: "Error category output file path"
-````
- 
-And **configure the annotations** in the application class
-````java
-@SpringBootApplication
-@EnableShortcutAspect
-@EnableShortcutLogger
-public class ShortcutApplication {
-    
-    @Autowired
-    private Logger logger;
-
-    public static void main(String[] args) {
-        logger.info("Enjoying your code");
-        SpringApplication.run(ShortcutApplication.class, args);
-    }
-
-}
-````
-
-
-Annotation
--
-Annotation|Target|description
-:---:|:---:|:---
-@EnableShortcutAspect|Application.java|Turn on aspect of shortcut,make the console look better 
-@EnableShortcutLogger|Application.java|Turn on the logging service
+Annotation|Target|API-ZH|API-EN|
+:---:|:---:|:---:|:---
+@EnableShortcutAspect|Application.java|[中文](api/chinese/annotation-EnableShortcutAspect-zh.md)|[English]() 
+@EnableShortcutLogger|Application.java|[中文]()|[English]() 
 
 JDK
 -

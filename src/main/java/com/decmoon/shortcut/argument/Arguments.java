@@ -150,14 +150,14 @@ public class Arguments {
             if (strict) {
                 return CollectionChecker.containNULL(collection);
             } else {
-                return CollectionChecker.isEmpty(collection);
+                return collection.isEmpty();
             }
         }
         if (object instanceof Map) {
             if (strict) {
                 return CollectionChecker.containNULL((Map) object);
             } else {
-                return CollectionChecker.isEmpty((Map) object);
+                return ((Map) object).isEmpty();
             }
         }
         if (object instanceof String) {

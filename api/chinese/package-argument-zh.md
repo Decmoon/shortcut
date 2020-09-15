@@ -15,4 +15,5 @@
 
 相关
 -
-+ [Arguments](class-Arguments-zh.md)
+
++ 【class】[Arguments](class-Arguments-zh.md)

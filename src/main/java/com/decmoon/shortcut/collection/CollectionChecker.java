@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.collection;
 
 import com.decmoon.shortcut.bool.BooleanJudge;
+import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
 import java.util.Collection;
@@ -21,102 +22,6 @@ public class CollectionChecker {
     }
 
     /**
-     * 判断集合是否为 null
-     * <p>
-     * Judgment whether the collection is null
-     *
-     * @param collection Collection
-     * @return TRUE if collection is null,otherwise
-     */
-    public static boolean isNull(Collection collection) {
-        return Objects.isNull(collection);
-    }
-
-    /**
-     * 判断集合是否为 null
-     * <p>
-     * Judgment whether the collection is null
-     *
-     * @param collection Collection
-     * @return TRUE if collection isn't null , otherwise
-     */
-    public static boolean nonNull(Collection collection) {
-        return !isNull(collection);
-    }
-
-    /**
-     * 判断集合是否为空集合
-     * <p>
-     * Judgment whether the collection is empty
-     *
-     * @param collection Collection
-     * @return TRUE if collection is empty,otherwise
-     */
-    public static boolean isEmpty(Collection collection) {
-        return collection.isEmpty();
-    }
-
-    /**
-     * 判断集合是否为空集合
-     * <p>
-     * Judgment whether the collection is empty
-     *
-     * @param collection Collection
-     * @return TRUE if collection isn't empty,otherwise
-     */
-    public static boolean nonEmpty(Collection collection) {
-        return !isEmpty(collection);
-    }
-
-    /**
-     * 判断map集合是否为 null
-     * <p>
-     * Judgment whether the map is null
-     *
-     * @param map Map
-     * @return TRUE if collection is null,otherwise
-     */
-    public static boolean isNull(Map map) {
-        return Objects.isNull(map);
-    }
-
-    /**
-     * 判断map集合是否为 null
-     * <p>
-     * Judgment whether the map is null
-     *
-     * @param map Map
-     * @return TRUE if collection isn't null,otherwise
-     */
-    public static boolean nonNull(Map map) {
-        return !isNull(map);
-    }
-
-    /**
-     * 判断map集合是否为空
-     * <p>
-     * Judgment whether the map is empty
-     *
-     * @param map Map
-     * @return TRUE if collection is empty,otherwise
-     */
-    public static boolean isEmpty(Map map) {
-        return map.isEmpty();
-    }
-
-    /**
-     * 判断map集合是否为空
-     * <p>
-     * Judgment whether the map is empty
-     *
-     * @param map Map
-     * @return TRUE if collection isn't empty,otherwise
-     */
-    public static boolean nonEmpty(Map map) {
-        return !isEmpty(map);
-    }
-
-    /**
      * 确定集合是否包含空元素
      * <p>
      * Determines whether the collection contains a null element
@@ -125,8 +30,8 @@ public class CollectionChecker {
      * @return TRUE if collection contains a null element
      */
     public static boolean containNULL(Collection collection) {
-        if (BooleanJudge.hasTrue(isNull(collection), isEmpty(collection))) {
-            return true;
+        if (BooleanJudge.hasTrue(Objects.isNull(collection), collection.isEmpty())) {
+            throw new ParameterIllegalException();
         }
         for (Object o : collection) {
             if (Objects.isNull(o)) {
@@ -148,6 +53,10 @@ public class CollectionChecker {
      */
     public static <K, V> boolean containNULL(Map<K, V> map) {
 
+        if (Objects.isNull(map) || map.isEmpty()) {
+            throw new ParameterIllegalException();
+        }
+
         for (Map.Entry<K, V> entry : map.entrySet()) {
             K k = entry.getKey();
             V v = entry.getValue();
@@ -168,6 +77,21 @@ public class CollectionChecker {
      */
     public static boolean nonContainNULL(Collection collection) {
         return !containNULL(collection);
+    }
+
+
+    /**
+     * 确定集合是否不包含空元素
+     * <p>
+     * Determines whether the collection not contains a null element
+     *
+     * @param map collection
+     * @param <K> type
+     * @param <V> type
+     * @return TRUE if collection not contains a null element
+     */
+    public static <K, V> boolean nonContainNULL(Map<K, V> map) {
+        return !containNULL(map);
     }
 
 

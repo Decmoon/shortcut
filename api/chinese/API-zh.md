@@ -3,7 +3,7 @@
 > <br/>**API 仅显示公共接口** <br/> <br/>
 
 
-+ ##[com.decmoon.shortcut](../../README.md)
++ ## [com.decmoon.shortcut](../../README.md)
     + #### [argument](package-argument-zh.md)
         + [Arguments](class-Arguments-zh.md)
     + #### [bool](package-bool-zh.md)

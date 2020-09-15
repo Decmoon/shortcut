@@ -20,7 +20,7 @@
     + #### color
         + ColorCoater
     + #### [core](package-core-zh.md)
-        + #####[annotation](package-annotation-zh.md)
+        + ##### [annotation](package-annotation-zh.md)
             + [EnableShortCutAspect](annotation-EnableShortcutAspect-zh.md)
             + [EnableShortcutLogger](annotation-EnableShortcutLogger-zh.md)
         + ##### config

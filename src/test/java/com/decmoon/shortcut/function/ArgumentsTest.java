@@ -1,6 +1,7 @@
 package com.decmoon.shortcut.function;
 
 import com.decmoon.shortcut.ShortcutTest;
+import com.decmoon.shortcut.argument.ArgumentList;
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.core.log.Console;
 import junit.framework.AssertionFailedError;
@@ -21,8 +22,10 @@ public class ArgumentsTest extends TestCase {
     public void test_for_parameterIllegal() {
         List list = new ArrayList<>();
         list.add(null);
+        list.add("abc");
         Set set = new HashSet<>();
         set.add(null);
+        set.add("abd");
 
         assertTrue(Arguments.parameterIllegal(""));
         assertTrue(Arguments.parameterIllegal(" "));
@@ -38,15 +41,23 @@ public class ArgumentsTest extends TestCase {
         assertFalse(Arguments.parameterIllegal(false, 0));
     }
 
+    public void test_for_parameterIllegal_list(){
+        assertTrue(Arguments.parameterIllegal(Arguments.asList(""," ","a")));
+        assertTrue(Arguments.parameterIllegal(Arguments.asList(null," ","a")));
+        assertFalse(Arguments.parameterIllegal(Arguments.asList("a",2)));
+    }
+
     @Override
     protected void runTest() {
         try {
             test_for_isNull();
             test_for_parameterIllegal();
+            test_for_parameterIllegal_list();
             Console.warn("Test-Argument has passed the test");
         } catch (AssertionFailedError e) {
             Console.fail("Test-Argument didn't pass the test");
             ShortcutTest.add(e);
         }
     }
+
 }

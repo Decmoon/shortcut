@@ -25,7 +25,7 @@ public class ShortCutException extends RuntimeException {
             if (i == 0 || StringProcessor.contains(stackTrace[i].toString(), "Exception")) {
                 continue;
             }
-            if (Arguments.parameterLegal(stringBuffer)) {
+            if (Arguments.parameterLegal(false,stringBuffer)) {
                 stringBuffer.append("\t" + stackTrace[i].toString() + "\n\r");
             }
         }

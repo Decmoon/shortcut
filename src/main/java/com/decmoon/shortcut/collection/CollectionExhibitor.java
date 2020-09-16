@@ -2,7 +2,6 @@ package com.decmoon.shortcut.collection;
 
 import com.decmoon.shortcut.argument.Arguments;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
-import com.decmoon.shortcut.core.log.Logger;
 import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.object.ObjectInformation;
 import com.decmoon.shortcut.print.Print;
@@ -31,7 +30,7 @@ public class CollectionExhibitor {
      * @param collection collection
      * @param <E>        Supports generics
      */
-    public static <E> void see(Collection<E> collection) {
+    public static <E> void see(Collection<E> collection){
         if (Arguments.parameterIllegal(collection)) {
             throw new ParameterIllegalException();
         }

@@ -6,6 +6,7 @@
 + ## [com.decmoon.shortcut](../../README.md)
     + #### [argument](package-argument-zh.md)
         + [Arguments](class-Arguments-zh.md)
+        + ArgumentList
     + #### [bool](package-bool-zh.md)
         + [BooleanJudge](class-BooleanJudge-zh.md)
     + #### [collection](package-collection-zh.md)

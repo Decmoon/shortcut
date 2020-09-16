@@ -27,7 +27,7 @@ public class ShortCutAspect {
     }
 
     @Around("pointcut()")
-    public void before(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             joinPoint.proceed();
         } catch (ShortCutException e) {
@@ -35,5 +35,17 @@ public class ShortCutAspect {
             e.shutdown();
         }
     }
+
+
+    public Object aroundReturn(ProceedingJoinPoint joinPoint) throws Throwable {
+        try {
+            return joinPoint.proceed();
+        } catch (ShortCutException e) {
+            e.printStackTrace();
+            e.shutdown();
+        }
+        throw new IllegalArgumentException();
+    }
+
 
 }

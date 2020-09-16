@@ -5,6 +5,8 @@ import com.decmoon.shortcut.bool.BooleanJudge;
 import com.decmoon.shortcut.exception.argument.ParameterIllegalException;
 import com.decmoon.shortcut.exception.illegal.InstantiateException;
 
+
+import static com.decmoon.shortcut.argument.Arguments.asList;
 import static com.decmoon.shortcut.argument.Arguments.parameterIllegal;
 
 /**
@@ -26,7 +28,7 @@ public class StringProcessor {
      * @return TRUE if the string contains substrings
      */
     public final static boolean contains(String string, String subString) {
-        return parameterIllegal(string, subString) ? false : string.contains(subString);
+        return parameterIllegal(asList(string, subString)) ? false : string.contains(subString);
     }
 
     /**
@@ -210,7 +212,7 @@ public class StringProcessor {
      * @return
      */
     public static int indexOfSubstring(String string, String subString) {
-        if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
+        if (Arguments.parameterLegal(asList(string, subString)) && subString.length() <= string.length()) {
             int size = subString.length();
             for (int i = 0; i < string.length() && i + size <= string.length(); i++) {
                 if (string.substring(i, i + size).equals(subString)) {
@@ -241,7 +243,7 @@ public class StringProcessor {
      * @return 返回字符串 返回区域为 0-子串首 , 若子串不再原串中，返回原串
      */
     public static String headSubString(String string, String subString) {
-        if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
+        if (Arguments.parameterLegal(asList(string, subString)) && subString.length() <= string.length()) {
             int index = indexOfSubstring(string, subString);
             if (index == -1) {
                 return string;
@@ -260,7 +262,7 @@ public class StringProcessor {
      * @return 返回字符串 返回区域为 子串尾-原串尾 , 若子串不再原串中，返回原串
      */
     public static String tailSubString(String string, String subString) {
-        if (Arguments.parameterLegal(string, subString) && subString.length() <= string.length()) {
+        if (Arguments.parameterLegal(asList(string, subString)) && subString.length() <= string.length()) {
             int index = lastIndexOfSubstring(string, subString);
             if (index == -1) {
                 return string;

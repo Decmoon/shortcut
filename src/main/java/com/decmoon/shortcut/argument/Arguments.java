@@ -5,9 +5,7 @@ import com.decmoon.shortcut.exception.illegal.InstantiateException;
 import com.decmoon.shortcut.math.MathematicalComparator;
 import com.decmoon.shortcut.string.StringRecognizer;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 为参数提供具体的操作
@@ -52,6 +50,31 @@ public class Arguments {
      * <p>
      * Determine whether the parameter is illegal
      *
+     * @param object argument
+     * @return TRUE if illegal , otherwise
+     */
+    public static boolean parameterIllegal(Object object) {
+        return parameterIllegal(true, object);
+    }
+
+    /**
+     * 确定参数是否非法
+     * <p>
+     * Determine whether the parameter is illegal
+     *
+     * @param argumentList arguments
+     * @return TRUE if illegal , otherwise
+     */
+    public static boolean parameterIllegal(ArgumentList argumentList) {
+        return parameterIllegal(true, argumentList);
+    }
+
+
+    /**
+     * 确定参数是否非法
+     * <p>
+     * Determine whether the parameter is illegal
+     *
      * @param strict Severity will determine whether each element in the collection is an illegal element
      * @param object object
      * @return TRUE if illegal , otherwise
@@ -60,37 +83,54 @@ public class Arguments {
         return isIllegal(strict, object);
     }
 
-    /**
-     * 确定参数是否非法
-     * <p>
-     * Determine whether the parameter is illegal
-     *
-     * @param strict  Severity will determine whether each element in the collection is an illegal element
-     * @param objects arguments
-     * @return TRUE if illegal , otherwise
-     */
-    public static boolean parameterIllegal(boolean strict, Object... objects) {
-        boolean bool = false;
-        for (Object object : objects) {
-            bool = isIllegal(strict, object);
-            if (bool) {
-                return bool;
-            }
-        }
-        return bool;
-    }
 
     /**
      * 确定参数是否非法
      * <p>
      * Determine whether the parameter is illegal
      *
-     * @param objects arguments
+     * @param strict       Severity will determine whether each element in the collection is an illegal element
+     * @param argumentList arguments
      * @return TRUE if illegal , otherwise
      */
-    public static boolean parameterIllegal(Object... objects) {
-        return parameterIllegal(true, objects);
+    public static boolean parameterIllegal(boolean strict, ArgumentList argumentList) {
+        boolean bool = false;
+        for (Object object : argumentList.getArguments()) {
+            bool = isIllegal(strict, object);
+            if (bool) {
+                break;
+            }
+        }
+        argumentList.clear();
+        return bool;
     }
+
+
+    /**
+     * 确定参数是否合法
+     * <p>
+     * Determine whether the parameter is legal
+     *
+     * @param object argument
+     * @return TRUE if legal , otherwise
+     */
+    public static boolean parameterLegal(Object object) {
+        return parameterLegal(true, object);
+    }
+
+
+    /**
+     * 确定参数是否合法
+     * <p>
+     * Determine whether the parameter is legal
+     *
+     * @param argumentList arguments
+     * @return TRUE if legal , otherwise
+     */
+    public static boolean parameterLegal(ArgumentList argumentList) {
+        return parameterLegal(true, argumentList);
+    }
+
 
     /**
      * 确定参数是否合法
@@ -110,24 +150,12 @@ public class Arguments {
      * <p>
      * Determine whether the parameter is legal
      *
-     * @param strict  Severity will determine whether each element in the collection is an illegal element
-     * @param objects arguments
+     * @param strict       Severity will determine whether each element in the collection is an illegal element
+     * @param argumentList arguments
      * @return TRUE if legal , otherwise
      */
-    public static boolean parameterLegal(boolean strict, Object... objects) {
-        return !parameterIllegal(strict, objects);
-    }
-
-    /**
-     * 确定参数是否合法
-     * <p>
-     * Determine whether the parameter is legal
-     *
-     * @param objects arguments
-     * @return TRUE if legal , otherwise
-     */
-    public static boolean parameterLegal(Object... objects) {
-        return parameterLegal(true, objects);
+    public static boolean parameterLegal(boolean strict, ArgumentList argumentList) {
+        return !parameterIllegal(strict, argumentList);
     }
 
 
@@ -169,9 +197,17 @@ public class Arguments {
         }
 
         if (object instanceof StringBuilder || object instanceof StringBuffer) {
-            return isIllegal(strict, object.toString());
+            if (strict) {
+                return isIllegal(strict, object.toString());
+            }
         }
         return false;
     }
+
+
+    public static ArgumentList asList(Object... objects) {
+        return ArgumentList.asList(objects);
+    }
+
 
 }

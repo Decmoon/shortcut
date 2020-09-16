@@ -33,9 +33,10 @@ private Arguments()
  返回：
         如果对象为空，返回TRUE,否则返回TRUE
 ````
+
 判断参数是否非空
 ```` 
- public static boolean nonNull(Object object)
+public static boolean nonNull(Object object)
  
   参数：
         object - Object类型对象
@@ -43,70 +44,102 @@ private Arguments()
         如果对象非空，返回TRUE,否则返回TRUE
 ````
 
-判断参数是否非法 [【非法条件】](#非法条件)
+创建【ArgumentList】校验集合 用于复合参数检验
 ```` 
-public static boolean parameterIllegal(boolean strict, Object object) 
-
-  参数：
-        strict  - boolean 是否严格
-        objects - Object 类型对象
-  返回：
-        如果对象非法，返回TRUE，否则返回FALSE
-````
-判断任一参数是否非法 [【非法条件】](#非法条件)
-```` 
- public static boolean parameterIllegal(boolean strict, Object... objects)
- 
- 参数：
-        strict  - boolean 是否严格
-        objects - Object 类型对象
- 返回：
-        如果对象非法，返回TRUE，否则返回FALSE
-````
-
-判断任一参数是否非法（严格）[【非法条件】](#非法条件)
-```` 
-public static boolean parameterIllegal(Object... objects)
-
-  参数：
-        objects - Object类型对象
-  返回：
-        如果对象非法，返回TRUE，否则返回FALSE
-````
-
-判断任一参数是否合法 [【非法条件】](#非法条件)
-```` 
- public static boolean parameterLegal(boolean strict, Object object)
- 
-  参数：
-         strict  - boolean 是否严格
-         object - Object 类型对象
-  返回：
-         如果对象合法，返回TRUE，否则返回FALSE
-````
-判断任一参数是否合法 [【非法条件】](#非法条件)
-```` 
- public static boolean parameterLegal(boolean strict, Object... objects)
- 
-  参数：
-         strict  - boolean 是否严格
-         objects - Object 类型对象
-  返回：
-         如果对象合法，返回TRUE，否则返回FALSE
-````
-
-判断任一参数是否合法（严格）[【非法条件】](#非法条件)
-```` 
- public static boolean parameterLegal(Object... objects)
+ public static ArgumentList asList(Object... objects)
  
    参数：
          objects - Object类型对象
-   返回：
-         如果对象合法，返回TRUE，否则返回FALSE
 ````
 
 
-注
+
+判断参数是否非法【严格】 [【非法条件】](#非法条件)
+```` 
+public static boolean parameterIllegal(Object object) 
+
+  参数：
+        object - Object 类型对象
+  返回：
+        如果对象非法，返回TRUE，否则返回FALSE
+````
+
+判断复合参数是否非法【严格】 [【非法条件】](#非法条件)
+```` 
+public static boolean parameterIllegal(ArgumentList argumentList) 
+
+  参数：
+        argumentList - ArgumentList 类型校验集合
+  返回：
+        如果对象非法，返回TRUE，否则返回FALSE
+````
+
+判断参数是否非法 [【非法条件】](#非法条件)
+```` 
+public static boolean parameterLegal(boolean strict, Object object)   
+   
+  参数：
+        strict  - boolean 是否严格
+        object - Object 类型对象
+  返回：
+        如果对象非法，返回TRUE，否则返回FALSE
+````
+
+判断复合参数是否非法 [【非法条件】](#非法条件)
+```` 
+public static boolean parameterIllegal(boolean strict,ArgumentList argumentList) 
+   
+  参数：
+        strict  - boolean 是否严格
+        argumentList - ArgumentList 类型校验集合
+  返回：
+        如果对象非法，返回TRUE，否则返回FALSE
+````
+
+
+判断参数是否合法【严格】 [【非法条件】](#非法条件)
+```` 
+public static boolean parameterLegal(Object object)
+
+  参数：
+        object - Object 类型对象
+  返回：
+        如果对象合法，返回TRUE，否则返回FALSE
+````
+
+判断复合参数是否合法【严格】 [【非法条件】](#非法条件)
+```` 
+public static boolean parameterLegal(ArgumentList argumentList)
+
+  参数：
+        argumentList - ArgumentList 类型校验集合
+  返回：
+        如果对象合法，返回TRUE，否则返回FALSE
+````
+
+判断参数是否合法  [【非法条件】](#非法条件)
+```` 
+public static boolean parameterLegal(boolean strict, Object object)
+
+  参数：
+        strict  - boolean 是否严格
+        object - Object 类型对象
+  返回：
+        如果对象合法，返回TRUE，否则返回FALSE
+````
+判断复合参数是否合法  [【非法条件】](#非法条件)
+```` 
+public static boolean parameterLegal(boolean strict, ArgumentList argumentList)
+    
+  参数：
+        strict  - boolean 是否严格
+        argumentList - ArgumentList 类型校验集合
+  返回：
+        如果对象合法，返回TRUE，否则返回FALSE
+````
+
+
+备注
 -
 #### 非法条件
 ````
@@ -121,6 +154,5 @@ E: 长度为0的 StringBuffer 或 StringBuilder 对象
 
 
 ````
-
 
 

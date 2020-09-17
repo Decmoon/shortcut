@@ -14,6 +14,14 @@
     <name>shortcut</name>
     <description>A SDK for faster and easier programming</description>
 
+    <developers>
+        <developer>
+            <id>decmoon</id>
+            <name>Decmoon</name>
+            <email>751229863@qq.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>

@@ -5,13 +5,14 @@ import com.decmoon.shortcut.file.*;
 import com.decmoon.shortcut.system.SystemInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileWriter;
 
-@Component
+@Configuration
 public class Logger {
 
     private String log_info_path;
@@ -27,7 +28,8 @@ public class Logger {
     public void init() {
         log_info_path = loggerScan.getInfo();
         log_err_path = loggerScan.getErr();
-
+        System.out.println(log_info_path);
+        System.out.println(log_err_path);
         log_info_file = new File(log_info_path);
         log_err_file = new File(log_err_path);
 

@@ -14,37 +14,30 @@ import org.aspectj.lang.annotation.Pointcut;
  * @author decmoon
  * @see EnableShortcutAspect
  */
-@Aspect
-public class ShortCutAspect {
+public abstract class ShortcutAspect {
 
-    public ShortCutAspect() {
+    public ShortcutAspect() {
         Console.info("The aspect service of Shortcut is started");
     }
 
-    @Pointcut("execution(* com.decmoon.shortcut.*.*(..))")
-    public void pointcut() {
 
-    }
+    public abstract void pointcut();
 
-    @Around("pointcut()")
-    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void doVoid(AspectStrategy aspectStrategy) throws Throwable {
         try {
-            joinPoint.proceed();
+            aspectStrategy.execute();
         } catch (ShortCutException e) {
             e.printStackTrace();
-            e.shutdown();
         }
     }
 
-
-    public Object aroundReturn(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object doReturn(AspectReturnStrategy aspectReturnStrategy) throws Throwable {
         try {
-            return joinPoint.proceed();
+            return aspectReturnStrategy.execute();
         } catch (ShortCutException e) {
             e.printStackTrace();
-            e.shutdown();
         }
-        throw new IllegalArgumentException();
+        return null;
     }
 
 

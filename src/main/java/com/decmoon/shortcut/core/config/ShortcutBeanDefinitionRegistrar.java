@@ -10,7 +10,7 @@ import org.springframework.core.type.AnnotationMetadata;
 import java.util.Map;
 import java.util.Objects;
 
-public class ShortCutBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
+public class ShortcutBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
 
     private boolean init = false;
 
@@ -45,12 +45,22 @@ public class ShortCutBeanDefinitionRegistrar implements ImportBeanDefinitionRegi
         if (Objects.isNull(annotationAttributes)) {
             return;
         }
-        Boolean enable = Boolean.valueOf(annotationAttributes.get("enable") + "");
+        Boolean enable = Boolean.valueOf(annotationAttributes.get("enable").toString());
+        Class<?> aspectClass ;
+
+
         if (enable) {
-            BeanDefinitionBuilder beanDefinitionBuilder =
-                    BeanDefinitionBuilder.rootBeanDefinition(ShortCutAspect.class);
-            registry.registerBeanDefinition(ShortCutAspect.class.getName(),
-                    beanDefinitionBuilder.getBeanDefinition());
+            try {
+                String s = annotationAttributes.get("aspect").toString();
+                int i = s.lastIndexOf(' ')+1;
+                aspectClass = Class.forName(s.substring(i));
+                BeanDefinitionBuilder beanDefinitionBuilder =
+                        BeanDefinitionBuilder.rootBeanDefinition(aspectClass);
+                registry.registerBeanDefinition(aspectClass.getName(),
+                        beanDefinitionBuilder.getBeanDefinition());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 

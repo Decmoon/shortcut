@@ -1,6 +1,6 @@
 package com.decmoon.shortcut.core.annotation;
 
-import com.decmoon.shortcut.core.config.ShortCutBeanDefinitionRegistrar;
+import com.decmoon.shortcut.core.config.ShortcutBeanDefinitionRegistrar;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(ShortCutBeanDefinitionRegistrar.class)
+@Import(ShortcutBeanDefinitionRegistrar.class)
 public @interface EnableShortcutLogger {
     boolean enable() default true;
 }

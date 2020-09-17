@@ -1,5 +1,6 @@
 package com.decmoon.shortcut;
 
+import com.decmoon.shortcut.config.TestAspect;
 import com.decmoon.shortcut.core.annotation.EnableShortcutAspect;
 import com.decmoon.shortcut.core.annotation.EnableShortcutLogger;
 import com.decmoon.shortcut.function.ArgumentsTest;
@@ -14,21 +15,41 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@EnableShortcutAspect
+@EnableShortcutAspect(aspect = TestAspect.class)
 //@EnableShortcutLogger
 public class ShortcutApplicationTests {
 
     @Autowired
-    private  DemoService demoService;
+    private DemoService demoService;
+
+    private boolean enableUnitTest = true;
+    private boolean enableDemoServiceTest = false;
+
+
+
+    private void unitTest() {
+        if (enableUnitTest) {
+            new ArgumentsTest().run();
+            new BooleanJudgeTest().run();
+            new CollectionCheckerTest().run();
+
+            ShortcutTest.print();
+        }
+    }
+
+    private void demoServiceTest() {
+        if (enableDemoServiceTest) {
+            demoService.throwException();
+//        demoService.writeLog();
+        }
+    }
+
+
+
 
     @Test
     public void contextLoads() {
-        new ArgumentsTest().run();
-        new BooleanJudgeTest().run();
-        new CollectionCheckerTest().run();
-
-        ShortcutTest.print();
-//        demoService.throwException();
-//        demoService.writeLog();
+        unitTest();
+        demoServiceTest();
     }
 }

@@ -24,7 +24,13 @@
         + ##### [annotation](package-annotation-zh.md)
             + [EnableShortCutAspect](annotation-EnableShortcutAspect-zh.md)
             + [EnableShortcutLogger](annotation-EnableShortcutLogger-zh.md)
-        + ##### config
+        + ##### [config](package-config-zh.md)
+            + [AspectReturnStrategy](interface-AspectReturnStrategy-zh.md)
+            + [AspectStrategy](interface-AspectStrategy-zh.md)
+            + [ShortcutAspect](class-ShortcutAspect-zh.md)
+            + ShortcutAutoConfiguration
+            + ShortcutBeanDefinitionRegistrar
+            + ShortcutBeanPostProcessor
         + ##### log 
             + Console
             + Logger

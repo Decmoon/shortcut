@@ -28,8 +28,7 @@ public class Logger {
     public void init() {
         log_info_path = loggerScan.getInfo();
         log_err_path = loggerScan.getErr();
-        System.out.println(log_info_path);
-        System.out.println(log_err_path);
+
         log_info_file = new File(log_info_path);
         log_err_file = new File(log_err_path);
 

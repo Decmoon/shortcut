@@ -1,9 +1,6 @@
 package com.decmoon.shortcut.core.annotation;
 
-import com.decmoon.shortcut.core.config.ShortCutAspect;
-import com.decmoon.shortcut.core.config.ShortCutBeanDefinitionRegistrar;
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.aop.config.AspectEntry;
+import com.decmoon.shortcut.core.config.ShortcutBeanDefinitionRegistrar;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -16,8 +13,9 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(ShortCutBeanDefinitionRegistrar.class)
+@Import(ShortcutBeanDefinitionRegistrar.class)
 public @interface EnableShortcutAspect {
     boolean enable() default true;
 
+    Class aspect();
 }

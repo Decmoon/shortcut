@@ -15,8 +15,8 @@
 
 相关
 -
-+ 【package】[list]()
-+ 【package】[map]()
-+ 【package】[set]()
++ 【package】list
++ 【package】map
++ 【package】set
 + 【class】[CollectionChecker](class-CollectionChecker-zh.md)
-+ 【class】[CollectionExhibitor]()
++ 【class】CollectionExhibitor
